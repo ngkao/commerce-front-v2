@@ -6,9 +6,9 @@ function App() {
   const handleClick = () => {
     console.log("CHECKOUT clicked")
 
-    axios.get("http://localhost:8080")
-        .then(response => console.log(response))
-        .catch(error => console.log(error))
+    // axios.get("http://localhost:8080")
+    //     .then(response => console.log(response))
+    //     .catch(error => console.log(error))
 
     fetch('http://localhost:8080/create-checkout-session', {
       method: 'POST',
@@ -39,6 +39,8 @@ function App() {
           onClick={handleClick}
           className="checkout__btn">CHECKOUT</button>
     </div>
+
+    
   );
 }
 
