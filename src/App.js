@@ -17,7 +17,7 @@ function App() {
       },
       body: JSON.stringify({
         items: [
-          { id: 1, quantity: 2},
+          { id: 123, quantity: 2},
           { id: 2, quantity: 1}
         ]
       })
@@ -40,7 +40,7 @@ function App() {
           className="checkout__btn">CHECKOUT</button>
     </div>
 
-    
+
   );
 }
 
