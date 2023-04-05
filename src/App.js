@@ -67,14 +67,29 @@ useEffect(() => {
 
     // console.log("Before Push Total Cart",cart)
     console.log("What is in cart?", cart)
-    const selectedItem = cart.filter((item) => item.id != product.id)
+    const selectedItem = cart.filter((item) => item.id === product.id)
     console.log(selectedItem)
-    if (selectedItem) {
-      cart.push(product)
+    if (!selectedItem.length > 0) {
+      let addCount = {...product, count: 0}
+      cart.push(addCount)
       console.log("Add to the Cart")
       sessionStorage.setItem("myCart", JSON.stringify(cart))
     }
-    // console.log("After Push Total Cart",cart)
+
+    const addCount = cart.filter((item) => item.id === product.id)
+    if (addCount) {
+      console.log("Add Count")
+      let str = sessionStorage.getItem("myCart");
+      let myCart = JSON.parse(str);
+      let findCount = myCart.filter((item) => item.id === product.id)
+      findCount[0].count += 1;
+      console.log("Str", myCart)
+      // let addCount = {...product, count: 1}
+      sessionStorage.setItem("myCart", JSON.stringify(myCart))
+    }
+
+
+
 
     const num = clickTrigger;
     setClickTrigger(num +1)

@@ -9,19 +9,18 @@ const [selectedCart, setSelectedCart] = useState([]);
 
 const handleAddToCart = (selectedId) => {
     // console.log(selectedId)
-    console.log("product in func",product)
 
     const str = sessionStorage.getItem("myCart");
     let myCart = JSON.parse(str);
     console.log("Current Cart Session", myCart)
-    const checkCart = myCart.filter((item) => (
-        item.id === product.id
-    ))
-    console.log(checkCart)
+    // const checkCart = myCart.filter((item) => (
+    //     item.id === product.id
+    // ))
+    // console.log(checkCart)
 
-    if (!checkCart.length > 0) {
+    // if (!checkCart.length > 0) {
         totalCart(product)
-    }
+    // }
     
 }
 
