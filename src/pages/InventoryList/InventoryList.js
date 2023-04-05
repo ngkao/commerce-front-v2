@@ -5,26 +5,26 @@ import "./InventoryList.scss"
 const InventoryList = ({product, onClick, totalCart}) => {
 
 const [selectedCart, setSelectedCart] = useState([]);
-// const cart = []
 
-// const totalCart = (product) => {
-//     cart.push(product)
-
-//     console.log("Total Cart",cart)
-// }
 
 const handleAddToCart = (selectedId) => {
     // console.log(selectedId)
     console.log("product in func",product)
 
-    totalCart(product)
+    const str = sessionStorage.getItem("myCart");
+    let myCart = JSON.parse(str);
+    console.log("Current Cart Session", myCart)
+    const checkCart = myCart.filter((item) => (
+        item.id === product.id
+    ))
+    console.log(checkCart)
+
+    if (!checkCart.length > 0) {
+        totalCart(product)
+    }
     
-    // const selectedItem = product.filter((item) => {
-    //     console.log("item",item)
-    // })
-    // console.log(selectedItem)
 }
-// console.log("Total Cart", cart)
+
 
     return (
         <>

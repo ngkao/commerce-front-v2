@@ -64,20 +64,21 @@ useEffect(() => {
   
   // Total Cart
   const totalCart = (product) => {
-    // setClickTrigger(true)
+
     // console.log("Before Push Total Cart",cart)
-    cart.push(product)
+    console.log("What is in cart?", cart)
+    const selectedItem = cart.filter((item) => item.id != product.id)
+    console.log(selectedItem)
+    if (selectedItem) {
+      cart.push(product)
+      console.log("Add to the Cart")
+      sessionStorage.setItem("myCart", JSON.stringify(cart))
+    }
     // console.log("After Push Total Cart",cart)
-    // console.log(cart)
-    // setSumCart(cart)
-    // console.log("TOTAL CART inside Func",sumCart)
-    // return cart
-    // setClickTrigger(false)
-    // renderTotalCart()
+
     const num = clickTrigger;
     setClickTrigger(num +1)
-    console.log(clickTrigger)
-    sessionStorage.setItem("myCart", JSON.stringify(cart))
+    // console.log(clickTrigger)
 }
 
 const [cartSession, setCartSession] = useState([]);
@@ -85,23 +86,12 @@ const [clickTrigger, setClickTrigger] = useState(0);
 
 
 
-// const renderTotalCart = () => {
-//   const str = sessionStorage.getItem("myCart");
-//   let myCart = JSON.parse(str);
-//   setCartSession(myCart)
-//   console.log("My Cart from sessionStorage",myCart)
-// }
-
-// const str = sessionStorage.getItem("myCart");
-// let myCart = JSON.parse(str);
-// console.log(myCart)
-
 useEffect(() => {
-  // renderTotalCart()
+
   const str = sessionStorage.getItem("myCart");
   let myCart = JSON.parse(str);
   setCartSession(myCart)
-  console.log("My Cart from sessionStorage",myCart)
+  // console.log("My Cart from sessionStorage",myCart)
 },[clickTrigger])
 
 
@@ -125,9 +115,9 @@ useEffect(() => {
         <div>
           <p>TOTAL PAY CART</p>
           {/* {console.log("Before MAP", cartSession)} */}
-          {cartSession.map((cartItem) => (
+          {/* {cartSession.map((cartItem) => (
             <p key={myId}>cartItem {cartItem.product_name}</p>
-          ))}
+          ))} */}
         </div>
 
       <PaySummary onClick={handleClick}/>
