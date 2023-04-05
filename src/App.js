@@ -53,9 +53,32 @@ useEffect(() => {
 
   }
 
+  const [sumCart, setSumCart] = useState([]);
+  const cart = [];
+
+  // Total Cart
+  const totalCart = (product) => {
+    console.log("Before Push Total Cart",cart)
+    cart.push(product)
+    console.log("After Push Total Cart",cart)
+}
+
   return (
     <>
-      {productList? <InventoryList productList={productList}/> : null}
+        {productList? 
+        productList.map((product) => (
+            <InventoryList 
+              key={product.id}
+              product={product}
+              onClick={handleClick}
+              totalCart={totalCart}
+            /> 
+        ))
+
+      
+
+      
+      : <p>Loading</p>}
       <PaySummary onClick={handleClick}/>
     {/* // <BrowserRouter>
     //   <Routes>
