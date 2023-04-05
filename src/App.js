@@ -115,9 +115,12 @@ useEffect(() => {
         <div>
           <p>TOTAL PAY CART</p>
           {/* {console.log("Before MAP", cartSession)} */}
-          {/* {cartSession.map((cartItem) => (
-            <p key={myId}>cartItem {cartItem.product_name}</p>
-          ))} */}
+          {cartSession.map((cartItem) => (
+            <>
+              <p key={myId}>cartItem {cartItem.product_name}</p>
+              <p>Quantity</p>
+            </>
+          ))}
         </div>
 
       <PaySummary onClick={handleClick}/>
