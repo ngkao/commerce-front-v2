@@ -1,7 +1,27 @@
 import axios from "axios"
 import "./App.scss"
+// import {BrowserRouter, Routes, Route} from "react-router-dom";
+import PaySummary from "./pages/PaySummary/PaySummary";
+import { useEffect, useState } from "react";
+import InventoryList from "./pages/InventoryList/InventoryList";
+
+const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 function App() {
+
+const [productList, setProductList] = useState();
+
+useEffect(() => {
+  axios.get(`${REACT_APP_SERVER_URL}/products`)
+      .then((res) => {
+        console.log(res.data)
+        setProductList(res.data)
+      })
+      .catch((err) => console.log(err))
+},[])
+
+
+
 
   const handleClick = () => {
     console.log("CHECKOUT clicked")
@@ -34,12 +54,15 @@ function App() {
   }
 
   return (
-    <div className="checkout">
-        <button 
-          onClick={handleClick}
-          className="checkout__btn">CHECKOUT</button>
-    </div>
-
+    <>
+      {productList? <InventoryList productList={productList}/> : null}
+      <PaySummary onClick={handleClick}/>
+    {/* // <BrowserRouter>
+    //   <Routes>
+    //     <Route></Route>
+    //   </Routes>
+    // </BrowserRouter> */}
+    </>
 
   );
 }
