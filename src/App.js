@@ -96,6 +96,19 @@ useEffect(() => {
     // console.log(clickTrigger)
 }
 
+
+const removeFromCart = (product) => {
+  console.log(`Remove triggered ${product.id}`)
+  let str = sessionStorage.getItem("myCart");
+  let myCart = JSON.parse(str);
+  let findCount = myCart.filter((item) => item.id === product.id)
+  findCount[0].count -= 1;
+  console.log("Str", myCart)
+  sessionStorage.setItem("myCart", JSON.stringify(myCart))
+  setCartSession(myCart)
+}
+
+
 const [cartSession, setCartSession] = useState([]);
 const [clickTrigger, setClickTrigger] = useState(0);
 
@@ -122,6 +135,7 @@ useEffect(() => {
               product={product}
               onClick={handleClick}
               totalCart={totalCart}
+              removeFromCart={removeFromCart}
             /> 
           </>
         ))

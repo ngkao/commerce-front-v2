@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PaySummary from '../PaySummary/PaySummary';
 import "./InventoryList.scss"
 
-const InventoryList = ({product, onClick, totalCart}) => {
+const InventoryList = ({product, onClick, totalCart, removeFromCart}) => {
 
 const [selectedCart, setSelectedCart] = useState([]);
 
@@ -21,7 +21,10 @@ const handleAddToCart = (selectedId) => {
     // if (!checkCart.length > 0) {
         totalCart(product)
     // }
-    
+}
+
+const handleRemoveFromCart = (selectedId) => {
+    removeFromCart(product)
 }
 
 
@@ -32,8 +35,8 @@ const handleAddToCart = (selectedId) => {
                     <p>Product Name: {product.product_name}</p>
                     <p>Product Price: {product.sale_price}</p>
                     <p>Quantity</p>
-                    <button>-</button>
-                    <button onClick={() => handleAddToCart(product.id)}>+</button>
+                    <button className="inventory-item__btn" onClick={() => handleRemoveFromCart(product.id)}>-</button>
+                    <button className="inventory-item__btn"  onClick={() => handleAddToCart(product.id)}>+</button>
                 </div>
             {/* // ))}  */}
 
