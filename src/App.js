@@ -133,7 +133,7 @@ useEffect(() => {
           {cartSession.map((cartItem) => (
             <>
               <p key={myId}>cartItem {cartItem.product_name}</p>
-              <p>Quantity</p>
+              <p>Quantity {cartItem.count}</p>
             </>
           ))}
         </div>
