@@ -1,10 +1,13 @@
 import axios from "axios"
 import "./App.scss"
-// import {BrowserRouter, Routes, Route} from "react-router-dom";
+import {BrowserRouter, Routes, Route} from "react-router-dom";
 import PaySummary from "./pages/PaySummary/PaySummary";
 import { useEffect, useState } from "react";
 import InventoryList from "./pages/InventoryList/InventoryList";
 import { v4 as uuidv4 } from 'uuid';
+import AddProduct from "./components/AddProduct/AddProduct";
+import ProductSelectionView from "./pages/ProductSelectionView/ProductSelectionView";
+import Cart from "./components/Cart/Cart";
 
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
@@ -136,7 +139,7 @@ const handleClick = () => {
 
   return (
     <>
-        {productList? 
+        {/* {productList? 
         productList.map((product) => (
           <>
             <InventoryList 
@@ -148,9 +151,18 @@ const handleClick = () => {
             /> 
           </>
         ))
-      : <p>Loading</p>}
+      : <p>Loading</p>} */}
 
-        <div>
+      <ProductSelectionView
+
+          productList={productList}
+          // product={product}
+          onClick={handleClick}
+          totalCart={totalCart}
+          removeFromCart={removeFromCart}
+          />
+
+        {/* <div>
           <p>TOTAL PAY CART</p>
           {cartSession ? 
                     (cartSession.map((cartItem) => (
@@ -161,14 +173,16 @@ const handleClick = () => {
                     )) : null
         }
 
-        </div>
+        </div> */}
+      <Cart cartSession={cartSession}/>
 
       <PaySummary onClick={handleClick}/>
-    {/* // <BrowserRouter>
-    //   <Routes>
-    //     <Route></Route>
-    //   </Routes>
-    // </BrowserRouter> */}
+    {/* <BrowserRouter>
+        <Routes>
+            <Route path="/" element={<App/>}></Route>
+            <Route path="/products/add" element={<AddProduct/>}></Route>
+        </Routes>
+     </BrowserRouter> */}
     </>
 
   );
