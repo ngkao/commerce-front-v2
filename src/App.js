@@ -29,10 +29,6 @@ useEffect(() => {
 
 
 
-
-
-
-
   const startStr = sessionStorage.getItem("myCart");
   let startCart = JSON.parse(startStr);
   let cart = startCart;
@@ -99,22 +95,7 @@ if (!productList) {
   return (<p>loading...</p>);
 } 
 
-// useEffect(() => {
-//   const str = sessionStorage.getItem("myCart");
-//   let myCart = JSON.parse(str);
-//   setCartSession(myCart)
-// },[])
 
-console.log("cartSession",cartSession)
-
-
-
-
-
-
-
-
-// console.log("Stripe Obj", stripeItemObj)
 
 const handleClick = () => {
 
@@ -124,9 +105,7 @@ const handleClick = () => {
 
   console.log("CHECKOUT clicked")
 
-  // axios.get("http://localhost:8080")
-  //     .then(response => console.log(response))
-  //     .catch(error => console.log(error))
+
 
   fetch('http://localhost:8080/create-checkout-session', {
     method: 'POST',
