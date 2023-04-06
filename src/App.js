@@ -8,6 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 import AddProduct from "./components/AddProduct/AddProduct";
 import ProductSelectionView from "./pages/ProductSelectionView/ProductSelectionView";
 import Cart from "./components/Cart/Cart";
+import NavBar from "./components/NavBar/NavBar";
 
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
@@ -152,16 +153,6 @@ const handleClick = () => {
           </>
         ))
       : <p>Loading</p>} */}
-
-      <ProductSelectionView
-
-          productList={productList}
-          // product={product}
-          onClick={handleClick}
-          totalCart={totalCart}
-          removeFromCart={removeFromCart}
-          />
-
         {/* <div>
           <p>TOTAL PAY CART</p>
           {cartSession ? 
@@ -172,17 +163,32 @@ const handleClick = () => {
                       </>)
                     )) : null
         }
-
         </div> */}
-      <Cart cartSession={cartSession}/>
-
-      <PaySummary onClick={handleClick}/>
-    {/* <BrowserRouter>
-        <Routes>
-            <Route path="/" element={<App/>}></Route>
-            <Route path="/products/add" element={<AddProduct/>}></Route>
-        </Routes>
-     </BrowserRouter> */}
+    <BrowserRouter >
+        <div className="main">
+            <NavBar/>
+            <div>
+                <Routes>
+                    <Route path="/products" element={
+                        <ProductSelectionView
+                        productList={productList}
+                        // product={product}
+                        onClick={handleClick}
+                        totalCart={totalCart}
+                        removeFromCart={removeFromCart}
+                        />
+                    }></Route>
+                    <Route path="/products/add" element={<AddProduct/>}></Route>
+                    <Route path="/sales" element="Sales Report"></Route>
+                    <Route path="/employees" element="Employee List"></Route>
+                </Routes>
+            </div>
+            <div className="checkout">
+                <Cart cartSession={cartSession}/>
+                <PaySummary onClick={handleClick}/>
+            </div>
+        </div>
+     </BrowserRouter>
     </>
 
   );
