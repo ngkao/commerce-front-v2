@@ -19,6 +19,12 @@ useEffect(() => {
         setProductList(res.data)
       })
       .catch((err) => console.log(err))
+
+
+      const str = sessionStorage.getItem("myCart");
+      let myCart = JSON.parse(str);
+      setCartSession(myCart)
+      
 },[])
 
 
@@ -29,26 +35,46 @@ useEffect(() => {
 
   const startStr = sessionStorage.getItem("myCart");
   let startCart = JSON.parse(startStr);
-  const cart = startCart;
+  let cart = startCart;
   
   // Total Cart
   const totalCart = (product) => {
 
-    const selectedItem = cart.filter((item) => item.id === product.id)
-    if (!selectedItem.length > 0) {
-      let addCount = {...product, count: 0}
-      cart.push(addCount)
+    if (startStr) {
+      const selectedItem = cart.filter((item) => item.id === product.id)
+      if (!selectedItem.length > 0) {
+        let addCount = {...product, count: 0}
+        cart.push(addCount)
+        sessionStorage.setItem("myCart", JSON.stringify(cart))
+      setCartSession(cart)
+
+      }
+    } else {
+      let cart = [];
+      cart.push(product)
       sessionStorage.setItem("myCart", JSON.stringify(cart))
+      setCartSession(cart)
     }
 
-    const addCount = cart.filter((item) => item.id === product.id)
-    if (addCount) {
-      let str = sessionStorage.getItem("myCart");
-      let myCart = JSON.parse(str);
-      let findCount = myCart.filter((item) => item.id === product.id)
-      findCount[0].count += 1;
-      sessionStorage.setItem("myCart", JSON.stringify(myCart))
+    if (startCart) {
+      const addCount = cart.filter((item) => item.id === product.id)
+      if (addCount) {
+        let str = sessionStorage.getItem("myCart");
+        let myCart = JSON.parse(str);
+        let findCount = myCart.filter((item) => item.id === product.id)
+        findCount[0].count += 1;
+        sessionStorage.setItem("myCart", JSON.stringify(myCart))
+        setCartSession(myCart)
+      }
+    } else {
+      let cart = [];
+      let addCount = {...product, count: 1}
+      cart.push(addCount)
+      sessionStorage.setItem("myCart", JSON.stringify(cart))
+      setCartSession(cart)
     }
+ 
+
 
     const num = clickTrigger;
     setClickTrigger(num +1)
@@ -67,25 +93,35 @@ const removeFromCart = (product) => {
 
 const [cartSession, setCartSession] = useState([]);
 const [clickTrigger, setClickTrigger] = useState(0);
+console.log(clickTrigger)
+
+if (!productList) {     
+  return (<p>loading...</p>);
+} 
+
+// useEffect(() => {
+//   const str = sessionStorage.getItem("myCart");
+//   let myCart = JSON.parse(str);
+//   setCartSession(myCart)
+// },[])
+
+console.log("cartSession",cartSession)
 
 
 
-useEffect(() => {
-  const str = sessionStorage.getItem("myCart");
-  let myCart = JSON.parse(str);
-  setCartSession(myCart)
-},[clickTrigger])
 
-console.log(cartSession)
 
-const stripeItemObj =
-  cartSession.map((item) => ({id: item.id, quantity: item.count}))
 
-console.log(typeof(stripeItemObj))
 
-console.log("Stripe Obj", stripeItemObj)
+
+// console.log("Stripe Obj", stripeItemObj)
 
 const handleClick = () => {
+
+
+  let stripeItemObj =
+  cartSession.map((item) => ({id: item.id, quantity: item.count}))
+
   console.log("CHECKOUT clicked")
 
   // axios.get("http://localhost:8080")
@@ -114,6 +150,8 @@ const handleClick = () => {
   }).catch(e => {
     console.error(e.error)
   })
+
+  sessionStorage.clear();
 }
 
 
@@ -135,12 +173,15 @@ const handleClick = () => {
 
         <div>
           <p>TOTAL PAY CART</p>
-          {cartSession.map((cartItem) => (
-            <>
-              <p key={myId}>cartItem {cartItem.product_name}</p>
-              <p>Quantity {cartItem.count}</p>
-            </>
-          ))}
+          {cartSession ? 
+                    (cartSession.map((cartItem) => (
+                      <>
+                        <p key={myId}>cartItem {cartItem.product_name}</p>
+                        <p>Quantity {cartItem.count}</p>
+                      </>)
+                    )) : null
+        }
+
         </div>
 
       <PaySummary onClick={handleClick}/>
