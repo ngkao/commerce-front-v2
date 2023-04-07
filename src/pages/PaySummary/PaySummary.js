@@ -1,8 +1,9 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import QRCode from "qrcode"
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
-const PaySummary = ({onClick}) => {
+const PaySummary = ({onClick, src}) => {
     
     // Pull Request for New Orders Successfully being Paid
     const [latestOrderData, setLatestOrderData] = useState(null);
@@ -42,6 +43,23 @@ const PaySummary = ({onClick}) => {
         }, 5000)
     }
 
+    // QR Code Generator
+// const [src, setSrc] = useState("");
+// console.log("src",src)
+// console.log("text",text)
+
+
+    
+//  const generateQRCode = () => {
+//     QRCode.toDataURL(text).then((data) => {
+//         setSrc(data)
+//         console.log("New QR Code created")
+//     })
+//  }
+
+  
+
+
     
     return (
     <div className="checkout">
@@ -49,6 +67,7 @@ const PaySummary = ({onClick}) => {
           onClick={onClick}
           className="checkout__btn"
         >CHECKOUT</button>
+        <img src={src}/>
         {successPtmAlert? <p>{latestOrderData.customer_name} Successfully Paid</p> : null}
     </div>
     );
