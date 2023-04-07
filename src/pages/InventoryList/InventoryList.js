@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import PaySummary from '../PaySummary/PaySummary';
 import "./InventoryList.scss"
 
@@ -19,6 +20,16 @@ const handleAddToCart = (selectedId) => {
 const handleRemoveFromCart = (selectedId) => {
     removeFromCart(product)
 }
+
+
+
+
+
+useEffect(() => {
+    const items = document.querySelectorAll('.inventory-item');
+    items.forEach(item => item.classList.add('inventory-item__show'));
+    console.log("PATH CHANGED")
+  }, []);
 
 
     return (

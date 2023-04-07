@@ -1,6 +1,6 @@
 import axios from "axios"
 import "./App.scss"
-import {BrowserRouter, Routes, Route} from "react-router-dom";
+import {BrowserRouter, Routes, Route, useLocation} from "react-router-dom";
 import PaySummary from "./pages/PaySummary/PaySummary";
 import { useEffect, useState } from "react";
 import InventoryList from "./pages/InventoryList/InventoryList";
@@ -14,6 +14,7 @@ import QRCode from "qrcode"
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 function App() {
+
 
 const [productList, setProductList] = useState();
 const myId = uuidv4();
