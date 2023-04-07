@@ -1,0 +1,20 @@
+.add {
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+    }
+
+    &__item-ctr {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        outline: 1px solid greenyellow;
+        margin: 0.5rem 0;
+    }
+
+    &__btn {
+        height: 40px;
+    }
+}
