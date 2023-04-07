@@ -25,6 +25,7 @@ const handleRemoveFromCart = (selectedId) => {
         <>
             {/* {productList.map((product) => ( */}
                 <div className="inventory-item">
+                    <img className="inventory-item__img" src="https://picsum.photos/seed/picsum/200/300"/>
                     <p>Product Name: {product.product_name}</p>
                     <p>Product Price: {product.sale_price}</p>
                     <p>Quantity</p>

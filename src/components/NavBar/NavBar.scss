@@ -2,7 +2,9 @@
     outline: 1px solid blue;
     display: flex;
     flex-direction: column;
-    width: 20%;
+    // width: 20%;
+    width: 400px;
+
 
     &__item {
         outline: 1px rgb(255, 0, 0);

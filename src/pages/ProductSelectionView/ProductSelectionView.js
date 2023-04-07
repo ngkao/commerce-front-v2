@@ -7,7 +7,11 @@ const ProductSelectionView = ({productList, key, product, onClick,totalCart,remo
     console.log(productList)
     return (
         <section className="product">
-            <Link to="/products/add">Add Product</Link>
+            <div className="product__topbar">
+                <input placeholder="SEARCH"></input>
+                <Link className="product__add" to="/products/add">Add Product</Link>
+            </div>
+
             <div className="product__ctr">
                 <div className="product__list">
                     {productList? 

@@ -188,7 +188,7 @@ const generateQRCode = (textLink) => {
     <BrowserRouter >
         <div className="main">
             <NavBar/>
-            <div>
+            <div className="center">
                 <Routes>
                     <Route path="/products" element={
                         <ProductSelectionView
