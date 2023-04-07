@@ -9,6 +9,7 @@ import AddProduct from "./components/AddProduct/AddProduct";
 import ProductSelectionView from "./pages/ProductSelectionView/ProductSelectionView";
 import Cart from "./components/Cart/Cart";
 import NavBar from "./components/NavBar/NavBar";
+import QRCode from "qrcode"
 
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
@@ -97,11 +98,14 @@ const removeFromCart = (product) => {
 const [cartSession, setCartSession] = useState([]);
 const [clickTrigger, setClickTrigger] = useState(0);
 console.log(clickTrigger)
+// const [text, setText] = useState("Empty");
+const [src, setSrc] = useState("");
+console.log("src",src)
+// console.log("text",text)
 
 if (!productList) {     
   return (<p>loading...</p>);
 } 
-
 
 
 const handleClick = () => {
@@ -132,12 +136,26 @@ const handleClick = () => {
     return res.json().then(json => Promise.reject(json))
   }).then(({url}) => {
     // window.location = url
+    const stringUrl = `url`
+    console.log("StringUtl", {url})
+    // setText({url})
     console.log(url)
+    // console.log("Stripe Link: ",text)
+    generateQRCode({url});
   }).catch(e => {
     console.error(e.error)
   })
 
   sessionStorage.clear();
+}
+
+const generateQRCode = (textLink) => {
+  console.log("before generating QR Code",textLink.url)
+  const text = textLink.url;
+  QRCode.toDataURL(text).then((data) => {
+      setSrc(data)
+      console.log("New QR Code created")
+  })
 }
 
 
@@ -192,7 +210,11 @@ const handleClick = () => {
             </div>
             <div className="checkout">
                 <Cart cartSession={cartSession}/>
-                <PaySummary onClick={handleClick}/>
+                <PaySummary 
+                    onClick={handleClick}
+                    // text={src}
+                    src={src}
+                />
             </div>
         </div>
      </BrowserRouter>
