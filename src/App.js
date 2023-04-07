@@ -17,18 +17,21 @@ function App() {
 const [productList, setProductList] = useState();
 const myId = uuidv4();
 
-useEffect(() => {
+const renderProductList = () => {
   axios.get(`${REACT_APP_SERVER_URL}/products`)
-      .then((res) => {
-        setProductList(res.data)
-      })
-      .catch((err) => console.log(err))
+  .then((res) => {
+    setProductList(res.data)
+  })
+  .catch((err) => console.log(err))
 
 
-      const str = sessionStorage.getItem("myCart");
-      let myCart = JSON.parse(str);
-      setCartSession(myCart)
-      
+  const str = sessionStorage.getItem("myCart");
+  let myCart = JSON.parse(str);
+  setCartSession(myCart)
+}
+
+useEffect(() => {
+    renderProductList();
 },[])
 
 
@@ -171,14 +174,18 @@ const handleClick = () => {
                 <Routes>
                     <Route path="/products" element={
                         <ProductSelectionView
-                        productList={productList}
-                        // product={product}
-                        onClick={handleClick}
-                        totalCart={totalCart}
-                        removeFromCart={removeFromCart}
+                            productList={productList}
+                            // product={product}
+                            onClick={handleClick}
+                            totalCart={totalCart}
+                            removeFromCart={removeFromCart}
                         />
                     }></Route>
-                    <Route path="/products/add" element={<AddProduct/>}></Route>
+                    <Route path="/products/add" element={
+                        <AddProduct 
+                            productList={productList}
+                            renderProductList={renderProductList}
+                    />}></Route>
                     <Route path="/sales" element="Sales Report"></Route>
                     <Route path="/employees" element="Employee List"></Route>
                 </Routes>
