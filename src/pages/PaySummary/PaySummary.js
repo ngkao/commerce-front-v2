@@ -10,16 +10,17 @@ const PaySummary = ({onClick}) => {
         const intervalId = setInterval(() => {
             axios.get(`${REACT_APP_SERVER_URL}/orderTimestamp`)
             .then((latestData) => {
-                console.log("BACKEND", latestData)
-                const latestDateBackend = new Date(latestData.data);
+                // console.log("FRONTEND", latestOrderData)
+                // console.log("BACKEND", latestData.data)
+                // console.log("BACKEND Date Only", latestData.data.created_at)
+                const latestDateBackend = new Date(latestData.data.created_at);
                 if (latestOrderData === null) {
-                    setLatestOrderData(latestDateBackend);
-                    console.log("FRONTEND - TRUE", latestOrderData)
-                }
-                if (latestOrderData !== null && latestDateBackend > latestOrderData) {
-                    setLatestOrderData(latestDateBackend);
-                    console.log("FRONTEND - TRUE", latestOrderData)
-                    console.log("NEW ORDER TRIGGER") // add notification func here
+                    setLatestOrderData(latestData.data);
+                    // console.log("FRONTEND - TRUE", latestOrderData)
+                } else if (latestData.data.created_at > latestOrderData.created_at) {
+                    setLatestOrderData(latestData.data);
+                    // console.log("FRONTEND - TRUE", latestOrderData)
+                    // console.log("NEW ORDER TRIGGER") // add notification func here
                     successPayment()
                 }
             })
@@ -48,7 +49,7 @@ const PaySummary = ({onClick}) => {
           onClick={onClick}
           className="checkout__btn"
         >CHECKOUT</button>
-        {successPtmAlert? <p>Successfully Paid</p> : null}
+        {successPtmAlert? <p>{latestOrderData.customer_name} Successfully Paid</p> : null}
     </div>
     );
 };
