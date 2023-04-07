@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import QRCode from "qrcode"
+import QRCode from "qrcode";
+import "./PaySummary.scss"
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 const PaySummary = ({onClick, src}) => {
@@ -67,7 +68,7 @@ const PaySummary = ({onClick, src}) => {
           onClick={onClick}
           className="checkout__btn"
         >CHECKOUT</button>
-        <img src={src}/>
+        <img className="checkout__qr" src={src}/>
         {successPtmAlert? <p>{latestOrderData.customer_name} Successfully Paid</p> : null}
     </div>
     );
