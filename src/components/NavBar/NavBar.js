@@ -16,7 +16,11 @@ const NavBar = () => {
         console.log("PATH CHANGED")
         if (location.pathname == '/products') {
             setTimeout(() => {
-                items.forEach(item => item.classList.add('show'));
+                items.forEach((item, index) => 
+                    setTimeout(() => {
+                        item.classList.add('show')
+                    },index * 100)
+                );
                 console.log("Class was added")
             },0)
 
