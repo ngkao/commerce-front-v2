@@ -11,7 +11,7 @@
     }
 
     &__add {
-        
+
     }
  
 
@@ -22,4 +22,25 @@
     }
 }
 
+.inventory {
 
+    &__item {
+        outline: 2px solid greenyellow;
+        padding: 1rem;
+        cursor: pointer;
+        // width: 45%;
+        width: 100%;
+        aspect-ratio: 1 / 1.1;
+        margin: 10px 10px 0 10px;
+    
+        //transition
+        transition: all 1s ease;
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}

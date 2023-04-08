@@ -10,6 +10,7 @@ import ProductSelectionView from "./pages/ProductSelectionView/ProductSelectionV
 import Cart from "./components/Cart/Cart";
 import NavBar from "./components/NavBar/NavBar";
 import QRCode from "qrcode"
+import SalePage from "./pages/SalesPage/SalePage";
 
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
@@ -205,7 +206,7 @@ const generateQRCode = (textLink) => {
                             productList={productList}
                             renderProductList={renderProductList}
                     />}></Route>
-                    <Route path="/sales" element="Sales Report"></Route>
+                    <Route path="/sales" element={<SalePage/>}></Route>
                     <Route path="/employees" element="Employee List"></Route>
                 </Routes>
             </div>

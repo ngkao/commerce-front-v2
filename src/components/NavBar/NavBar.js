@@ -11,23 +11,24 @@ const NavBar = () => {
     console.log("path", location.pathname)
 
     useEffect(() => {
-        const items = document.querySelectorAll('.inventory-item');
-        // items.forEach(item => item.classList.add('inventory-item__show'));
-        console.log("PATH CHANGED")
-        if (location.pathname == '/products') {
-            setTimeout(() => {
-                items.forEach((item, index) => 
-                    setTimeout(() => {
-                        item.classList.add('show')
-                    },index * 100)
-                );
-                console.log("Class was added")
-            },0)
-
-        } else {
-        items.forEach(item => item.classList.remove('show'));
-        console.log("Class was removed")
-        }
+        setTimeout(() => {
+            const items = document.querySelectorAll('.inventory__item');
+           console.log("PATH CHANGED")
+           if (location.pathname == '/products') {
+               setTimeout(() => {
+                   items.forEach((item, index) => 
+                       setTimeout(() => {
+                           item.classList.add('show')
+                       },index * 100)
+                   );
+                   console.log("Class was added")
+               },0)
+    
+           } else {
+           items.forEach(item => item.classList.remove('show'));
+           console.log("Class was removed")
+           }
+       },300)
 
       }, [location.pathname]);
 

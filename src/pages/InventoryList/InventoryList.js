@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import PaySummary from '../PaySummary/PaySummary';
 import "./InventoryList.scss"
 
-const InventoryList = ({product, onClick, totalCart, removeFromCart}) => {
+const InventoryList = ({product, onClick, totalCart, removeFromCart, className}) => {
 
 const [selectedCart, setSelectedCart] = useState([]);
 
@@ -25,17 +25,13 @@ const handleRemoveFromCart = (selectedId) => {
 
 
 
-useEffect(() => {
-    const items = document.querySelectorAll('.inventory-item');
-    items.forEach(item => item.classList.add('inventory-item__show'));
-    console.log("PATH CHANGED")
-  }, []);
+
 
 
     return (
         <>
             {/* {productList.map((product) => ( */}
-                <div className="inventory-item">
+                <div className="inventory__item">
                     <img className="inventory-item__img" src="https://picsum.photos/seed/picsum/200/300"/>
                     <p>Product Name: {product.product_name}</p>
                     <p>Product Price: {product.sale_price}</p>
@@ -43,7 +39,7 @@ useEffect(() => {
                     <button className="inventory-item__btn" onClick={() => handleRemoveFromCart(product.id)}>-</button>
                     <button className="inventory-item__btn"  onClick={() => handleAddToCart(product.id)}>+</button>
                 </div>
-            {/* // ))}  */}
+             {/* ))}   */}
 
             {/* <PaySummary onClick={onClick}/> */}
         </>
