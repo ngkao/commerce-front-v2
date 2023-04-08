@@ -23,15 +23,18 @@
 }
 
 .inventory {
-
     &__item {
         outline: 2px solid greenyellow;
         padding: 1rem;
-        cursor: pointer;
+
         // width: 45%;
         width: 100%;
-        aspect-ratio: 1 / 1.1;
-        margin: 10px 10px 0 10px;
+        // aspect-ratio: 1 / 1;
+        // margin: 10px 10px 0 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     
         //transition
         transition: all 1s ease;
@@ -43,4 +46,8 @@
 .show {
     opacity: 1;
     transform: translateY(0);
+}
+
+.test{
+    width: 100px;
 }

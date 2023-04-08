@@ -1,35 +1,95 @@
+@use "../../styles/partials/variables" as *;
+
 
 .inventory-item {
-    // outline: 2px solid greenyellow;
-    // padding: 1rem;
-    // cursor: pointer;
-    // // width: 45%;
-    // width: 22%;
-    // aspect-ratio: 1 / 1.1;
-    // margin: 10px 10px 0 10px;
-
-    // //transition
-
-    //     transition: all 1s ease;
-    //     opacity: 0;
-    //     transform: translateY(20px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: 1px solid salmon;
+    width: 80%;
 
 
 
+    &__price-quantity {
+        display: flex;
+        // display:inline-block;
+        justify-content: space-between;
+        align-items: center;
+        width: 80%;
+        outline: 1px solid salmon;
+
+
+
+    }
   
 
     &__img {
         aspect-ratio: 1 / 1;
-        width: 100%;
+        width: 80%;
         height: auto;
+        border-radius: 10px;
+        outline: 1px solid salmon;
+
+    }
+
+    &__name {
+        width: 80%;
+        outline: 1px solid salmon;
     }
 
     &__btn {
-        width: 50px;
+        // width: 75px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        padding: 0 15px;
+
+        cursor: pointer;
+        color: white;
+    }
+
+
+
+    &__btn-ctr {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        outline: 1px solid salmon;
+        border-radius: 15px;
+        background-color: $grey-light;
+        
+        //transition
+        transition: all 0.7s ease;
+        opacity: 0;
+        transform: translateX(0px);
+
+  
+  
+    }
+
+    &__count {
+        color: white;
+    }
+
+    &__plus-btn {
+        width: 60px;
+        height: 35px; 
+        background-color: $grey-light;
+        outline: none;
+        border: none;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        
     }
 }
 
-// .show {
-//     opacity: 1;
-//     transform: translateY(0);
-// }
+.show-button {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
