@@ -40,50 +40,48 @@
     }
 
     &__totalpay-amount {
-        background-color: $grey-light;
-        font-size: $font-large;
-
-        //transition
-        // transition: all 0.4s ease;
-        // opacity: 0;
-        // transform: translateY(-20px);
-
-        &--active {
-            background-color: $grey-light;
-            font-size: $font-large;
-            opacity: 1;
-            transform: translateY(0px);
-        }
-
 
         &--top {
-            color: orange;
+            background-color: $grey-light;
+            font-size: $font-large;
+            color: $white;
             position: absolute;
             right: 0px;
-
             //transition
-            transition: all 0.4s ease;
-            opacity: 1;
-            transform: translateY(-20px);
+            transition: all 0s ease;
+            opacity: 0;
+            transform: translateY(-40px);
             background-color: rgba(0, 128, 0, 0);
 
             &--final {
+                transition: all 0.2s ease;
                 opacity: 1;
                 transform: translateY(0px);
             }
-            
+
+            &--hide {
+                transition: all 0s ease;
+                opacity: 0;
+            }
         }
 
         &--bottom {
+            background-color: $grey-light;
+            font-size: $font-large;
             position: absolute;
             right: 0px;
             background-color: rgba(0, 128, 0, 0);
             opacity: 1;
 
             &--final {
-                transition: all 0.4s ease;
+                transition: all 0.2s ease;
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            &--show {
+                transition: all 0s ease;
                 opacity: 1;
-                transform: translateY(20px);
             }
         }
     }

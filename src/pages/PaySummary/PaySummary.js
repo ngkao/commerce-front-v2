@@ -4,7 +4,7 @@ import QRCode from "qrcode";
 import "./PaySummary.scss"
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
-const PaySummary = ({onClick, src, totalPay, showQR}) => {
+const PaySummary = ({onClick, src, totalPay, showQR, oltTotalPay}) => {
     
     // Pull Request for New Orders Successfully being Paid
     const [latestOrderData, setLatestOrderData] = useState(null);
@@ -56,16 +56,33 @@ const PaySummary = ({onClick, src, totalPay, showQR}) => {
 
     //Transition Total Amount
     useEffect(() => {
-    
-    const items = document.querySelectorAll('.checkout__totalpay-amount');
-    items.forEach((item) => item.classList.remove('checkout__totalpay-amount--active'));
-
-    setTimeout(() => {
-        const items = document.querySelectorAll('.checkout__totalpay-amount');
+        //Top
+        const items = document.querySelectorAll('.checkout__totalpay-amount--top');
+        items.forEach((item) => item.classList.remove('checkout__totalpay-amount--top--final'));
+        //Bottom
+        const itemsBottom = document.querySelectorAll('.checkout__totalpay-amount--bottom');
+        itemsBottom.forEach((item) => item.classList.remove('checkout__totalpay-amount--bottom--final'));
+        setTimeout(() => {
+        //Top
+            const items = document.querySelectorAll('.checkout__totalpay-amount--top');
+                items.forEach((item) => 
+                        item.classList.add('checkout__totalpay-amount--top--final'));
+            //Bottom
+            const itemsBottom = document.querySelectorAll('.checkout__totalpay-amount--bottom');
+            itemsBottom.forEach((item) => 
+                    item.classList.add('checkout__totalpay-amount--bottom--final'));
+        //In the end
+        return () => {
+            //Top
+            const items = document.querySelectorAll('.checkout__totalpay-amount--top');
             items.forEach((item) => 
-                    item.classList.add('checkout__totalpay-amount--active')
-            );
-    },300)
+                    item.classList.add('checkout__totalpay-amount--top---hide'));
+            //Bottom
+            const itemsBottom = document.querySelectorAll('.checkout__totalpay-amount--bottom');
+            itemsBottom.forEach((item) => 
+                    item.classList.add('checkout__totalpay-amount--bottom---show'));
+        }
+        },300)
     }, [totalPay]);
 
 
@@ -80,8 +97,8 @@ const PaySummary = ({onClick, src, totalPay, showQR}) => {
         <div className="checkout__totalpay-ctr">
             <p className="checkout__totalpay-title">Total Pay:</p>
             <div className="checkout__totalpay-amount-ctr">
-                <p className="checkout__totalpay-amount checkout__totalpay-amount--top">${totalPay}</p>
-                <p className="checkout__totalpay-amount checkout__totalpay-amount--bottom checkout__totalpay-amount--bottom--final">${totalPay}</p>
+                <p className="checkout__totalpay-amount--top">${totalPay}</p>
+                <p className="checkout__totalpay-amount--bottom checkout__totalpay-amount--bottom---final">${oltTotalPay}</p>
             </div>
             
         </div>

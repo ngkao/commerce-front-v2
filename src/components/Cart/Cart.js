@@ -26,7 +26,7 @@ const Cart = ({cartSession}) => {
     //     items.forEach(item => item.classList.remove('show-button'));
     //     console.log("Cart Class was removed")
     //     }
-    },300)
+    },400)
 
   }, [cartSession]);
 

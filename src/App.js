@@ -18,8 +18,13 @@ const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 function App() {
 
 const [totalPay, setTotalPay] = useState(0);
+const [oltTotalPay, setOldTotalPay] = useState(0);
+
+useEffect(() => {
 
 
+  return () => {setOldTotalPay(totalPay)};
+}, [totalPay]);
 
 const calcTotalPay = () => {
   setTimeout(() => {
@@ -36,10 +41,17 @@ const calcTotalPay = () => {
  
           // if(cartSession.length > 1) {
           //   setOldTotalPay(totalPay); // to store the old totalPay
+          //   setTotalPay(totalPrice); 
+          // } else {
+          //   setTotalPay(totalPrice); 
           // }
 
           setTotalPay(totalPrice); 
           
+          
+          console.log("Old Total Pay", oltTotalPay)
+          console.log("New Total Pay", totalPay)
+
       }
 
       console.log(cartSession, "length")
@@ -263,6 +275,7 @@ calcTotalPay();
                     src={src}
                     totalPay={totalPay}
                     showQR={showQR}
+                    oltTotalPay={oltTotalPay}
                 />
             </div>
         </div>
