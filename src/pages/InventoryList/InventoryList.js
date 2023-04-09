@@ -69,7 +69,7 @@ useEffect(() => {
                             </div>) 
                             : 
                             <>
-                                <p>${product.sale_price}</p>
+                                <p className="inventory-item__price">${product.sale_price}</p>
                                 <p onClick={handlePlusClick} className="inventory-item__plus-btn">+</p>
                             </>
                         }

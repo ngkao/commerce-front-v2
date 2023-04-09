@@ -1,0 +1,19 @@
+@use './variables' as *;
+
+
+// @font-face {
+//     font-family: "Codec", sans-serif;
+//     src: url(../../assets/fonts/codec/CodecPro-Regular.ttf) format("TrueType");
+// }
+
+// @font-face {
+//     font-family: "Codec", sans-serif;
+//     src: url(../../assets/fonts/codec/CodecPro-Italic.ttf) format("TrueType");
+//     font-style: italic;
+// }
+
+@font-face {
+    font-family: "Poppins";
+    src: url(../../assets/fonts/poppins/Poppins-Regular.ttf) format("TrueType");
+    font-weight: 400;
+}

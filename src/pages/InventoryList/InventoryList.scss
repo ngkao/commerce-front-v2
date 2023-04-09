@@ -5,7 +5,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    outline: 1px solid salmon;
+    // outline: 1px solid salmon;
     width: 80%;
 
 
@@ -16,7 +16,7 @@
         justify-content: space-between;
         align-items: center;
         width: 80%;
-        outline: 1px solid salmon;
+        // outline: 1px solid salmon;
 
 
 
@@ -28,13 +28,14 @@
         width: 80%;
         height: auto;
         border-radius: 10px;
-        outline: 1px solid salmon;
+        // outline: 1px solid salmon;
 
     }
 
     &__name {
         width: 80%;
-        outline: 1px solid salmon;
+        color: $white;
+        // outline: 1px solid salmon;
     }
 
     &__btn {
@@ -43,9 +44,10 @@
         display: flex;
         align-items: center;
         padding: 0 15px;
-
+        background-color: $grey-light;
         cursor: pointer;
-        color: white;
+        color: $white;
+        border-radius: 15px;
     }
 
 
@@ -55,7 +57,7 @@
         justify-content: space-between;
         align-items: center;
         width: 100%;
-        outline: 1px solid salmon;
+        // outline: 1px solid salmon;
         border-radius: 15px;
         background-color: $grey-light;
         
@@ -69,7 +71,12 @@
     }
 
     &__count {
-        color: white;
+        color: $white;
+        background-color: $grey-light;
+    }
+
+    &__price {
+        color: $white;
     }
 
     &__plus-btn {

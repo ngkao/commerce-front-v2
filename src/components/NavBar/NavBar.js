@@ -6,7 +6,10 @@ import "./NavBar.scss"
 const NavBar = () => {
 
     const location = useLocation();
-    const isProductPath = location.pathname.startsWith("/products")
+    const isProductPath = location.pathname.startsWith("/products") || location.pathname === "/";
+    const isSalesPath = location.pathname.startsWith("/sales");
+    const isEmployeesPath = location.pathname.startsWith("/employees");
+
     
     console.log("path", location.pathname)
 
@@ -34,9 +37,16 @@ const NavBar = () => {
 
     return (
         <div className="nav">
-            <Link className="nav__item" to="/products">Inventory</Link>
-            <Link className="nav__item" to="/sales">Sales</Link>
-            <Link className="nav__item" to="/employees">Employees</Link>
+            <div className="nav__ctr">
+            <p className="nav__logo">Logo</p>
+            <div className="nav__list">
+                <Link className={isProductPath ? "nav__item nav__item--active" : "nav__item"} to="/products">Products</Link>
+                <Link className={isSalesPath ? "nav__item nav__item--active" : "nav__item"} to="/sales">Sales</Link>
+                <Link className={isEmployeesPath ? "nav__item nav__item--active" : "nav__item"} to="/employees">Employees</Link>
+            </div>
+                  
+            </div>
+ 
         </div>
     );
 };

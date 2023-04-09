@@ -1,12 +1,63 @@
+@use "../../styles/partials/variables" as *;
+
 .nav {
     outline: 1px solid blue;
-    display: flex;
-    flex-direction: column;
+
     // width: 100%;
     width: 400px;
 
 
+    &__ctr {
+      
+        background-color: $grey-light;
+        height: 100vh;
+        padding: 10px 0;
+        border-radius: $border-radius-standard;
+    }
+
+    &__logo {
+        color: $white;
+        background-color: $grey-light;
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        margin-top: 50px;
+        background-color: $grey-light;
+        gap: 10px;
+    }
+
+
+
     &__item {
         outline: 1px rgb(255, 0, 0);
+        background-color: $grey-light;
+        text-decoration: none;
+        color: $white;
+        font-size: $font-standard;
+        // outline: 1px solid salmon;
+        margin: 0 15px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        padding-left: 1rem;
+        border-radius: $border-radius-standard;
+        
+        &:hover {
+            background-color: $grey-dark;
+        }
+
+        &--active {
+            background-color: $color-selected;
+
+            &:hover {
+                background-color: $color-selected;
+            }
+        }
     }
+
 }
