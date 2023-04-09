@@ -6,7 +6,7 @@
     justify-content: center;
     align-items: center;
     // outline: 1px solid salmon;
-    width: 80%;
+    width: 85%;
 
 
 
@@ -15,7 +15,7 @@
         // display:inline-block;
         justify-content: space-between;
         align-items: center;
-        width: 80%;
+        width: 85%;
         // outline: 1px solid salmon;
 
 
@@ -25,7 +25,7 @@
 
     &__img {
         aspect-ratio: 1 / 1;
-        width: 80%;
+        width: 85%;
         height: auto;
         border-radius: 10px;
         // outline: 1px solid salmon;
@@ -33,7 +33,7 @@
     }
 
     &__name {
-        width: 80%;
+        width: 85%;
         color: $white;
         // outline: 1px solid salmon;
     }

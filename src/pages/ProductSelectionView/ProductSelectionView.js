@@ -33,7 +33,7 @@ const ProductSelectionView = ({productList, key, product, onClick,totalCart,remo
     return (
         <section className="product">
             <div className="product__topbar">
-                <input placeholder="SEARCH"></input>
+                <input className="product__search" placeholder="SEARCH"></input>
                 <Link className="product__add" to="/products/add">Add Product</Link>
             </div>
 
@@ -51,7 +51,7 @@ const ProductSelectionView = ({productList, key, product, onClick,totalCart,remo
                     )): <p>Loading</p>} */}
                 <Carousel 
                     className="carousel" 
-                    cols={3} 
+                    cols={4} 
                     rows={3} 
                     gap={0} 
                     showDots={true}
