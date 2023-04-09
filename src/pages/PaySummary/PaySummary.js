@@ -4,7 +4,7 @@ import QRCode from "qrcode";
 import "./PaySummary.scss"
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
-const PaySummary = ({onClick, src, totalPay}) => {
+const PaySummary = ({onClick, src, totalPay, showQR}) => {
     
     // Pull Request for New Orders Successfully being Paid
     const [latestOrderData, setLatestOrderData] = useState(null);
@@ -44,17 +44,46 @@ const PaySummary = ({onClick, src, totalPay}) => {
         }, 5000)
     }
 
-   
-  
+   //     //Transition QR Code
+    useEffect(() => {
+    setTimeout(() => {
+        const items = document.querySelectorAll('.checkout__qr');
+            items.forEach((item) => 
+                    item.classList.add('checkout__qr--active')
+            );
+    },300)
+    }, [showQR]);
 
+    //Transition Total Amount
+    useEffect(() => {
+    
+    const items = document.querySelectorAll('.checkout__totalpay-amount');
+    items.forEach((item) => item.classList.remove('checkout__totalpay-amount--active'));
+
+    setTimeout(() => {
+        const items = document.querySelectorAll('.checkout__totalpay-amount');
+            items.forEach((item) => 
+                    item.classList.add('checkout__totalpay-amount--active')
+            );
+    },300)
+    }, [totalPay]);
+
+
+
+  
+    // {showQR? "checkout__qr--active" : ""}
 
     
     return (
     <div className="checkout">
-        <img className="checkout__qr" src={src}/>
+        {showQR ? <img className="checkout__qr" src={src}/> : null}
         <div className="checkout__totalpay-ctr">
             <p className="checkout__totalpay-title">Total Pay:</p>
-            <p className="checkout__totalpay-amount">${totalPay}</p>
+            <div className="checkout__totalpay-amount-ctr">
+                <p className="checkout__totalpay-amount checkout__totalpay-amount--top">${totalPay}</p>
+                <p className="checkout__totalpay-amount checkout__totalpay-amount--bottom checkout__totalpay-amount--bottom--final">${totalPay}</p>
+            </div>
+            
         </div>
         <button 
           onClick={onClick}

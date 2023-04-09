@@ -11,12 +11,15 @@ import Cart from "./components/Cart/Cart";
 import NavBar from "./components/NavBar/NavBar";
 import QRCode from "qrcode"
 import SalePage from "./pages/SalesPage/SalePage";
+import { useRef } from "react";
 
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 function App() {
 
 const [totalPay, setTotalPay] = useState(0);
+
+
 
 const calcTotalPay = () => {
   setTimeout(() => {
@@ -30,9 +33,17 @@ const calcTotalPay = () => {
             console.log("totalItem",i, totalItem)
             totalPrice += totalItem
           }
-          console.log("totalPrice", totalPrice)
-          setTotalPay(totalPrice);
+ 
+          // if(cartSession.length > 1) {
+          //   setOldTotalPay(totalPay); // to store the old totalPay
+          // }
+
+          setTotalPay(totalPrice); 
+          
       }
+
+      console.log(cartSession, "length")
+
     // return totalPrice
   },100)
 }
@@ -132,6 +143,8 @@ const [src, setSrc] = useState("");
 console.log("src",src)
 // console.log("text",text)
 
+const [showQR, setShowQR] = useState(false);
+
 if (!productList) {     
   return (<p>loading...</p>);
 } 
@@ -184,7 +197,9 @@ const generateQRCode = (textLink) => {
   const text = textLink.url;
   QRCode.toDataURL(text).then((data) => {
       setSrc(data)
+      setShowQR(true)
       console.log("New QR Code created")
+
   })
 }
 
@@ -247,6 +262,7 @@ calcTotalPay();
                     // text={src}
                     src={src}
                     totalPay={totalPay}
+                    showQR={showQR}
                 />
             </div>
         </div>
