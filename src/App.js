@@ -275,6 +275,7 @@ calcTotalPay();
                     src={src}
                     totalPay={totalPay}
                     showQR={showQR}
+                    setShowQR={setShowQR}
                     oltTotalPay={oltTotalPay}
                 />
             </div>

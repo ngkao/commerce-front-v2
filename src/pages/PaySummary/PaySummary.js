@@ -1,10 +1,14 @@
 import axios from 'axios';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import QRCode from "qrcode";
-import "./PaySummary.scss"
+import "./PaySummary.scss";
+// import lottie from "lottie-web"
+import Lottie from "lottie-react"
+import SuccessMark from "../../assets/animations/success1.json"
+
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
-const PaySummary = ({onClick, src, totalPay, showQR, oltTotalPay}) => {
+const PaySummary = ({onClick, src, totalPay, showQR, oltTotalPay,setShowQR}) => {
     
     // Pull Request for New Orders Successfully being Paid
     const [latestOrderData, setLatestOrderData] = useState(null);
@@ -35,6 +39,7 @@ const PaySummary = ({onClick, src, totalPay, showQR, oltTotalPay}) => {
     // Successful Payment Notification
     const [successPtmAlert, setSuccessPtmAlert] = useState(false);
     const successPayment = () => {
+        setShowQR(false)
         setSuccessPtmAlert(true);
         console.log("SHOW THE BANNER")
 
@@ -86,14 +91,34 @@ const PaySummary = ({onClick, src, totalPay, showQR, oltTotalPay}) => {
     }, [totalPay]);
 
 
-
-  
-    // {showQR? "checkout__qr--active" : ""}
+    //Success Container Checkmark
+    // const container = useRef(null);
+    // useEffect(() => {
+    //     lottie.loadAnimation({
+    //         container: container.current,
+    //         render: 'svg',
+    //         loop: true,
+    //         autoplay: true,
+    //         animationData: require('../../assets/animations/success1.json')
+    //     })
+    // }, [])
 
     
     return (
     <div className="checkout">
         {showQR ? <img className="checkout__qr" src={src}/> : null}
+        {successPtmAlert? 
+            <div className="checkout__success-ctr">
+                <div className="checkout__lottie">
+                    <Lottie 
+                        loop={false}
+                        autoplay={true}  
+                        animationData={SuccessMark}
+                    />
+                </div>
+                <p className="checkout__success-msg">{latestOrderData.customer_name} Successfully Paid</p>
+            </div> : null}
+        {/* {successPtmAlert? <p className="checkout__success-msg">{latestOrderData.customer_name} Successfully Paid</p> : null} */}
         <div className="checkout__totalpay-ctr">
             <p className="checkout__totalpay-title">Total Pay:</p>
             <div className="checkout__totalpay-amount-ctr">
@@ -106,7 +131,7 @@ const PaySummary = ({onClick, src, totalPay, showQR, oltTotalPay}) => {
           onClick={onClick}
           className="checkout__btn"
         >Share QR Code</button>
-        {successPtmAlert? <p className="checkout__success-msg">{latestOrderData.customer_name} Successfully Paid</p> : null}
+       
     </div>
     );
 };
