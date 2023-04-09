@@ -1,6 +1,6 @@
 import axios from "axios"
 import "./App.scss"
-import {BrowserRouter, Routes, Route} from "react-router-dom";
+import {BrowserRouter, Routes, Route, useLocation} from "react-router-dom";
 import PaySummary from "./pages/PaySummary/PaySummary";
 import { useEffect, useState } from "react";
 import InventoryList from "./pages/InventoryList/InventoryList";
@@ -10,10 +10,56 @@ import ProductSelectionView from "./pages/ProductSelectionView/ProductSelectionV
 import Cart from "./components/Cart/Cart";
 import NavBar from "./components/NavBar/NavBar";
 import QRCode from "qrcode"
+import SalePage from "./pages/SalesPage/SalePage";
+import { useRef } from "react";
 
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 function App() {
+
+const [totalPay, setTotalPay] = useState(0);
+const [oltTotalPay, setOldTotalPay] = useState(0);
+
+useEffect(() => {
+
+
+  return () => {setOldTotalPay(totalPay)};
+}, [totalPay]);
+
+const calcTotalPay = () => {
+  setTimeout(() => {
+      if (cartSession == null) {
+      } else {
+          let totalPrice = 0
+          for (let i = 0; i < cartSession.length; i++) {
+            let itemPrice = cartSession[i].sale_price;
+            let itemCount =  cartSession[i].count;
+            let totalItem = itemCount * itemPrice
+            console.log("totalItem",i, totalItem)
+            totalPrice += totalItem
+          }
+ 
+          // if(cartSession.length > 1) {
+          //   setOldTotalPay(totalPay); // to store the old totalPay
+          //   setTotalPay(totalPrice); 
+          // } else {
+          //   setTotalPay(totalPrice); 
+          // }
+
+          setTotalPay(totalPrice); 
+          
+          
+          console.log("Old Total Pay", oltTotalPay)
+          console.log("New Total Pay", totalPay)
+
+      }
+
+      console.log(cartSession, "length")
+
+    // return totalPrice
+  },100)
+}
+console.log(totalPay, "TOTAL PAY")
 
 const [productList, setProductList] = useState();
 const myId = uuidv4();
@@ -29,10 +75,12 @@ const renderProductList = () => {
   const str = sessionStorage.getItem("myCart");
   let myCart = JSON.parse(str);
   setCartSession(myCart)
+  calcTotalPay();
 }
 
 useEffect(() => {
     renderProductList();
+    calcTotalPay();
 },[])
 
 
@@ -51,13 +99,14 @@ useEffect(() => {
         cart.push(addCount)
         sessionStorage.setItem("myCart", JSON.stringify(cart))
       setCartSession(cart)
-
+      calcTotalPay();
       }
     } else {
       let cart = [];
       cart.push(product)
       sessionStorage.setItem("myCart", JSON.stringify(cart))
       setCartSession(cart)
+      calcTotalPay();
     }
 
     if (startCart) {
@@ -69,6 +118,7 @@ useEffect(() => {
         findCount[0].count += 1;
         sessionStorage.setItem("myCart", JSON.stringify(myCart))
         setCartSession(myCart)
+        calcTotalPay();
       }
     } else {
       let cart = [];
@@ -76,12 +126,13 @@ useEffect(() => {
       cart.push(addCount)
       sessionStorage.setItem("myCart", JSON.stringify(cart))
       setCartSession(cart)
+      calcTotalPay();
     }
  
 
 
-    const num = clickTrigger;
-    setClickTrigger(num +1)
+    // const num = clickTrigger;
+    // setClickTrigger(num +1)
 }
 
 
@@ -92,6 +143,7 @@ const removeFromCart = (product) => {
   findCount[0].count -= 1;
   sessionStorage.setItem("myCart", JSON.stringify(myCart))
   setCartSession(myCart)
+  calcTotalPay();
 }
 
 
@@ -103,10 +155,13 @@ const [src, setSrc] = useState("");
 console.log("src",src)
 // console.log("text",text)
 
+const [showQR, setShowQR] = useState(false);
+
 if (!productList) {     
   return (<p>loading...</p>);
 } 
 
+console.log("CART NOW", cartSession)
 
 const handleClick = () => {
 
@@ -154,9 +209,13 @@ const generateQRCode = (textLink) => {
   const text = textLink.url;
   QRCode.toDataURL(text).then((data) => {
       setSrc(data)
+      setShowQR(true)
       console.log("New QR Code created")
+
   })
 }
+
+calcTotalPay();
 
 
   return (
@@ -188,7 +247,7 @@ const generateQRCode = (textLink) => {
     <BrowserRouter >
         <div className="main">
             <NavBar/>
-            <div>
+            <div className="center">
                 <Routes>
                     <Route path="/products" element={
                         <ProductSelectionView
@@ -204,16 +263,19 @@ const generateQRCode = (textLink) => {
                             productList={productList}
                             renderProductList={renderProductList}
                     />}></Route>
-                    <Route path="/sales" element="Sales Report"></Route>
+                    <Route path="/sales" element={<SalePage/>}></Route>
                     <Route path="/employees" element="Employee List"></Route>
                 </Routes>
             </div>
-            <div className="checkout">
+            <div className="paysum">
                 <Cart cartSession={cartSession}/>
                 <PaySummary 
                     onClick={handleClick}
                     // text={src}
                     src={src}
+                    totalPay={totalPay}
+                    showQR={showQR}
+                    oltTotalPay={oltTotalPay}
                 />
             </div>
         </div>

@@ -1,16 +1,27 @@
+@use './styles/partials/fonts' as *;
+@use "./styles/partials/variables" as *;
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    background-color: black;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    color: $white;
 }
 
 .checkout {
     // margin: 2rem;
-    width: 30%;
+    // width: 30%;
+    width: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    &__ctr {
+        background-color: $grey-light;
+    }
 
     &__btn {
         width: 100%;
@@ -27,6 +38,19 @@
     align-items: space-between;
 }
 
-.checkout {
-    outline: 1px solid orange;
+.center {
+    display: flex;
+    justify-content: center;
+    outline: 1px solid rgb(2, 2, 2);
+    width: 100%;
+}
+
+.paysum {
+    // outline: 1px solid orange;
+    background-color: $grey-light;
+    border-radius: $border-radius-standard;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    // padding: 0 20px;
 }
