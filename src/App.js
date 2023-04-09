@@ -35,27 +35,10 @@ const calcTotalPay = () => {
             let itemPrice = cartSession[i].sale_price;
             let itemCount =  cartSession[i].count;
             let totalItem = itemCount * itemPrice
-            console.log("totalItem",i, totalItem)
             totalPrice += totalItem
           }
- 
-          // if(cartSession.length > 1) {
-          //   setOldTotalPay(totalPay); // to store the old totalPay
-          //   setTotalPay(totalPrice); 
-          // } else {
-          //   setTotalPay(totalPrice); 
-          // }
-
           setTotalPay(totalPrice); 
-          
-          
-          console.log("Old Total Pay", oltTotalPay)
-          console.log("New Total Pay", totalPay)
-
       }
-
-      console.log(cartSession, "length")
-
     // return totalPrice
   },100)
 }
@@ -256,6 +239,8 @@ calcTotalPay();
                             onClick={handleClick}
                             totalCart={totalCart}
                             removeFromCart={removeFromCart}
+                            cartSession={cartSession}
+                            setCartSession={setCartSession}
                         />
                     }></Route>
                     <Route path="/products/add" element={

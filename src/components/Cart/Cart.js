@@ -12,21 +12,12 @@ const Cart = ({cartSession}) => {
         setTimeout(() => {
             const items = document.querySelectorAll('.cart__item');
         console.log("Cart Transition", items)
-        // if (cartSession === true) {
-            // setTimeout(() => {
                 items.forEach((item) => 
-                    // setTimeout(() => {
                         item.classList.add('show-cart')
-                    // },index * 100)
                 );
                 console.log("Cart Class was added")
-            // },0)
-
-    //     } else {
-    //     items.forEach(item => item.classList.remove('show-button'));
-    //     console.log("Cart Class was removed")
-    //     }
     },400)
+
 
   }, [cartSession]);
 
@@ -45,7 +36,8 @@ const Cart = ({cartSession}) => {
                                 <p className="cart__quantity">Quantity :  {cartItem.count}</p>
                             </div>
                         </div>
-                        <p className="cart__price">${cartItem.sale_price}</p>
+                        {/* <p className="cart__price">${cartItem.sale_price}</p> */}
+                        <p className="cart__price">${cartItem.sale_price * cartItem.count}</p>
                       </div>)
                     )) : null}
           </div>

@@ -7,7 +7,7 @@ import 'react-multi-carousel/lib/styles.css';
 
 import Carousel from 'react-grid-carousel'
 
-const ProductSelectionView = ({productList, key, product, onClick,totalCart,removeFromCart}) => {
+const ProductSelectionView = ({productList, key, product, onClick,totalCart,removeFromCart, cartSession, setCartSession}) => {
     console.log(productList)
 
     // const responsive = {
@@ -66,6 +66,8 @@ const ProductSelectionView = ({productList, key, product, onClick,totalCart,remo
                                     totalCart={totalCart}
                                     removeFromCart={removeFromCart}
                                     productList={productList}
+                                    cartSession={cartSession}
+                                    setCartSession={setCartSession}
                                 />
                             </Carousel.Item>
                         ))

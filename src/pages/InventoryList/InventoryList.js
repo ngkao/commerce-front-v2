@@ -3,11 +3,11 @@ import { useLocation } from 'react-router-dom';
 import PaySummary from '../PaySummary/PaySummary';
 import "./InventoryList.scss"
 
-const InventoryList = ({product, onClick, totalCart, removeFromCart, className}) => {
+const InventoryList = ({product, onClick, totalCart, removeFromCart, className, cartSession, setCartSession}) => {
 
 const location = useLocation();
 const [selectedCart, setSelectedCart] = useState([]);
-
+const [itemQuantity, setItemQuantity] = useState(0)
 
 const handleAddToCart = (selectedId) => {
     // console.log(selectedId)
@@ -16,27 +16,68 @@ const handleAddToCart = (selectedId) => {
     let myCart = JSON.parse(str);
     console.log("Current Cart Session", myCart)
         totalCart(product)
+
+
+ 
 }
 
 const handleRemoveFromCart = (selectedId) => {
+    if (cartSession.find((item) => item.id === selectedId)?.count < 2) {
+        console.log("Prevent from go lower")
+
+        let str = sessionStorage.getItem("myCart");
+        let myCart = JSON.parse(str);
+        let updatedCart = myCart.filter((item) => item.id != selectedId)
+        sessionStorage.setItem("myCart", JSON.stringify(updatedCart))
+        setCartSession(updatedCart)
+
+        if (cartSession.find((item) => item.id === selectedId)?.count === 1) {
+            console.log("HIDE BACK QUANTITY")
+            // setShowQuantity(false)
+      
+
+            // resetDefaultView();
+        }
+
+        if (cartSession.find((item) => item.id === selectedId)?.count === 0) {
+            // setShowQuantity(true)
+        }
+        // setShowQuantity(true)
+        return;
+    }
     removeFromCart(product)
+    // setShowQuantity(true)
+    // let str = sessionStorage.getItem("myCart");
+    // let myCart = JSON.parse(str);
+    // sessionStorage.setItem("myCart", JSON.stringify(myCart))
+    // setCartSession(myCart)
+
+    // setCartSession(myCart)
+
 }
 
 
-const handlePlusClick = () => {
-    console.log("Clicked", product.product_name)
+
+const handlePlusClick = (selectedId) => {
+    
     handleAddToCart(product.id)
-    setShowQuantity(true)
+    
+    setShowQuantity([...showQuantity, selectedId])
+    // setShowQuantity(true)
+    
+    console.log("Clicked", product.product_name, "showQuantity: ", showQuantity.includes(selectedId))
+    
 }
 
-const [showQuantity, setShowQuantity] = useState(false);
+const [showQuantity, setShowQuantity] = useState([]);
+
 
 //Transition 
 useEffect(() => {
     setTimeout(() => {
         const items = document.querySelectorAll('.inventory-item__btn-ctr');
        console.log("PATH CHANGED")
-       if (showQuantity === true) {
+       if (showQuantity.includes(product.id)) {
            setTimeout(() => {
                items.forEach((item, index) => 
                    setTimeout(() => {
@@ -54,6 +95,9 @@ useEffect(() => {
 
   }, [showQuantity]);
 
+
+  console.log("showQuantity",showQuantity)
+
     return (
         <>
             {/* {productList.map((product) => ( */}
@@ -61,18 +105,30 @@ useEffect(() => {
                     <img className="inventory-item__img" src="https://picsum.photos/seed/picsum/200/300"/>
                     <p className="inventory-item__name">{product.product_name}</p>
                     <div className="inventory-item__price-quantity">
-                        {showQuantity? 
+                        
+                        {showQuantity.includes(product.id)? 
                             (<div className="inventory-item__btn-ctr">
                                 <p className="inventory-item__btn" onClick={() => handleRemoveFromCart(product.id)}>-</p>
-                                <p className="inventory-item__count">1</p>
+                                <p className="inventory-item__count">
+                                    {/* {cartSession.find((item) => item.id === product.id)?.count || 0} */}
+                                </p>
                                 <p className="inventory-item__btn"  onClick={() => handleAddToCart(product.id)}>+</p>
                             </div>) 
                             : 
                             <>
                                 <p className="inventory-item__price">${product.sale_price}</p>
-                                <p onClick={handlePlusClick} className="inventory-item__plus-btn">+</p>
+                                <p onClick={() => handlePlusClick(product.id)} className="inventory-item__plus-btn">+</p>
                             </>
                         }
+                      
+                        
+            
+                        {/* {showDefaultPrice ? 
+                            (<>
+                                <p className="inventory-item__price">${product.sale_price}</p>
+                                <p onClick={() => handlePlusClick(product.id)} className="inventory-item__plus-btn">+</p>
+                            </>) :null
+                        } */}
 
                     </div>
                 </div>
