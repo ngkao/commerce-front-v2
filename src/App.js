@@ -16,6 +16,27 @@ const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 function App() {
 
+const [totalPay, setTotalPay] = useState(0);
+
+const calcTotalPay = () => {
+  setTimeout(() => {
+      if (cartSession == null) {
+      } else {
+          let totalPrice = 0
+          for (let i = 0; i < cartSession.length; i++) {
+            let itemPrice = cartSession[i].sale_price;
+            let itemCount =  cartSession[i].count;
+            let totalItem = itemCount * itemPrice
+            console.log("totalItem",i, totalItem)
+            totalPrice += totalItem
+          }
+          console.log("totalPrice", totalPrice)
+          setTotalPay(totalPrice);
+      }
+    // return totalPrice
+  },100)
+}
+console.log(totalPay, "TOTAL PAY")
 
 const [productList, setProductList] = useState();
 const myId = uuidv4();
@@ -31,10 +52,12 @@ const renderProductList = () => {
   const str = sessionStorage.getItem("myCart");
   let myCart = JSON.parse(str);
   setCartSession(myCart)
+  calcTotalPay();
 }
 
 useEffect(() => {
     renderProductList();
+    calcTotalPay();
 },[])
 
 
@@ -53,13 +76,14 @@ useEffect(() => {
         cart.push(addCount)
         sessionStorage.setItem("myCart", JSON.stringify(cart))
       setCartSession(cart)
-
+      calcTotalPay();
       }
     } else {
       let cart = [];
       cart.push(product)
       sessionStorage.setItem("myCart", JSON.stringify(cart))
       setCartSession(cart)
+      calcTotalPay();
     }
 
     if (startCart) {
@@ -71,6 +95,7 @@ useEffect(() => {
         findCount[0].count += 1;
         sessionStorage.setItem("myCart", JSON.stringify(myCart))
         setCartSession(myCart)
+        calcTotalPay();
       }
     } else {
       let cart = [];
@@ -78,12 +103,13 @@ useEffect(() => {
       cart.push(addCount)
       sessionStorage.setItem("myCart", JSON.stringify(cart))
       setCartSession(cart)
+      calcTotalPay();
     }
  
 
 
-    const num = clickTrigger;
-    setClickTrigger(num +1)
+    // const num = clickTrigger;
+    // setClickTrigger(num +1)
 }
 
 
@@ -94,6 +120,7 @@ const removeFromCart = (product) => {
   findCount[0].count -= 1;
   sessionStorage.setItem("myCart", JSON.stringify(myCart))
   setCartSession(myCart)
+  calcTotalPay();
 }
 
 
@@ -109,6 +136,7 @@ if (!productList) {
   return (<p>loading...</p>);
 } 
 
+console.log("CART NOW", cartSession)
 
 const handleClick = () => {
 
@@ -160,6 +188,8 @@ const generateQRCode = (textLink) => {
   })
 }
 
+calcTotalPay();
+
 
   return (
     <>
@@ -210,12 +240,13 @@ const generateQRCode = (textLink) => {
                     <Route path="/employees" element="Employee List"></Route>
                 </Routes>
             </div>
-            <div className="checkout">
+            <div className="paysum">
                 <Cart cartSession={cartSession}/>
                 <PaySummary 
                     onClick={handleClick}
                     // text={src}
                     src={src}
+                    totalPay={totalPay}
                 />
             </div>
         </div>

@@ -1,9 +1,44 @@
-
+@use "../../styles/partials/variables" as *;
 
 .checkout {
+      background-color: $grey-light;
+      padding: 0 20px;
+      border-radius: $border-radius-standard;
 
     &__qr {
-        width: 100px;
-        height: 100px;
+        width: 200px;
+        height: 200px;
+    }
+
+    &__totalpay-ctr {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        background-color: $grey-light;
+        padding: 15px 0;
+        padding-right: 40px;
+    }
+
+    &__totalpay-title {
+        background-color: $grey-light;
+    }
+
+    &__totalpay-amount {
+        background-color: $grey-light;
+    }
+
+    &__btn {
+        margin-bottom: 50px;
+        border-radius: $border-radius-standard;
+        background-color: $color-selected;
+        outline: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    &__success-msg {
+        background-color: $grey-light;
+        margin-bottom: 15px;
+        color: $white;
     }
 }

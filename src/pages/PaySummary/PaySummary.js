@@ -4,7 +4,7 @@ import QRCode from "qrcode";
 import "./PaySummary.scss"
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
-const PaySummary = ({onClick, src}) => {
+const PaySummary = ({onClick, src, totalPay}) => {
     
     // Pull Request for New Orders Successfully being Paid
     const [latestOrderData, setLatestOrderData] = useState(null);
@@ -44,32 +44,23 @@ const PaySummary = ({onClick, src}) => {
         }, 5000)
     }
 
-    // QR Code Generator
-// const [src, setSrc] = useState("");
-// console.log("src",src)
-// console.log("text",text)
-
-
-    
-//  const generateQRCode = () => {
-//     QRCode.toDataURL(text).then((data) => {
-//         setSrc(data)
-//         console.log("New QR Code created")
-//     })
-//  }
-
+   
   
 
 
     
     return (
     <div className="checkout">
+        <img className="checkout__qr" src={src}/>
+        <div className="checkout__totalpay-ctr">
+            <p className="checkout__totalpay-title">Total Pay:</p>
+            <p className="checkout__totalpay-amount">${totalPay}</p>
+        </div>
         <button 
           onClick={onClick}
           className="checkout__btn"
-        >CHECKOUT</button>
-        <img className="checkout__qr" src={src}/>
-        {successPtmAlert? <p>{latestOrderData.customer_name} Successfully Paid</p> : null}
+        >Share QR Code</button>
+        {successPtmAlert? <p className="checkout__success-msg">{latestOrderData.customer_name} Successfully Paid</p> : null}
     </div>
     );
 };
