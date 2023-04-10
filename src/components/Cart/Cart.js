@@ -77,7 +77,7 @@ const Cart = ({cartSession,previewCart}) => {
                             (cartSession.map((cartItem) => (
                             <div className="cart__item" key={cartItem.id}>
                                 <div className="cart__img-name-qt">
-                                    <img className="cart__img" src="https://picsum.photos/seed/picsum/200/300"/>
+                                    <img className="cart__img" src={cartItem.image_url}/>
                                     <div className="cart__name-quantity">
                                         <p className="cart__name">{cartItem.product_name}</p>
                                         <p className="cart__quantity">Quantity :  {cartItem.count}</p>

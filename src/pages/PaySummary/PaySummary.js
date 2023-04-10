@@ -16,7 +16,7 @@ const PaySummary = ({onClick, src, totalPay, showQR, oltTotalPay,setShowQR, setC
     const [latestOrderData, setLatestOrderData] = useState(null);
     useEffect(() => {
         const intervalId = setInterval(() => {
-            axios.get(`${REACT_APP_SERVER_URL}/orderTimestamp`)
+            axios.get(`${REACT_APP_SERVER_URL}/timestamp`)
             .then((latestData) => {
                 // console.log("FRONTEND", latestOrderData)
                 // console.log("BACKEND", latestData.data)
@@ -51,7 +51,7 @@ const PaySummary = ({onClick, src, totalPay, showQR, oltTotalPay,setShowQR, setC
             setCartSession([]);
             setShowQuantity([]);
             setPreviewCart(true);
-        }, 5000)
+        }, 6000)
     }
 
    //     //Transition QR Code

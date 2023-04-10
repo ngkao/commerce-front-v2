@@ -1,7 +1,9 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { Link, useLocation  } from 'react-router-dom';
-import "./NavBar.scss"
+import "./NavBar.scss";
+import Lottie from "lottie-react";
+import QRPhone from "../../assets/animations/qr-phone.json"
 
 const NavBar = () => {
 
@@ -37,7 +39,18 @@ const NavBar = () => {
     return (
         <div className="nav">
             <div className="nav__ctr">
-            <p className="nav__logo">Logo</p>
+            <div className="nav__logo-ctr">
+                <div className="nav__lottie">
+                    <Lottie 
+                        loop={false}
+                        autoplay={true}  
+                        animationData={QRPhone}
+                        interactivity="click"
+                        style={{ height: '150%', width: '200%' }}
+                    />
+                </div>
+                <p className="nav__logo">Retail POS</p>
+            </div>
             <div className="nav__list">
                 <Link className={isProductPath ? "nav__item nav__item--active" : "nav__item"} to="/products">Products</Link>
                 <Link className={isSalesPath ? "nav__item nav__item--active" : "nav__item"} to="/sales">Sales</Link>
