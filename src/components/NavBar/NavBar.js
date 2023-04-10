@@ -11,7 +11,6 @@ const NavBar = () => {
     const isEmployeesPath = location.pathname.startsWith("/employees");
 
     
-    console.log("path", location.pathname)
 
     useEffect(() => {
         setTimeout(() => {

@@ -11,12 +11,14 @@
         transition: all 0.4s ease;
         opacity: 0;
         transform: translateX(20px);
+        border-radius: $border-radius-lower;
         
         &--active {
             width: 200px;
             height: 200px;
             opacity: 1;
             transform: translateX(0);
+            border-radius: $border-radius-lower;
             // transition: all 5s ease;
         }
     }
@@ -86,18 +88,70 @@
         }
     }
 
-    &__btn {
+    &__btn-ctr {
+        display: flex;
+        align-items: center;
         margin-bottom: 50px;
+        width: 100%;
+        gap: 10px;
+    }
+
+    &__btn {
+        
         border-radius: $border-radius-standard;
         background-color: $color-selected;
         outline: none;
         border: none;
         cursor: pointer;
+        width: 80%;
+        height: 50px;
+    }
+
+    &__refresh {
+        background-color: $grey-dark;
+        height: 50px;
+        width: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        width: 20%;
+        padding-top: 5px;
+        transition: transform 0.5s ease-in-out;
+        // cursor: pointer;
+
+        &.rotate {
+            transform: rotate(360deg);
+          }
+    }
+
+    &__success-ctr {
+        width: 200px;
+        height: 200px;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+       color: black;
+       padding-bottom: 20px;
+       border-radius: $border-radius-lower;
+    }
+
+    &__lottie {
+        width: 150px;
+        height: 150px;
     }
 
     &__success-msg {
         background-color: $grey-light;
-        margin-bottom: 15px;
+        // margin-bottom: 15px;
         color: $white;
+
+        // outline: 1px solid yellow;
+   
+        background-color: $white;
+        color: black;
     }
 }
+

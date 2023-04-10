@@ -19,7 +19,8 @@ function App() {
 
 const [totalPay, setTotalPay] = useState(0);
 const [oltTotalPay, setOldTotalPay] = useState(0);
-
+const [showQuantity, setShowQuantity] = useState([]);
+const [previewCart, setPreviewCart] = useState(true);
 useEffect(() => {
 
 
@@ -35,31 +36,14 @@ const calcTotalPay = () => {
             let itemPrice = cartSession[i].sale_price;
             let itemCount =  cartSession[i].count;
             let totalItem = itemCount * itemPrice
-            console.log("totalItem",i, totalItem)
             totalPrice += totalItem
           }
- 
-          // if(cartSession.length > 1) {
-          //   setOldTotalPay(totalPay); // to store the old totalPay
-          //   setTotalPay(totalPrice); 
-          // } else {
-          //   setTotalPay(totalPrice); 
-          // }
-
           setTotalPay(totalPrice); 
-          
-          
-          console.log("Old Total Pay", oltTotalPay)
-          console.log("New Total Pay", totalPay)
-
       }
-
-      console.log(cartSession, "length")
-
     // return totalPrice
   },100)
 }
-console.log(totalPay, "TOTAL PAY")
+
 
 const [productList, setProductList] = useState();
 const myId = uuidv4();
@@ -148,11 +132,10 @@ const removeFromCart = (product) => {
 
 
 const [cartSession, setCartSession] = useState([]);
-const [clickTrigger, setClickTrigger] = useState(0);
-console.log(clickTrigger)
+
+
 // const [text, setText] = useState("Empty");
 const [src, setSrc] = useState("");
-console.log("src",src)
 // console.log("text",text)
 
 const [showQR, setShowQR] = useState(false);
@@ -218,6 +201,8 @@ const generateQRCode = (textLink) => {
 calcTotalPay();
 
 
+
+
   return (
     <>
         {/* {productList? 
@@ -256,6 +241,11 @@ calcTotalPay();
                             onClick={handleClick}
                             totalCart={totalCart}
                             removeFromCart={removeFromCart}
+                            cartSession={cartSession}
+                            setCartSession={setCartSession}
+                            showQuantity={showQuantity}
+                            setShowQuantity={setShowQuantity}
+                            setPreviewCart={setPreviewCart}
                         />
                     }></Route>
                     <Route path="/products/add" element={
@@ -268,14 +258,18 @@ calcTotalPay();
                 </Routes>
             </div>
             <div className="paysum">
-                <Cart cartSession={cartSession}/>
+                <Cart cartSession={cartSession} previewCart={previewCart}/>
                 <PaySummary 
                     onClick={handleClick}
                     // text={src}
                     src={src}
                     totalPay={totalPay}
                     showQR={showQR}
+                    setShowQR={setShowQR}
                     oltTotalPay={oltTotalPay}
+                    setCartSession={setCartSession}
+                    setShowQuantity={setShowQuantity}
+                    setPreviewCart={setPreviewCart}
                 />
             </div>
         </div>
