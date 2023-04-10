@@ -20,7 +20,7 @@ function App() {
 const [totalPay, setTotalPay] = useState(0);
 const [oltTotalPay, setOldTotalPay] = useState(0);
 const [showQuantity, setShowQuantity] = useState([]);
-
+const [previewCart, setPreviewCart] = useState(true);
 useEffect(() => {
 
 
@@ -201,6 +201,8 @@ const generateQRCode = (textLink) => {
 calcTotalPay();
 
 
+
+
   return (
     <>
         {/* {productList? 
@@ -243,6 +245,7 @@ calcTotalPay();
                             setCartSession={setCartSession}
                             showQuantity={showQuantity}
                             setShowQuantity={setShowQuantity}
+                            setPreviewCart={setPreviewCart}
                         />
                     }></Route>
                     <Route path="/products/add" element={
@@ -255,7 +258,7 @@ calcTotalPay();
                 </Routes>
             </div>
             <div className="paysum">
-                <Cart cartSession={cartSession}/>
+                <Cart cartSession={cartSession} previewCart={previewCart}/>
                 <PaySummary 
                     onClick={handleClick}
                     // text={src}
@@ -266,6 +269,7 @@ calcTotalPay();
                     oltTotalPay={oltTotalPay}
                     setCartSession={setCartSession}
                     setShowQuantity={setShowQuantity}
+                    setPreviewCart={setPreviewCart}
                 />
             </div>
         </div>

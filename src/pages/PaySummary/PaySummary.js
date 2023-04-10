@@ -2,13 +2,15 @@ import axios from 'axios';
 import React, { useState, useEffect, useRef } from 'react';
 import QRCode from "qrcode";
 import "./PaySummary.scss";
-// import lottie from "lottie-web"
-import Lottie from "lottie-react"
-import SuccessMark from "../../assets/animations/success1.json"
+import lottie from "lottie-web"
+import Lottie from "lottie-react";
+// import Lottie from 'react-lottie';
+import SuccessMark from "../../assets/animations/success1.json";
+import RefreshMark from "../../assets/animations/refresh.json"
 
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
-const PaySummary = ({onClick, src, totalPay, showQR, oltTotalPay,setShowQR, setCartSession,setShowQuantity}) => {
+const PaySummary = ({onClick, src, totalPay, showQR, oltTotalPay,setShowQR, setCartSession,setShowQuantity, setPreviewCart}) => {
     
     // Pull Request for New Orders Successfully being Paid
     const [latestOrderData, setLatestOrderData] = useState(null);
@@ -48,6 +50,7 @@ const PaySummary = ({onClick, src, totalPay, showQR, oltTotalPay,setShowQR, setC
             console.log("REMOVE THE BANNER")
             setCartSession([]);
             setShowQuantity([]);
+            setPreviewCart(true);
         }, 5000)
     }
 
@@ -92,19 +95,29 @@ const PaySummary = ({onClick, src, totalPay, showQR, oltTotalPay,setShowQR, setC
         },300)
     }, [totalPay]);
 
+    const [currentRotation, setCurrentRotation] = useState(0);
 
-    //Success Container Checkmark
-    // const container = useRef(null);
-    // useEffect(() => {
-    //     lottie.loadAnimation({
-    //         container: container.current,
-    //         render: 'svg',
-    //         loop: true,
-    //         autoplay: true,
-    //         animationData: require('../../assets/animations/success1.json')
-    //     })
-    // }, [])
+    const handleRefresh = () => {
+      const circleRefresh = document.querySelector('.checkout__refresh');
+    
+      if (circleRefresh) {
+        setCurrentRotation(currentRotation + 360);
+        circleRefresh.style.transform = `rotate(${currentRotation}deg)`;
+        circleRefresh.classList.add('rotate');
+        setTimeout(() => {
+          circleRefresh.classList.remove('rotate');
+        }, 500);
+      }
+    
+      setCartSession([]);
+      setShowQuantity([]);
+      setShowQR(false);
+      sessionStorage.clear();
+      setPreviewCart(true);
+    }
 
+    
+   
     
     return (
     <div className="checkout">
@@ -126,13 +139,23 @@ const PaySummary = ({onClick, src, totalPay, showQR, oltTotalPay,setShowQR, setC
             <div className="checkout__totalpay-amount-ctr">
                 <p className="checkout__totalpay-amount--top">${totalPay}</p>
                 <p className="checkout__totalpay-amount--bottom ">${oltTotalPay}</p>
-            </div>
-            
+            </div> 
         </div>
-        <button 
-          onClick={onClick}
-          className="checkout__btn"
-        >Share QR Code</button>
+        <div className="checkout__btn-ctr">
+            <p onClick={handleRefresh} className="checkout__refresh">
+                <Lottie
+                    loop={false}
+                    autoplay={false}  
+                    animationData={RefreshMark}
+                    interaction="click"
+                />
+            </p>
+            <button 
+            onClick={onClick}
+            className="checkout__btn"
+            >Share QR Code</button>
+        </div>
+
        
     </div>
     );

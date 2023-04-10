@@ -8,7 +8,7 @@ import 'react-multi-carousel/lib/styles.css';
 
 import Carousel from 'react-grid-carousel'
 
-const ProductSelectionView = ({productList, key, product, onClick,totalCart,removeFromCart, cartSession, setCartSession,showQuantity, setShowQuantity}) => {
+const ProductSelectionView = ({productList, key, product, onClick,totalCart,removeFromCart, cartSession, setCartSession,showQuantity, setShowQuantity,setPreviewCart}) => {
 
 
     // const [showQuantity, setShowQuantity] = useState([]);
@@ -53,6 +53,7 @@ const ProductSelectionView = ({productList, key, product, onClick,totalCart,remo
                                     setCartSession={setCartSession}
                                     showQuantity={showQuantity}
                                     setShowQuantity={setShowQuantity}
+                                    setPreviewCart={setPreviewCart}
                                 />
                             </Carousel.Item>
                         ))

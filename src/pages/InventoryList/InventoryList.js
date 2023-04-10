@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import PaySummary from '../PaySummary/PaySummary';
 import "./InventoryList.scss"
 
-const InventoryList = ({product, onClick, totalCart, removeFromCart, className, cartSession, setCartSession, setShowQuantity, showQuantity}) => {
+const InventoryList = ({product, onClick, totalCart, removeFromCart, className, cartSession, setCartSession, setShowQuantity, showQuantity, setPreviewCart}) => {
 
 const location = useLocation();
 const [selectedCart, setSelectedCart] = useState([]);
@@ -17,7 +17,7 @@ const handleAddToCart = (selectedId) => {
         totalCart(product)
 
         console.log("Clicked", product.product_name, "showQuantity: ", showQuantity.includes(selectedId))
- 
+        setPreviewCart(false); // to hide the preview animation
 }
 
 const handleRemoveFromCart = (selectedId) => {

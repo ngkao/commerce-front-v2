@@ -9,10 +9,21 @@
         color: $white;
         padding-bottom: 20px;
         background-color: $grey-light;
+        font-size: $font-large
+    }
+
+    &__lottie {
+        width: 230px;
+        padding-top: 160px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.5s ease;
     }
 
     &__list {
-        outline: 1px solid greenyellow;
+        // outline: 1px solid greenyellow;
         background-color: $grey-light;
         overflow: auto;
         height: 250px;

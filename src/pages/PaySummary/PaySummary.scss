@@ -88,13 +88,41 @@
         }
     }
 
-    &__btn {
+    &__btn-ctr {
+        display: flex;
+        align-items: center;
         margin-bottom: 50px;
+        width: 100%;
+        gap: 10px;
+    }
+
+    &__btn {
+        
         border-radius: $border-radius-standard;
         background-color: $color-selected;
         outline: none;
         border: none;
         cursor: pointer;
+        width: 80%;
+        height: 50px;
+    }
+
+    &__refresh {
+        background-color: $grey-dark;
+        height: 50px;
+        width: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        width: 20%;
+        padding-top: 5px;
+        transition: transform 0.5s ease-in-out;
+        // cursor: pointer;
+
+        &.rotate {
+            transform: rotate(360deg);
+          }
     }
 
     &__success-ctr {
