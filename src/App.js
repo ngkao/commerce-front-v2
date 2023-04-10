@@ -42,7 +42,7 @@ const calcTotalPay = () => {
     // return totalPrice
   },100)
 }
-console.log(totalPay, "TOTAL PAY")
+
 
 const [productList, setProductList] = useState();
 const myId = uuidv4();
@@ -131,11 +131,10 @@ const removeFromCart = (product) => {
 
 
 const [cartSession, setCartSession] = useState([]);
-const [clickTrigger, setClickTrigger] = useState(0);
-console.log(clickTrigger)
+
+
 // const [text, setText] = useState("Empty");
 const [src, setSrc] = useState("");
-console.log("src",src)
 // console.log("text",text)
 
 const [showQR, setShowQR] = useState(false);

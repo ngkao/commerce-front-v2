@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import PaySummary from '../PaySummary/PaySummary';
 import "./InventoryList.scss"
 
-const InventoryList = ({product, onClick, totalCart, removeFromCart, className, cartSession, setCartSession}) => {
+const InventoryList = ({product, onClick, totalCart, removeFromCart, className, cartSession, setCartSession, setShowQuantity, showQuantity}) => {
 
 const location = useLocation();
 const [selectedCart, setSelectedCart] = useState([]);
@@ -17,7 +17,7 @@ const handleAddToCart = (selectedId) => {
     console.log("Current Cart Session", myCart)
         totalCart(product)
 
-
+        console.log("Clicked", product.product_name, "showQuantity: ", showQuantity.includes(selectedId))
  
 }
 
@@ -33,16 +33,10 @@ const handleRemoveFromCart = (selectedId) => {
 
         if (cartSession.find((item) => item.id === selectedId)?.count === 1) {
             console.log("HIDE BACK QUANTITY")
-            // setShowQuantity(false)
-      
-
-            // resetDefaultView();
+            console.log("SEE what in the quantity", showQuantity)
+            setShowQuantity(showQuantity.filter((index) => index !== product.id))
         }
 
-        if (cartSession.find((item) => item.id === selectedId)?.count === 0) {
-            // setShowQuantity(true)
-        }
-        // setShowQuantity(true)
         return;
     }
     removeFromCart(product)
@@ -69,7 +63,7 @@ const handlePlusClick = (selectedId) => {
     
 }
 
-const [showQuantity, setShowQuantity] = useState([]);
+// const [showQuantity, setShowQuantity] = useState([]);
 
 
 //Transition 
@@ -77,20 +71,20 @@ useEffect(() => {
     setTimeout(() => {
         const items = document.querySelectorAll('.inventory-item__btn-ctr');
        console.log("PATH CHANGED")
-       if (showQuantity.includes(product.id)) {
+    //    if (showQuantity.includes(product.id)) {
            setTimeout(() => {
                items.forEach((item, index) => 
-                   setTimeout(() => {
+                //    setTimeout(() => {
                        item.classList.add('show-button')
-                   },index * 100)
+                //    },index * 100)
                );
                console.log("Button Class was added")
            },0)
 
-       } else {
-       items.forEach(item => item.classList.remove('show-button'));
-       console.log("Button Class was removed")
-       }
+    //    } else {
+    //    items.forEach(item => item.classList.remove('show-button'));
+    //    console.log("Button Class was removed")
+    //    }
    },300)
 
   }, [showQuantity]);
@@ -110,7 +104,7 @@ useEffect(() => {
                             (<div className="inventory-item__btn-ctr">
                                 <p className="inventory-item__btn" onClick={() => handleRemoveFromCart(product.id)}>-</p>
                                 <p className="inventory-item__count">
-                                    {/* {cartSession.find((item) => item.id === product.id)?.count || 0} */}
+                                    {cartSession.find((item) => item.id === product.id)?.count || 0}
                                 </p>
                                 <p className="inventory-item__btn"  onClick={() => handleAddToCart(product.id)}>+</p>
                             </div>) 

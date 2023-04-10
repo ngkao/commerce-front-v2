@@ -2,33 +2,16 @@ import React from 'react';
 import InventoryList from '../InventoryList/InventoryList';
 import { Link } from 'react-router-dom';
 import "./ProductSelectionView.scss"
+import { useState } from 'react';
 // import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
 import Carousel from 'react-grid-carousel'
 
 const ProductSelectionView = ({productList, key, product, onClick,totalCart,removeFromCart, cartSession, setCartSession}) => {
-    console.log(productList)
 
-    // const responsive = {
-    //     superLargeDesktop: {
-    //       // the naming can be any, depends on you.
-    //       breakpoint: { max: 3000, min: 1280 },
-    //       items: 5
-    //     },
-    //     desktop: {
-    //       breakpoint: { max: 1280, min: 768 },
-    //       items: 3
-    //     },
-    //     tablet: {
-    //       breakpoint: { max: 768, min: 464 },
-    //       items: 2
-    //     },
-    //     mobile: {
-    //       breakpoint: { max: 464, min: 0 },
-    //       items: 1
-    //     }
-    //   };
+
+    const [showQuantity, setShowQuantity] = useState([]);
 
     return (
         <section className="product">
@@ -68,6 +51,8 @@ const ProductSelectionView = ({productList, key, product, onClick,totalCart,remo
                                     productList={productList}
                                     cartSession={cartSession}
                                     setCartSession={setCartSession}
+                                    showQuantity={showQuantity}
+                                    setShowQuantity={setShowQuantity}
                                 />
                             </Carousel.Item>
                         ))
