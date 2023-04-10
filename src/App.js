@@ -194,7 +194,7 @@ const generateQRCode = (textLink) => {
       setSrc(data)
       setShowQR(true)
       console.log("New QR Code created")
-
+      setShowQuantity([])
   })
 }
 
@@ -204,7 +204,7 @@ calcTotalPay();
 
 
   return (
-    <>
+    <div className="background">
         {/* {productList? 
         productList.map((product) => (
           <>
@@ -229,7 +229,7 @@ calcTotalPay();
                     )) : null
         }
         </div> */}
-    <BrowserRouter >
+    <BrowserRouter className="header">
         <div className="main">
             <NavBar/>
             <div className="center">
@@ -274,7 +274,7 @@ calcTotalPay();
             </div>
         </div>
      </BrowserRouter>
-    </>
+    </div>
 
   );
 }
