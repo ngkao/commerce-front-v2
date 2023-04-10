@@ -8,7 +8,7 @@ import SuccessMark from "../../assets/animations/success1.json"
 
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
-const PaySummary = ({onClick, src, totalPay, showQR, oltTotalPay,setShowQR}) => {
+const PaySummary = ({onClick, src, totalPay, showQR, oltTotalPay,setShowQR, setCartSession,setShowQuantity}) => {
     
     // Pull Request for New Orders Successfully being Paid
     const [latestOrderData, setLatestOrderData] = useState(null);
@@ -46,6 +46,8 @@ const PaySummary = ({onClick, src, totalPay, showQR, oltTotalPay,setShowQR}) => 
         setTimeout(() => {
             setSuccessPtmAlert(false);
             console.log("REMOVE THE BANNER")
+            setCartSession([]);
+            setShowQuantity([]);
         }, 5000)
     }
 
@@ -123,7 +125,7 @@ const PaySummary = ({onClick, src, totalPay, showQR, oltTotalPay,setShowQR}) => 
             <p className="checkout__totalpay-title">Total Pay:</p>
             <div className="checkout__totalpay-amount-ctr">
                 <p className="checkout__totalpay-amount--top">${totalPay}</p>
-                <p className="checkout__totalpay-amount--bottom checkout__totalpay-amount--bottom---final">${oltTotalPay}</p>
+                <p className="checkout__totalpay-amount--bottom ">${oltTotalPay}</p>
             </div>
             
         </div>

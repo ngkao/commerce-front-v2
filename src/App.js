@@ -19,6 +19,7 @@ function App() {
 
 const [totalPay, setTotalPay] = useState(0);
 const [oltTotalPay, setOldTotalPay] = useState(0);
+const [showQuantity, setShowQuantity] = useState([]);
 
 useEffect(() => {
 
@@ -240,6 +241,8 @@ calcTotalPay();
                             removeFromCart={removeFromCart}
                             cartSession={cartSession}
                             setCartSession={setCartSession}
+                            showQuantity={showQuantity}
+                            setShowQuantity={setShowQuantity}
                         />
                     }></Route>
                     <Route path="/products/add" element={
@@ -261,6 +264,8 @@ calcTotalPay();
                     showQR={showQR}
                     setShowQR={setShowQR}
                     oltTotalPay={oltTotalPay}
+                    setCartSession={setCartSession}
+                    setShowQuantity={setShowQuantity}
                 />
             </div>
         </div>

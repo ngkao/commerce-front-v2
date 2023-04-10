@@ -8,10 +8,10 @@ import 'react-multi-carousel/lib/styles.css';
 
 import Carousel from 'react-grid-carousel'
 
-const ProductSelectionView = ({productList, key, product, onClick,totalCart,removeFromCart, cartSession, setCartSession}) => {
+const ProductSelectionView = ({productList, key, product, onClick,totalCart,removeFromCart, cartSession, setCartSession,showQuantity, setShowQuantity}) => {
 
 
-    const [showQuantity, setShowQuantity] = useState([]);
+    // const [showQuantity, setShowQuantity] = useState([]);
 
     return (
         <section className="product">

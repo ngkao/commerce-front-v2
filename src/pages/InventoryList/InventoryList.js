@@ -10,7 +10,6 @@ const [selectedCart, setSelectedCart] = useState([]);
 const [itemQuantity, setItemQuantity] = useState(0)
 
 const handleAddToCart = (selectedId) => {
-    // console.log(selectedId)
 
     const str = sessionStorage.getItem("myCart");
     let myCart = JSON.parse(str);
@@ -40,30 +39,17 @@ const handleRemoveFromCart = (selectedId) => {
         return;
     }
     removeFromCart(product)
-    // setShowQuantity(true)
-    // let str = sessionStorage.getItem("myCart");
-    // let myCart = JSON.parse(str);
-    // sessionStorage.setItem("myCart", JSON.stringify(myCart))
-    // setCartSession(myCart)
-
-    // setCartSession(myCart)
 
 }
 
 
 
-const handlePlusClick = (selectedId) => {
-    
-    handleAddToCart(product.id)
-    
+const handlePlusClick = (selectedId) => { 
+    handleAddToCart(product.id) 
     setShowQuantity([...showQuantity, selectedId])
-    // setShowQuantity(true)
-    
     console.log("Clicked", product.product_name, "showQuantity: ", showQuantity.includes(selectedId))
-    
 }
 
-// const [showQuantity, setShowQuantity] = useState([]);
 
 
 //Transition 
@@ -114,15 +100,7 @@ useEffect(() => {
                                 <p onClick={() => handlePlusClick(product.id)} className="inventory-item__plus-btn">+</p>
                             </>
                         }
-                      
-                        
-            
-                        {/* {showDefaultPrice ? 
-                            (<>
-                                <p className="inventory-item__price">${product.sale_price}</p>
-                                <p onClick={() => handlePlusClick(product.id)} className="inventory-item__plus-btn">+</p>
-                            </>) :null
-                        } */}
+                    
 
                     </div>
                 </div>
