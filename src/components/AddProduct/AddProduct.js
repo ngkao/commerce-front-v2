@@ -50,23 +50,24 @@ const AddProduct = ({productList,renderProductList}) => {
 
     return (
         <div className="add">
-            <p>Add Product Form</p>
+            <p className="add__title">Add Product Form</p>
             <form 
                 className="add__form"
                 onSubmit={handleSubmit}
             >
                 <label className="add__item-ctr">
                     Product Name
-                    <input value={productName} onChange={(e) => setProductName(e.target.value)}></input>
+                    <input className="add__input" value={productName} onChange={(e) => setProductName(e.target.value)}></input>
                 </label>
                 <label className="add__item-ctr">
                     Description
-                    <input value={description} onChange={(e) => setDescription(e.target.value)}></input>
+                    <input className="add__input" value={description} onChange={(e) => setDescription(e.target.value)}></input>
                 </label>
                 <label className="add__item-ctr">
                     Category    
                     <select 
-                        className="add__item-ctr"
+                        // className="add__item-ctr"
+                        className="add__input"
                         onChange={(e) => setCategory(e.target.value)}
                         value={category}
                     >
@@ -84,15 +85,15 @@ const AddProduct = ({productList,renderProductList}) => {
                 </label> */}
                 <label className="add__item-ctr">
                     Quantity
-                    <input type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)}></input>
+                    <input className="add__input" type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)}></input>
                 </label>
                 <label className="add__item-ctr">
                     Sale Price
-                    <input type="number" value={salePrice} onChange={(e) => setSalePrice(e.target.value)}></input>
+                    <input className="add__input" type="number" value={salePrice} onChange={(e) => setSalePrice(e.target.value)}></input>
                 </label>
                 <label className="add__item-ctr">
                     Purchase Price
-                    <input type="number" value={purchasePrice} onChange={(e) => setPurchasePrice(e.target.value)}></input>
+                    <input className="add__input" type="number" value={purchasePrice} onChange={(e) => setPurchasePrice(e.target.value)}></input>
                 </label>
                 <button className="add__btn">Add Product</button>
             </form>

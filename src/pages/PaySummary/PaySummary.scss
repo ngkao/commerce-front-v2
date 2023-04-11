@@ -105,6 +105,13 @@
         cursor: pointer;
         width: 80%;
         height: 50px;
+        font-weight: bold;
+        font-size: 16px;
+        transition: 0.2s;
+
+        &:hover {
+            border: 3px solid white;
+        }
     }
 
     &__refresh {
@@ -121,8 +128,13 @@
         transition: transform 0.5s ease-in-out;
         cursor: pointer;
 
+        &:hover {
+            border: 3px solid white;
+        }
+
         &.rotate {
             transform: rotate(360deg);
+            
           }
     }
 
