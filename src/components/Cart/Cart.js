@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import Lottie from "lottie-react";
 import CartPreview from "../../assets/animations/cart.json"
 
-const Cart = ({cartSession,previewCart}) => {
+const Cart = ({cartSession,previewCart, orders}) => {
 
     const [oldItemTotalPay, setOldItemTotalPay] = useState(0);
     const myId = uuidv4();
@@ -20,8 +20,6 @@ const Cart = ({cartSession,previewCart}) => {
                 );
                 console.log("Cart Class was added")
     },400)
-
-
   }, [cartSession]);
 
       //Transition Item Amount
@@ -55,14 +53,18 @@ const Cart = ({cartSession,previewCart}) => {
         },300)
     }, [cartSession]);
 
-    // useEffect(() => {
-    //     return () => {setOldItemTotalPay(cartItem.sale_price * cartItem.count)};
-    //   }, [cartSession]);
+    const nextOrderNumber = () => {
+        console.log("Order", orders)
+        
+        const highestValue = Math.max(...orders.map(obj => parseInt(obj.order_id)))
+        console.log("Highest ID", highestValue)
+        return highestValue+1;
+    }
 
 
     return (
         <div className="cart">
-          <p className="cart__title">CART</p>
+          <p className="cart__title">SALE: #{nextOrderNumber()}</p>
           {previewCart? 
                 <div className="cart__lottie">
                     <Lottie

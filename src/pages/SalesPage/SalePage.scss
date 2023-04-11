@@ -1,0 +1,66 @@
+@use "../../styles/partials/variables" as *;
+
+.sales {
+    // outline: 1px solid salmon;
+    width: 100%;
+    margin: 0 2rem;
+    // background-color: white;
+
+    &__title {
+        font-size: $font-large;
+        padding: 1rem 1rem;
+    }
+
+    &__headers {
+    // outline: 1px solid yellow;
+        display: flex;
+        justify-content: center;
+
+    }
+
+    &__common-item {
+    // outline: 1px solid blue;
+        width: 20%;
+        display: flex;
+        justify-content: center;
+ 
+        text-align: center;
+
+    }
+
+    &__header-item {
+        padding: 20px 5px;
+    }
+
+    &__data-item {
+        word-break: break-all;
+        align-items: center;
+        padding: 5px 5px;
+        overflow: hidden;
+        height: 55px;
+        // border-radius: $border-radius-standard
+
+    }
+
+    &__list {
+        gap: 100px;
+        // outline: 1px solid red;
+        height: 100%;
+    }
+
+    &__item-ctr {
+        display: flex;
+        border-radius: $border-radius-standard;
+        background-color: $grey-light;
+        margin-bottom: 10px;
+        border: 2px solid $grey-light;
+        transition: 0.5s;
+        cursor: pointer;
+
+        &:hover {
+            border: 2px solid $color-selected;
+            color: $color-selected;
+
+        }
+    }
+}
