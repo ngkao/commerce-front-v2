@@ -9,6 +9,7 @@
     &__title {
         font-size: $font-large;
         padding: 1rem 1rem;
+        color: $color-selected;
     }
 
     &__headers {
@@ -56,6 +57,9 @@
         border: 2px solid $grey-light;
         transition: 0.5s;
         cursor: pointer;
+        //Transition
+        opacity: 0;
+        transform: translateX(20px);
 
         &:hover {
             border: 2px solid $color-selected;
@@ -63,4 +67,9 @@
 
         }
     }
+}
+
+.show-item {
+    opacity: 1;
+    transform: translateX(0);
 }

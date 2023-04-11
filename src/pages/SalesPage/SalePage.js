@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {dateConvert} from "../../utils/utils";
+import { useLocation } from "react-router-dom";
 
 const SalePage = ({orders,setOrders,renderItemsByOrderId}) => {
     const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
@@ -16,20 +17,49 @@ const SalePage = ({orders,setOrders,renderItemsByOrderId}) => {
         })
     }, [])
 
-        //  const dateConvert = (dateString) => {
-        //     const date = new Date(dateString);
-        //     const year = date.getFullYear();
-        //     const month = (date.getMonth() + 1).toString().padStart(2, '0');
-        //     const day = date.getDate().toString().padStart(2, '0');
-        //     const formattedDate = `${year}-${month}-${day}`;
-        //     return formattedDate;
-        //  }
 
-         const handleClick = (order_id) => {
-            console.log("Selected Order Id", order_id)
-            renderItemsByOrderId(order_id)
-            navigate(`/sales/${order_id}`)
-         }
+    const handleClick = (order_id) => {
+    console.log("Selected Order Id", order_id)
+    renderItemsByOrderId(order_id)
+    navigate(`/sales/${order_id}`)
+    }
+
+    const location = useLocation();
+    // useEffect(() => {
+    // setTimeout(() => {
+    //     const items = document.querySelectorAll('.sales__item-ctr');
+    //     console.log("PATH CHANGED")
+    //         setTimeout(() => {
+    //             items.forEach((item, index) => 
+    //                 setTimeout(() => {
+    //                     item.classList.add('show-item')
+    //                 },index * 100)
+    //             );
+    //             console.log("Class was added")
+    //         },0)
+    // },300)
+    // }, [location.pathname]);
+
+    useEffect(() => {
+        setTimeout(() => {
+            const items = document.querySelectorAll('.sales__item-ctr');
+           console.log("PATH CHANGED")
+           if (location.pathname == '/sales') {
+               setTimeout(() => {
+                   items.forEach((item, index) => 
+                       setTimeout(() => {
+                           item.classList.add('show-item')
+                       },index * 100)
+                   );
+                   console.log("Class was added")
+               },0)
+    
+           } else {
+           items.forEach(item => item.classList.remove('show-item'));
+           console.log("Class was removed")
+           }
+       },300)
+      }, [location.pathname]);
 
     return (
         <section className="sales">

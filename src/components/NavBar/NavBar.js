@@ -33,7 +33,6 @@ const NavBar = () => {
            console.log("Class was removed")
            }
        },300)
-
       }, [location.pathname]);
 
     return (
