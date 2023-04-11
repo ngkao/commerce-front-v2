@@ -10,7 +10,7 @@ import RefreshMark from "../../assets/animations/refresh.json"
 
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
-const PaySummary = ({onClick, src, totalPay, showQR, oltTotalPay,setShowQR, setCartSession,setShowQuantity, setPreviewCart}) => {
+const PaySummary = ({onClick, src, totalPay, showQR, oltTotalPay,setShowQR, setCartSession,setShowQuantity, setPreviewCart,renderAllOrders}) => {
     
     // Pull Request for New Orders Successfully being Paid
     const [latestOrderData, setLatestOrderData] = useState(null);
@@ -51,6 +51,7 @@ const PaySummary = ({onClick, src, totalPay, showQR, oltTotalPay,setShowQR, setC
             setCartSession([]);
             setShowQuantity([]);
             setPreviewCart(true);
+            renderAllOrders();
         }, 6000)
     }
 

@@ -9,13 +9,13 @@ const SalePage = ({orders,setOrders,renderItemsByOrderId}) => {
     const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
     const navigate = useNavigate();
 
-    useEffect(() => {
-        axios.get(`${REACT_APP_SERVER_URL}/items`)
-        .then((data) => {
-            setOrders(data.data)
-            console.log("Orders", orders)
-        })
-    }, [])
+    // useEffect(() => {
+    //     axios.get(`${REACT_APP_SERVER_URL}/items`)
+    //     .then((data) => {
+    //         setOrders(data.data)
+    //         console.log("Orders", orders)
+    //     })
+    // }, [])
 
 
     const handleClick = (order_id) => {
@@ -72,11 +72,13 @@ const SalePage = ({orders,setOrders,renderItemsByOrderId}) => {
                 <p className="sales__common-item sales__header-item">Sales</p>
             </div>
             <div className="sales__list">
-                {orders.map((order) => (
+                {orders
+                    .sort((a, b) => new Date(b.order_date) - new Date(a.order_date))
+                    .map((order) => (
                     <div onClick={() => handleClick(order.order_id)} className="sales__item-ctr">
                         <p className="sales__common-item sales__data-item">{dateConvert(order.order_date)}</p>
                         <p className="sales__common-item sales__data-item">{order.order_id}</p>
-                        <p className="sales__common-item sales__data-item">{order.customer_email}</p>
+                        <p className="sales__common-item sales__data-item">{order.customer_name}</p>
                         <p className="sales__common-item sales__data-item">{order.total_quantity}</p>
                         <p className="sales__common-item sales__data-item">${order.total_sale_amount}</p>
                     </div>

@@ -13,6 +13,7 @@ import QRCode from "qrcode"
 import SalePage from "./pages/SalesPage/SalePage";
 import { useRef } from "react";
 import SalesItem from "./components/SalesItem/SalesItem";
+import Insights from "./pages/Insights/Insights";
 
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
@@ -68,9 +69,17 @@ const renderProductList = () => {
 useEffect(() => {
     renderProductList();
     calcTotalPay();
+    renderAllOrders();
+  
 },[])
 
-
+const renderAllOrders = () => {
+  axios.get(`${REACT_APP_SERVER_URL}/items`)
+    .then((data) => {
+        setOrders(data.data)
+        console.log("Orders", orders)
+    })
+}
 
   const startStr = sessionStorage.getItem("myCart");
   let startCart = JSON.parse(startStr);
@@ -216,32 +225,9 @@ const renderItemsByOrderId = (order_id) => {
 }
 
 
+
   return (
     <div className="background">
-        {/* {productList? 
-        productList.map((product) => (
-          <>
-            <InventoryList 
-              key={product.id}
-              product={product}
-              onClick={handleClick}
-              totalCart={totalCart}
-              removeFromCart={removeFromCart}
-            /> 
-          </>
-        ))
-      : <p>Loading</p>} */}
-        {/* <div>
-          <p>TOTAL PAY CART</p>
-          {cartSession ? 
-                    (cartSession.map((cartItem) => (
-                      <>
-                        <p key={myId}>cartItem {cartItem.product_name}</p>
-                        <p>Quantity {cartItem.count}</p>
-                      </>)
-                    )) : null
-        }
-        </div> */}
     <BrowserRouter className="header">
         <div className="main">
             <NavBar/>
@@ -273,7 +259,7 @@ const renderItemsByOrderId = (order_id) => {
                             renderItemsByOrderId={renderItemsByOrderId}
                       />}></Route>
                     <Route path="/sales/:orderId" element={<SalesItem/>}></Route>
-                    <Route path="/employees" element="Employee List"></Route>
+                    <Route path="/insights" element={<Insights orders={orders}/>}></Route>
                 </Routes>
             </div>
             <div className="paysum">
@@ -289,6 +275,7 @@ const renderItemsByOrderId = (order_id) => {
                     setCartSession={setCartSession}
                     setShowQuantity={setShowQuantity}
                     setPreviewCart={setPreviewCart}
+                    renderAllOrders={renderAllOrders}
                 />
             </div>
         </div>

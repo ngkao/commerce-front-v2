@@ -19,6 +19,7 @@ const Cart = ({cartSession,previewCart, orders}) => {
                         item.classList.add('show-cart')
                 );
                 console.log("Cart Class was added")
+                
     },400)
   }, [cartSession]);
 
@@ -53,14 +54,20 @@ const Cart = ({cartSession,previewCart, orders}) => {
         },300)
     }, [cartSession]);
 
+    const [saleOrderNum, setSaleOrderNum] = useState();
+
     const nextOrderNumber = () => {
         console.log("Order", orders)
-        
-        const highestValue = Math.max(...orders.map(obj => parseInt(obj.order_id)))
-        console.log("Highest ID", highestValue)
+ 
+            const highestValue = Math.max(...orders.map(obj => parseInt(obj.order_id)))
+            console.log("Highest ID", highestValue)
+            // setSaleOrderNum(highestValue+1)
+   
         return highestValue+1;
+  
     }
 
+    
 
     return (
         <div className="cart">

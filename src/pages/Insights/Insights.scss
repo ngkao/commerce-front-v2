@@ -1,0 +1,46 @@
+@use "../../styles/partials/variables" as *;
+
+.insights {
+    width: 100%;
+    margin: 0 2rem;
+
+    
+    &__top-ctr {
+        display: flex;
+        justify-content: space-between;
+        height: 20%;
+        gap: 1rem;
+    }
+
+    &__sales-dollar {
+        width: 50%;
+        outline: 1px solid salmon;
+        background-color: $color-selected;
+        border-radius: $border-radius-standard;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+       
+    }
+
+    &__stats {
+
+        font-size: 3.4375rem;
+        font-weight: bold;
+
+    }
+
+    &__sales-volume {
+        width: 50%;
+        outline: 1px solid salmon;
+        background-color: $color-selected;
+        border-radius: $border-radius-standard;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+}

@@ -24,9 +24,8 @@
         width: 20%;
         display: flex;
         justify-content: center;
- 
         text-align: center;
-
+        align-items: center;
     }
 
     &__header-item {
@@ -39,14 +38,16 @@
         padding: 5px 5px;
         overflow: hidden;
         height: 55px;
+ 
         // border-radius: $border-radius-standard
 
     }
 
     &__list {
-        gap: 100px;
+        // gap: 100px;
         // outline: 1px solid red;
-        height: 100%;
+        height: 615px;
+        overflow: auto;
     }
 
     &__item-ctr {

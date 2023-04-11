@@ -10,7 +10,7 @@ const NavBar = () => {
     const location = useLocation();
     const isProductPath = location.pathname.startsWith("/products") || location.pathname === "/";
     const isSalesPath = location.pathname.startsWith("/sales");
-    const isEmployeesPath = location.pathname.startsWith("/employees");
+    const isEmployeesPath = location.pathname.startsWith("/insights");
 
     
 
@@ -53,7 +53,7 @@ const NavBar = () => {
             <div className="nav__list">
                 <Link className={isProductPath ? "nav__item nav__item--active" : "nav__item"} to="/products">Products</Link>
                 <Link className={isSalesPath ? "nav__item nav__item--active" : "nav__item"} to="/sales">Sales</Link>
-                <Link className={isEmployeesPath ? "nav__item nav__item--active" : "nav__item"} to="/employees">Employees</Link>
+                <Link className={isEmployeesPath ? "nav__item nav__item--active" : "nav__item"} to="/insights">Insights</Link>
             </div>
                   
             </div>
