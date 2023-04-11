@@ -1,21 +1,52 @@
+@use "../../styles/partials/variables" as *;
+
 .add {
     width: 50%;
+
+    &__title {
+        color: $color-selected;
+        font-size: 27px;
+        padding: 1rem;
+    }
 
     &__form {
         display: flex;
         flex-direction: column;
         width: 100%;
+        margin-top: 20px;
     }
 
     &__item-ctr {
         display: flex;
         justify-content: space-between;
         flex-direction: column;
-        outline: 1px solid greenyellow;
+        // outline: 1px solid greenyellow;
         margin: 0.5rem 0;
+ 
+    }
+
+    &__input {
+        background-color: $grey-light;
+        padding: 1rem 1rem;
+        color: white;
+        margin-top: 5px;
+        border-radius: $border-radius-standard;
+        border: none;
+        outline: none;
     }
 
     &__btn {
-        height: 40px;
+        // height: 40px;
+        padding: 1rem 1rem;
+        border-radius: $border-radius-standard;
+        background-color: black;
+        border: 2px solid white;
+        margin-top: 20px;
+        cursor: pointer;
+
+        &:hover {
+            border: 2px solid $color-selected;
+            color: $color-selected;
+        }
     }
 }

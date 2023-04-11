@@ -29,6 +29,16 @@
     }
 }
 
+.background {
+    background-color: black
+}
+
+.header {
+    background-color: black;
+    width: 100vw;
+    outline: 1px solid fuchsia;
+}
+
 .main {
     // margin: 2rem;
     display: flex;
@@ -36,7 +46,10 @@
     flex-direction: row;
     height: 100vh;
     align-items: space-between;
+    padding: 2rem 2rem;
     background-color: black;
+    margin: auto;
+    width: 1280px;
 }
 
 .center {
@@ -54,4 +67,5 @@
     flex-direction: column;
     justify-content: space-between;
     // padding: 0 20px;
+    
 }

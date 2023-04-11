@@ -6,7 +6,7 @@
     justify-content: center;
     align-items: center;
     // outline: 1px solid salmon;
-    width: 85%;
+    width: 90%;
 
 
 
@@ -15,7 +15,7 @@
         // display:inline-block;
         justify-content: space-between;
         align-items: center;
-        width: 85%;
+        width: 90%;
         // outline: 1px solid salmon;
 
 
@@ -25,7 +25,7 @@
 
     &__img {
         aspect-ratio: 1 / 1;
-        width: 85%;
+        width: 90%;
         height: auto;
         border-radius: 10px;
         // outline: 1px solid salmon;
@@ -33,9 +33,12 @@
     }
 
     &__name {
-        width: 85%;
+        width: 90%;
         color: $white;
+        font-size: 14px;
+        height: 45px;
         // outline: 1px solid salmon;
+        margin-top: 5px;
     }
 
     &__btn {
@@ -48,6 +51,10 @@
         cursor: pointer;
         color: $white;
         border-radius: 15px;
+
+        &:hover {
+            color: $color-selected;
+        }
     }
 
 
@@ -77,6 +84,10 @@
 
     &__price {
         color: $white;
+        font-size: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     &__plus-btn {
@@ -91,6 +102,12 @@
         justify-content: center;
         color: white;
         cursor: pointer;
+        // transition: 0.5s;
+
+        &:hover {
+            border: 2px solid $color-selected;
+            color: $color-selected;
+        }
     }
 }
 

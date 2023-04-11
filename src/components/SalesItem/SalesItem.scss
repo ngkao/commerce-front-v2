@@ -1,0 +1,18 @@
+@use "../../styles/partials/variables" as *;
+
+.sales__heading {
+    display: flex;
+}
+
+.items__title {
+    font-size: $font-large;
+    padding: 1rem 1rem;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.show-item {
+    opacity: 1;
+    transform: translateX(0);
+}

@@ -12,6 +12,8 @@ import NavBar from "./components/NavBar/NavBar";
 import QRCode from "qrcode"
 import SalePage from "./pages/SalesPage/SalePage";
 import { useRef } from "react";
+import SalesItem from "./components/SalesItem/SalesItem";
+import Insights from "./pages/Insights/Insights";
 
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
@@ -21,6 +23,8 @@ const [totalPay, setTotalPay] = useState(0);
 const [oltTotalPay, setOldTotalPay] = useState(0);
 const [showQuantity, setShowQuantity] = useState([]);
 const [previewCart, setPreviewCart] = useState(true);
+const [orders, setOrders] = useState([]);
+
 useEffect(() => {
 
 
@@ -65,9 +69,17 @@ const renderProductList = () => {
 useEffect(() => {
     renderProductList();
     calcTotalPay();
+    renderAllOrders();
+  
 },[])
 
-
+const renderAllOrders = () => {
+  axios.get(`${REACT_APP_SERVER_URL}/items`)
+    .then((data) => {
+        setOrders(data.data)
+        console.log("Orders", orders)
+    })
+}
 
   const startStr = sessionStorage.getItem("myCart");
   let startCart = JSON.parse(startStr);
@@ -194,42 +206,29 @@ const generateQRCode = (textLink) => {
       setSrc(data)
       setShowQR(true)
       console.log("New QR Code created")
-
+      setShowQuantity([])
   })
 }
 
 calcTotalPay();
 
+// GET Items by Order ID
+
+const renderItemsByOrderId = (order_id) => {
+  axios.get(`${REACT_APP_SERVER_URL}/orders/${order_id}`)
+       .then((data) => {
+          console.log("Items by Order ID", data)
+       })
+       .catch(e => {
+        console.error(e.error)
+      })
+}
 
 
 
   return (
-    <>
-        {/* {productList? 
-        productList.map((product) => (
-          <>
-            <InventoryList 
-              key={product.id}
-              product={product}
-              onClick={handleClick}
-              totalCart={totalCart}
-              removeFromCart={removeFromCart}
-            /> 
-          </>
-        ))
-      : <p>Loading</p>} */}
-        {/* <div>
-          <p>TOTAL PAY CART</p>
-          {cartSession ? 
-                    (cartSession.map((cartItem) => (
-                      <>
-                        <p key={myId}>cartItem {cartItem.product_name}</p>
-                        <p>Quantity {cartItem.count}</p>
-                      </>)
-                    )) : null
-        }
-        </div> */}
-    <BrowserRouter >
+    <div className="background">
+    <BrowserRouter className="header">
         <div className="main">
             <NavBar/>
             <div className="center">
@@ -253,12 +252,18 @@ calcTotalPay();
                             productList={productList}
                             renderProductList={renderProductList}
                     />}></Route>
-                    <Route path="/sales" element={<SalePage/>}></Route>
-                    <Route path="/employees" element="Employee List"></Route>
+                    <Route path="/sales" element={
+                        <SalePage 
+                            setOrders={setOrders} 
+                            orders={orders}
+                            renderItemsByOrderId={renderItemsByOrderId}
+                      />}></Route>
+                    <Route path="/sales/:orderId" element={<SalesItem/>}></Route>
+                    <Route path="/insights" element={<Insights orders={orders}/>}></Route>
                 </Routes>
             </div>
             <div className="paysum">
-                <Cart cartSession={cartSession} previewCart={previewCart}/>
+                <Cart cartSession={cartSession} previewCart={previewCart} orders={orders}/>
                 <PaySummary 
                     onClick={handleClick}
                     // text={src}
@@ -270,11 +275,12 @@ calcTotalPay();
                     setCartSession={setCartSession}
                     setShowQuantity={setShowQuantity}
                     setPreviewCart={setPreviewCart}
+                    renderAllOrders={renderAllOrders}
                 />
             </div>
         </div>
      </BrowserRouter>
-    </>
+    </div>
 
   );
 }

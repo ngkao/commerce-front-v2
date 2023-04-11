@@ -36,6 +36,9 @@ const handleRemoveFromCart = (selectedId) => {
             setShowQuantity(showQuantity.filter((index) => index !== product.id))
         }
 
+        setPreviewCart(true);
+        // console.log(showQuantity.length, "Reset Preview")
+
         return;
     }
     removeFromCart(product)
@@ -77,12 +80,13 @@ useEffect(() => {
 
 
   console.log("showQuantity",showQuantity)
+  console.log("Product List", product)
 
     return (
         <>
             {/* {productList.map((product) => ( */}
                 <div className="inventory__item">
-                    <img className="inventory-item__img" src="https://picsum.photos/seed/picsum/200/300"/>
+                    <img className="inventory-item__img" src={product.image_url}/>
                     <p className="inventory-item__name">{product.product_name}</p>
                     <div className="inventory-item__price-quantity">
                         

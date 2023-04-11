@@ -105,6 +105,13 @@
         cursor: pointer;
         width: 80%;
         height: 50px;
+        font-weight: bold;
+        font-size: 16px;
+        transition: 0.2s;
+
+        &:hover {
+            border: 3px solid white;
+        }
     }
 
     &__refresh {
@@ -116,12 +123,18 @@
         align-items: center;
         border-radius: 50%;
         width: 20%;
-        padding-top: 5px;
+        padding-top: 8px;
+        padding-right: 1px;
         transition: transform 0.5s ease-in-out;
-        // cursor: pointer;
+        cursor: pointer;
+
+        &:hover {
+            border: 3px solid white;
+        }
 
         &.rotate {
             transform: rotate(360deg);
+            
           }
     }
 
