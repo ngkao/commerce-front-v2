@@ -51,6 +51,10 @@
         cursor: pointer;
         color: $white;
         border-radius: 15px;
+
+        &:hover {
+            color: $color-selected;
+        }
     }
 
 
