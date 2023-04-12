@@ -10,16 +10,13 @@ const Cart = ({cartSession,previewCart, orders}) => {
     const [oldItemTotalPay, setOldItemTotalPay] = useState(0);
     const myId = uuidv4();
 
-//     //Transition
+    //Transition
     useEffect(() => {
         setTimeout(() => {
             const items = document.querySelectorAll('.cart__item');
-        console.log("Cart Transition", items)
                 items.forEach((item) => 
                         item.classList.add('show-cart')
                 );
-                console.log("Cart Class was added")
-                
     },400)
   }, [cartSession]);
 
@@ -57,17 +54,10 @@ const Cart = ({cartSession,previewCart, orders}) => {
     const [saleOrderNum, setSaleOrderNum] = useState();
 
     const nextOrderNumber = () => {
-        console.log("Order", orders)
- 
             const highestValue = Math.max(...orders.map(obj => parseInt(obj.order_id)))
-            console.log("Highest ID", highestValue)
-            // setSaleOrderNum(highestValue+1)
-   
         return highestValue+1;
   
     }
-
-    
 
     return (
         <div className="cart">
@@ -79,27 +69,25 @@ const Cart = ({cartSession,previewCart, orders}) => {
                     />
                     <p>Add products to the cart</p>
                 </div>
-                
                 :
                 <div className="cart__list">
-                        {cartSession ? 
-                            (cartSession.map((cartItem) => (
-                            <div className="cart__item" key={cartItem.id}>
-                                <div className="cart__img-name-qt">
-                                    <img className="cart__img" src={cartItem.image_url}/>
-                                    <div className="cart__name-quantity">
-                                        <p className="cart__name">{cartItem.product_name}</p>
-                                        <p className="cart__quantity">Quantity :  {cartItem.count}</p>
-                                    </div>
+                    {cartSession ? 
+                        (cartSession.map((cartItem) => (
+                        <div className="cart__item" key={cartItem.id}>
+                            <div className="cart__img-name-qt">
+                                <img className="cart__img" src={cartItem.image_url}/>
+                                <div className="cart__name-quantity">
+                                    <p className="cart__name">{cartItem.product_name}</p>
+                                    <p className="cart__quantity">Quantity :  {cartItem.count}</p>
                                 </div>
-                                {/* <p className="cart__price">${cartItem.sale_price}</p> */}
-                                <div className="cart__price-ctr">
-                                    <p className="cart__price-top">${cartItem.sale_price * cartItem.count}</p>
-                                    <p className="cart__price-bottom">${cartItem.sale_price * (cartItem.count-1)}</p>
-                                </div>
-                                
-                            </div>)
-                            )) : null}
+                            </div>
+                            <div className="cart__price-ctr">
+                                <p className="cart__price-top">${cartItem.sale_price * cartItem.count}</p>
+                                <p className="cart__price-bottom">${cartItem.sale_price * (cartItem.count-1)}</p>
+                            </div>
+                            
+                        </div>)
+                        )) : null}
                 </div>
             }
         </div>

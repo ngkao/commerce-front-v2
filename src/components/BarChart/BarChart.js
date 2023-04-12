@@ -5,7 +5,6 @@ const BarChart = ({chartData}) => {
     return (
         <Bar
             data={chartData}
-            // options={{}}
         />
     );
 };

@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 const Insights = ({orders}) => {
 
     const salesData = new Array(31).fill(0);
-
     orders.forEach(order => {
     const day = parseInt(order.order_date.slice(8, 10)) - 1; 
     salesData[day] += parseInt(order.total_sale_amount); 
@@ -22,8 +21,6 @@ const Insights = ({orders}) => {
             }]
         }
     )
-
-    console.log("Sales This Month", salesData)
     
     const [statsToday, setStatsToday] = useState({
         dollar: "0",
@@ -45,8 +42,7 @@ const Insights = ({orders}) => {
         let cumulativeVolumeTotalMonth = 0;
 
         orders.forEach((order) => {
-        const orderDate = order.order_date.slice(0, 10); 
-
+            const orderDate = order.order_date.slice(0, 10); 
             if (orderDate === today) {
                 cumulativeDollarTotal += parseInt(order.total_sale_amount);
                 cumulativeVolumeTotal += parseInt(order.total_quantity);
@@ -55,7 +51,6 @@ const Insights = ({orders}) => {
                 cumulativeDollarTotalMonth += parseInt(order.total_sale_amount);
                 cumulativeVolumeTotalMonth += parseInt(order.total_quantity);
             }
-
         });
 
         setStatsToday({
@@ -71,7 +66,6 @@ const Insights = ({orders}) => {
     useEffect(() => {
         caltSalesToday();
     }, [])
-
 
     return (
         <section className="insights">

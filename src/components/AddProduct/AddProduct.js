@@ -8,29 +8,15 @@ const AddProduct = ({productList,renderProductList}) => {
 
     const navigate = useNavigate();
 
-
     const [productName, setProductName] = useState("");    
     const [description, setDescription] = useState("");    
     const [category, setCategory] = useState("");  
     const [quantity, setQuantity] = useState("");
     const [salePrice, setSalePrice] = useState("");
     const [purchasePrice, setPurchasePrice] = useState("");
-    
-    // console.log(productName);
-    // console.log(description);
-    // console.log(category);
-    // console.log(quantity);
-    // console.log(salePrice);
-    // console.log(purchasePrice);
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(productName);
-        console.log(description);
-        console.log(category);
-        console.log(quantity);
-        console.log(salePrice);
-        console.log(purchasePrice);
 
         axios.post(`${REACT_APP_SERVER_URL}/products/add`, {
             product_name: productName,
@@ -66,7 +52,6 @@ const AddProduct = ({productList,renderProductList}) => {
                 <label className="add__item-ctr">
                     Category    
                     <select 
-                        // className="add__item-ctr"
                         className="add__input"
                         onChange={(e) => setCategory(e.target.value)}
                         value={category}
@@ -79,10 +64,6 @@ const AddProduct = ({productList,renderProductList}) => {
                         })}
                     </select>
                 </label>
-                {/* <label className="add__item-ctr">
-                    Status
-                    <input></input>
-                </label> */}
                 <label className="add__item-ctr">
                     Quantity
                     <input className="add__input" type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)}></input>

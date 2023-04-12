@@ -3,7 +3,6 @@ import "./SalesItem.scss"
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import {dateConvert} from "../../utils/utils";
 import { useLocation } from "react-router-dom";
 
 const SalesItem = () => {
@@ -14,7 +13,6 @@ const SalesItem = () => {
     useEffect(() => {
         axios.get(`${REACT_APP_SERVER_URL}/orders/${orderId}`)
              .then((data) => {
-                console.log("Items by Order Id", data)
                 setItemByOrderId(data.data)
              })
     })
@@ -29,7 +27,6 @@ const SalesItem = () => {
                            item.classList.add('show-item')
                        },index * 100)
                    );
-                   console.log("Class was added")
                },0)
            items.forEach(item => item.classList.remove('show-item'));
        },300)
@@ -62,7 +59,6 @@ const SalesItem = () => {
                 </div>
             )):null}
         </div>
-
     </section>
     );
 };

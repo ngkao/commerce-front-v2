@@ -9,13 +9,6 @@ const SalePage = ({orders,setOrders,renderItemsByOrderId}) => {
     const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
     const navigate = useNavigate();
 
-    // useEffect(() => {
-    //     axios.get(`${REACT_APP_SERVER_URL}/items`)
-    //     .then((data) => {
-    //         setOrders(data.data)
-    //         console.log("Orders", orders)
-    //     })
-    // }, [])
 
 
     const handleClick = (order_id) => {
@@ -25,20 +18,7 @@ const SalePage = ({orders,setOrders,renderItemsByOrderId}) => {
     }
 
     const location = useLocation();
-    // useEffect(() => {
-    // setTimeout(() => {
-    //     const items = document.querySelectorAll('.sales__item-ctr');
-    //     console.log("PATH CHANGED")
-    //         setTimeout(() => {
-    //             items.forEach((item, index) => 
-    //                 setTimeout(() => {
-    //                     item.classList.add('show-item')
-    //                 },index * 100)
-    //             );
-    //             console.log("Class was added")
-    //         },0)
-    // },300)
-    // }, [location.pathname]);
+
 
     useEffect(() => {
         setTimeout(() => {

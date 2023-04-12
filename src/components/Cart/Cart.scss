@@ -26,21 +26,9 @@
     }
 
     &__list {
-        // outline: 1px solid greenyellow;
         background-color: $grey-light;
         overflow: auto;
         height: 250px;
-
-        // &::-webkit-scrollbar {
-        //     width: 10px;
-        //     background-color: #f5f5f5;
-        //   }
-
-        // &::-webkit-scrollbar-thumb {
-        //     background-color: #aaa;
-        //     border-radius: 10px;
-        //   }
-
     }
 
     &__item {
