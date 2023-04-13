@@ -16,3 +16,26 @@
     opacity: 1;
     transform: translateX(0);
 }
+
+.sales-item {
+
+    &__item-1{
+        width: 20%;
+    }
+    &__item-2{
+        width: 35%;
+    }
+    &__item-3{
+        width: 10%;
+    }
+    &__item-4{
+        width: 10%;
+    }
+    &__item-5{
+        width: 10%;
+    }
+    &__item-6{
+        width: 10%;
+    }
+
+}

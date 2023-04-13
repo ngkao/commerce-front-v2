@@ -53,6 +53,7 @@ const Insights = ({orders}) => {
             }
         });
 
+        console.log(today)
         setStatsToday({
             dollar: cumulativeDollarTotal,
             volume: cumulativeVolumeTotal

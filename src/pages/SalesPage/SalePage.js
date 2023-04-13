@@ -45,22 +45,22 @@ const SalePage = ({orders,setOrders,renderItemsByOrderId}) => {
         <section className="sales">
             <p className="sales__title">Sales Summary</p>
             <div className="sales__headers">
-                <p className="sales__common-item sales__header-item">Date</p>
-                <p className="sales__common-item sales__header-item">Order ID</p>
-                <p className="sales__common-item sales__header-item">Contact</p>
-                <p className="sales__common-item sales__header-item">Quantity</p>
-                <p className="sales__common-item sales__header-item">Sales</p>
+                <p className="sales__common-item sales__header-item sales__item-1">Date</p>
+                <p className="sales__common-item sales__header-item sales__item-2">Order ID</p>
+                <p className="sales__common-item sales__header-item sales__item-3">Contact</p>
+                <p className="sales__common-item sales__header-item sales__item-4">Quantity</p>
+                <p className="sales__common-item sales__header-item sales__item-5">Sales</p>
             </div>
             <div className="sales__list">
                 {orders
                     .sort((a, b) => new Date(b.order_date) - new Date(a.order_date))
                     .map((order) => (
                     <div onClick={() => handleClick(order.order_id)} className="sales__item-ctr">
-                        <p className="sales__common-item sales__data-item">{dateConvert(order.order_date)}</p>
-                        <p className="sales__common-item sales__data-item">{order.order_id}</p>
-                        <p className="sales__common-item sales__data-item">{order.customer_name}</p>
-                        <p className="sales__common-item sales__data-item">{order.total_quantity}</p>
-                        <p className="sales__common-item sales__data-item">${order.total_sale_amount}</p>
+                        <p className="sales__common-item sales__data-item sales__item-1">{dateConvert(order.order_date)}</p>
+                        <p className="sales__common-item sales__data-item sales__item-2">{order.order_id}</p>
+                        <p className="sales__common-item sales__data-item sales__item-3">{order.customer_name}</p>
+                        <p className="sales__common-item sales__data-item sales__item-4">{order.total_quantity}</p>
+                        <p className="sales__common-item sales__data-item sales__item-5">${order.total_sale_amount}</p>
                     </div>
                 ))}
             </div>
