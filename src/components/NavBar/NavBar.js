@@ -11,6 +11,8 @@ const NavBar = () => {
     const isProductPath = location.pathname.startsWith("/products") || location.pathname === "/";
     const isSalesPath = location.pathname.startsWith("/sales");
     const isEmployeesPath = location.pathname.startsWith("/insights");
+    const isInventory = location.pathname.startsWith("/inventory");
+
 
     useEffect(() => {
         setTimeout(() => {
@@ -46,6 +48,7 @@ const NavBar = () => {
                 </div>
                 <div className="nav__list">
                     <Link className={isProductPath ? "nav__item nav__item--active" : "nav__item"} to="/products">Products</Link>
+                    <Link className={isInventory ? "nav__item nav__item--active" : "nav__item"} to="/inventory">Inventory</Link>
                     <Link className={isSalesPath ? "nav__item nav__item--active" : "nav__item"} to="/sales">Sales</Link>
                     <Link className={isEmployeesPath ? "nav__item nav__item--active" : "nav__item"} to="/insights">Insights</Link>
                 </div>  

@@ -5,7 +5,7 @@ import "./ProductSelectionView.scss"
 import 'react-multi-carousel/lib/styles.css';
 import Carousel from 'react-grid-carousel'
 
-const ProductSelectionView = ({productList, key, product, onClick,totalCart,removeFromCart, cartSession, setCartSession,showQuantity, setShowQuantity,setPreviewCart}) => {
+const ProductSelectionView = ({productList, key, product, onClick,totalCart,removeFromCart, cartSession, setCartSession,showQuantity, setShowQuantity,setPreviewCart,productsSold}) => {
 
     return (
         <section className="product">
@@ -37,6 +37,7 @@ const ProductSelectionView = ({productList, key, product, onClick,totalCart,remo
                                         showQuantity={showQuantity}
                                         setShowQuantity={setShowQuantity}
                                         setPreviewCart={setPreviewCart}
+                                        productsSold={productsSold}
                                     />
                                 </Carousel.Item>
                             ))

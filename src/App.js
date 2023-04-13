@@ -12,6 +12,7 @@ import QRCode from "qrcode"
 import SalePage from "./pages/SalesPage/SalePage";
 import SalesItem from "./components/SalesItem/SalesItem";
 import Insights from "./pages/Insights/Insights";
+import InventoryStockPage from "./pages/InventoryStockPage/InventoryStockPage";
 
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
@@ -22,6 +23,7 @@ function App() {
     const [showQuantity, setShowQuantity] = useState([]);
     const [previewCart, setPreviewCart] = useState(true);
     const [orders, setOrders] = useState([]);
+    const [productsSold, setProductsSold] = useState();
 
     useEffect(() => {
       return () => {setOldTotalPay(totalPay)};
@@ -59,10 +61,19 @@ function App() {
       calcTotalPay();
     }
 
+     //GET products with sold and available quantities
+     const renderProductsSold = () => {
+      axios.get(`${REACT_APP_SERVER_URL}/products/sold`)
+      .then((data) => {
+         setProductsSold(data.data)
+      })
+    }
+
     useEffect(() => {
         renderProductList();
         calcTotalPay();
         renderAllOrders();
+        renderProductsSold();
     },[])
 
     const renderAllOrders = () => {
@@ -180,6 +191,10 @@ function App() {
           })
     }
 
+  // Check if the Quantity is Available
+  
+   
+
   return (
     <div className="background">
     <BrowserRouter className="header">
@@ -198,6 +213,7 @@ function App() {
                             showQuantity={showQuantity}
                             setShowQuantity={setShowQuantity}
                             setPreviewCart={setPreviewCart}
+                            productsSold={productsSold}
                         />
                     }></Route>
                     <Route path="/products/add" element={
@@ -215,13 +231,19 @@ function App() {
                     }></Route>
                     <Route path="/sales/:orderId" element={<SalesItem/>}></Route>
                     <Route path="/insights" element={<Insights orders={orders}/>}></Route>
+                    <Route path="/inventory" element={
+                        <InventoryStockPage
+                            renderProductsSold={renderProductsSold}
+                            productsSold={productsSold}
+                        />}></Route>
                 </Routes>
             </div>
             <div className="paysum">
                 <Cart 
                     cartSession={cartSession} 
                     previewCart={previewCart} 
-                    orders={orders}/>
+                    orders={orders}
+                />
                 <PaySummary 
                     onClick={handleClick}
                     src={src}

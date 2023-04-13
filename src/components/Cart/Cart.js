@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import Lottie from "lottie-react";
 import CartPreview from "../../assets/animations/cart.json"
 
-const Cart = ({cartSession,previewCart, orders}) => {
+const Cart = ({cartSession,previewCart,orders}) => {
 
     const [oldItemTotalPay, setOldItemTotalPay] = useState(0);
     const myId = uuidv4();

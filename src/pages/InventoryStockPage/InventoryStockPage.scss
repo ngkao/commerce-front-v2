@@ -1,6 +1,6 @@
 @use "../../styles/partials/variables" as *;
 
-.sales {
+.inventory {
     // outline: 1px solid salmon;
     width: 100%;
     margin: 0 2rem;
@@ -21,16 +21,42 @@
 
     &__common-item {
     // outline: 1px solid blue;
-        // width: 20%;
+ 
         display: flex;
         justify-content: center;
         text-align: center;
         align-items: center;
+        margin-left: 10px;
     }
 
     &__header-item {
         padding: 20px 5px;
     }
+
+    &__column-0 {
+        width: 10%;;
+    }
+
+    &__column-1 {
+        width: 18%;
+    }
+
+    &__column-2 {
+        width: 39%;
+    }
+
+    &__column-3-4 {
+        width: 16%;
+    }
+
+    &__image {
+        // width: 40px;
+        // height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
 
     &__data-item {
         word-break: break-all;
@@ -38,27 +64,10 @@
         padding: 5px 5px;
         overflow: hidden;
         height: 55px;
- 
+        color: white;
         // border-radius: $border-radius-standard
 
     }
-
-    &__item-1 {
-        width: 25%;
-    }
-    &__item-2 {
-        width: 15%;
-    }
-    &__item-3 {
-        width: 30%;
-    }
-    &__item-4 {
-        width: 15%;
-    }
-    &__item-5 {
-        width: 15%;
-    }
-
 
     &__list {
         // gap: 100px;
