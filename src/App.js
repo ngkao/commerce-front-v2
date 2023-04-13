@@ -12,6 +12,7 @@ import QRCode from "qrcode"
 import SalePage from "./pages/SalesPage/SalePage";
 import SalesItem from "./components/SalesItem/SalesItem";
 import Insights from "./pages/Insights/Insights";
+import InventoryStockPage from "./pages/InventoryStockPage/InventoryStockPage";
 
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
@@ -215,6 +216,7 @@ function App() {
                     }></Route>
                     <Route path="/sales/:orderId" element={<SalesItem/>}></Route>
                     <Route path="/insights" element={<Insights orders={orders}/>}></Route>
+                    <Route path="/inventory" element={<InventoryStockPage/>}></Route>
                 </Routes>
             </div>
             <div className="paysum">
