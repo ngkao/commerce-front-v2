@@ -48,6 +48,10 @@
         // outline: 1px solid red;
         height: 615px;
         overflow: auto;
+
+        &::-webkit-scrollbar {
+            display: none;
+          }
     }
 
     &__item-ctr {

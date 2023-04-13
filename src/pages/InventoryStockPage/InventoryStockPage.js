@@ -4,16 +4,12 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from "react-router-dom";
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
-const InventoryStockPage = () => {
+const InventoryStockPage = ({renderProductsSold, productsSold}) => {
 
-    const [productsSold, setProductsSold] = useState();
+
 
     useEffect(() => {
-        axios.get(`${REACT_APP_SERVER_URL}/products/sold`)
-             .then((data) => {
-                console.log(data.data)
-                setProductsSold(data.data)
-             })
+        renderProductsSold()
     },[])
 
     const location = useLocation();
@@ -37,6 +33,7 @@ const InventoryStockPage = () => {
             <p className="inventory__title">Inventory Stock</p>
             <div className="inventory__headers">
                 {/* <p className="sales__common-item sales__header-item">Date</p> */}
+                <p className="inventory__common-item inventory__header-item inventory__column-0"></p>
                 <p className="inventory__common-item inventory__header-item inventory__column-1">Category</p>
                 <p className="inventory__common-item inventory__header-item inventory__column-2">Name</p>
                 <p className="inventory__common-item inventory__header-item inventory__column-3-4">Sold</p>
@@ -51,6 +48,7 @@ const InventoryStockPage = () => {
                         .map((product) => (
                         <div key={product.product_id} className="inventory__item-ctr">
                             {/* <p className="sales__common-item sales__data-item">{dateConvert(order.order_date)}</p> */}
+                            <img className="inventory__image inventory__common-item inventory__data-item inventory__column-0" src={product.image_url} alt={product.product_name}/>
                             <p className="inventory__common-item inventory__data-item inventory__column-1">{product.product_category}</p>
                             <p className="inventory__common-item inventory__data-item inventory__column-2">{product.product_name}</p>
                             <p className="inventory__common-item inventory__data-item inventory__column-3-4">{product.sold_quantity}</p>

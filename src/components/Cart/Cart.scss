@@ -29,6 +29,10 @@
         background-color: $grey-light;
         overflow: auto;
         height: 250px;
+
+        &::-webkit-scrollbar {
+            display: none;
+          }
     }
 
     &__item {

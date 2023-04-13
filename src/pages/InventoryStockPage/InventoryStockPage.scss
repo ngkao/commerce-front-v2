@@ -26,22 +26,35 @@
         justify-content: center;
         text-align: center;
         align-items: center;
+        margin-left: 10px;
     }
 
     &__header-item {
         padding: 20px 5px;
     }
 
+    &__column-0 {
+        width: 10%;;
+    }
+
     &__column-1 {
-        width: 25%;
+        width: 18%;
     }
 
     &__column-2 {
-        width: 45%;
+        width: 39%;
     }
 
     &__column-3-4 {
-        width: 15%;
+        width: 16%;
+    }
+
+    &__image {
+        // width: 40px;
+        // height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
 
@@ -61,6 +74,10 @@
         // outline: 1px solid red;
         height: 615px;
         overflow: auto;
+
+        &::-webkit-scrollbar {
+            display: none;
+          }
     }
 
     &__item-ctr {
