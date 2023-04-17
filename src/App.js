@@ -24,6 +24,7 @@ function App() {
     const [previewCart, setPreviewCart] = useState(true);
     const [orders, setOrders] = useState([]);
     const [productsSold, setProductsSold] = useState();
+    const [urlStripe, setStripeUrl] = useState();
 
     useEffect(() => {
       return () => {setOldTotalPay(totalPay)};
@@ -172,6 +173,7 @@ function App() {
     const generateQRCode = (textLink) => {
       console.log("before generating QR Code",textLink.url)
       const text = textLink.url;
+      setStripeUrl(text);
       QRCode.toDataURL(text).then((data) => {
           setSrc(data)
           setShowQR(true)
@@ -255,6 +257,7 @@ function App() {
                     setShowQuantity={setShowQuantity}
                     setPreviewCart={setPreviewCart}
                     renderAllOrders={renderAllOrders}
+                    urlStripe={urlStripe}
                 />
             </div>
         </div>

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import React, { useState, useEffect, useRef } from 'react';
 import QRCode from "qrcode";
 import "./PaySummary.scss";
@@ -7,7 +8,8 @@ import SuccessMark from "../../assets/animations/success1.json";
 import RefreshMark from "../../assets/animations/refresh.json"
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
-const PaySummary = ({onClick, src, totalPay, showQR, oltTotalPay,setShowQR, setCartSession,setShowQuantity, setPreviewCart,renderAllOrders}) => {
+
+const PaySummary = ({urlStripe,onClick, src, totalPay, showQR, oltTotalPay,setShowQR, setCartSession,setShowQuantity, setPreviewCart,renderAllOrders}) => {
     
     // Pull Request for New Orders Successfully being Paid
     const [latestOrderData, setLatestOrderData] = useState(null);
@@ -104,7 +106,7 @@ const PaySummary = ({onClick, src, totalPay, showQR, oltTotalPay,setShowQR, setC
 
     return (
     <div className="checkout">
-        {showQR ? <img className="checkout__qr" src={src}/> : null}
+        {showQR ? <a href={urlStripe} target="_blank"><img className="checkout__qr" src={src}/></a> : null}
         {successPtmAlert? 
             <div className="checkout__success-ctr">
                 <div className="checkout__lottie">
