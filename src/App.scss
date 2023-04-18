@@ -1,5 +1,7 @@
 @use './styles/partials/fonts' as *;
 @use "./styles/partials/variables" as *;
+@use "./styles/partials/mixins" as *;
+
 
 * {
     box-sizing: border-box;
@@ -41,15 +43,27 @@
 
 .main {
     // margin: 2rem;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    height: 100vh;
-    align-items: space-between;
-    padding: 2rem 2rem;
-    background-color: black;
-    margin: auto;
-    width: 1280px;
+    // display: flex;
+    // justify-content: space-between;
+    // flex-direction: row;
+    // height: 100vh;
+    // align-items: space-between;
+    // padding: 2rem 2rem;
+    // background-color: black;
+    // margin: auto;
+    // width: 1280px;
+    
+    @include tablet {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        height: 100vh;
+        align-items: space-between;
+        padding: 2rem 2rem;
+        background-color: black;
+        margin: auto;
+        width: 1280px;
+    }
 }
 
 .center {
@@ -57,6 +71,13 @@
     justify-content: center;
     outline: 1px solid rgb(2, 2, 2);
     width: 100%;
+    flex-direction: column;
+    margin-bottom: 30px;
+
+    @include tablet {
+        flex-direction: row;
+        margin-bottom: 0px;
+    }
 }
 
 .paysum {

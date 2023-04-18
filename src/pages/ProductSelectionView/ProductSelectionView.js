@@ -17,11 +17,43 @@ const ProductSelectionView = ({productList, key, product, onClick,totalCart,remo
                 <div className="product__list">
                     <Carousel 
                         className="carousel" 
-                        cols={4} 
-                        rows={3} 
+                        // cols={4} 
+                        // rows={3} 
+                        // cols={1} 
+                        responsiveLayout={
+                            [
+                                {
+                                    breakpoint: 3000,
+                                    cols: 4,
+                                    rows: 3,
+                                    gap: 0,
+                                    loop: true,
+                                  //   autoplay: 1000
+                                  },
+                                {
+                                  breakpoint: 1279,
+                                  cols: 2,
+                                  rows: 3,
+                                  gap: 0,
+                                  loop: true,
+                                //   autoplay: 1000
+                                },
+                                {
+                                    breakpoint: 767,
+                                    cols: 1,
+                                    rows: 3,
+                                    gap: 0,
+                                    loop: true,
+                                  //   autoplay: 1000
+                                }
+                            ]
+                        }
+                        mobileBreakpoint={1}
+                        // scrollSnap={true}
                         gap={0} 
                         showDots={true}
-                        loop>
+                        loop
+                        >
                             {productList? 
                             productList.map((product) => (
                                 <Carousel.Item className="test" key={product.id}>

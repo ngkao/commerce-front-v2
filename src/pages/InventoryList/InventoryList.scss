@@ -1,13 +1,23 @@
 @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
 
 
 .inventory-item {
     display: flex;
     justify-content: center;
     align-items: center;
-    // outline: 1px solid salmon;
-    width: 90%;
+    // width: 10%;
+    width: 10%;
 
+
+
+    @include tablet {
+        width: 60%;
+    }
+
+    @include desktop {
+        width: 90%;
+    }
 
 
     &__price-quantity {
@@ -15,30 +25,59 @@
         // display:inline-block;
         justify-content: space-between;
         align-items: center;
-        width: 90%;
+        width: 40%;
+
         // outline: 1px solid salmon;
 
+        @include tablet {
+            width: 60%;
+        }
 
+        @include desktop {
+            width: 90%;
+        }
 
     }
   
 
     &__img {
         aspect-ratio: 1 / 1;
-        width: 90%;
+        width: 40%;
+
         height: auto;
         border-radius: 10px;
         // outline: 1px solid salmon;
 
+
+        @include tablet {
+            width: 60%;
+        }
+
+        @include desktop {
+            width: 90%;
+        }
+
     }
 
     &__name {
-        width: 90%;
+        width: 100%;
+
         color: $white;
         font-size: 14px;
-        height: 45px;
+ 
         // outline: 1px solid salmon;
         margin-top: 5px;
+        display: flex;
+        justify-content: center;
+
+        @include tablet {
+            width: 60%;
+            height: 45px;
+        }
+
+        @include desktop {
+            width: 90%;
+        }
     }
 
     &__btn {

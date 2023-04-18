@@ -1,21 +1,29 @@
 @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
 
 .nav {
     // outline: 1px solid blue;
     background-color: black;
     // width: 100%;
-    width: 400px;
+    width: 100%;
     // margin-left: 20px;
     display: flex;
     flex-direction: column;
+
+    @include tablet {
+        width: 400px;
+    }
 
 
     &__ctr {
       
         background-color: $grey-light;
-        height: 100vh;
         padding: 10px 0;
         border-radius: $border-radius-standard;
+        
+        @include tablet {
+            height: 100vh;
+        }
     }
 
     &__logo-ctr {
@@ -50,9 +58,13 @@
     &__list {
         display: flex;
         flex-direction: column;
-        margin-top: 90px;
+        margin-top: 10px;
         background-color: $grey-light;
         gap: 10px;
+
+        @include tablet {
+            margin-top: 90px;
+        }
     }
 
 
