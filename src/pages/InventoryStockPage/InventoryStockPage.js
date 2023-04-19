@@ -48,11 +48,13 @@ const InventoryStockPage = ({renderProductsSold, productsSold}) => {
                         .map((product) => (
                         <div key={product.product_id} className="inventory__item-ctr">
                             {/* <p className="sales__common-item sales__data-item">{dateConvert(order.order_date)}</p> */}
-                            <img className="inventory__image inventory__common-item inventory__data-item inventory__column-0" src={product.image_url} alt={product.product_name}/>
-                            <p className="inventory__common-item inventory__data-item inventory__column-1">{product.product_category}</p>
-                            <p className="inventory__common-item inventory__data-item inventory__column-2">{product.product_name}</p>
-                            <p className="inventory__common-item inventory__data-item inventory__column-3-4">{product.sold_quantity}</p>
-                            <p className="inventory__common-item inventory__data-item inventory__column-3-4">{product.available_quantity}</p>
+                            <div className=" inventory__common-item inventory__data-item inventory__column-0">
+                                <img className="inventory__image"  src={product.image_url} alt={product.product_name}/>
+                            </div>
+                            <p className="inventory__common-item inventory__data-item inventory__column-1"><span className="inventory__mob-header">Category: </span>{product.product_category}</p>
+                            <p className="inventory__common-item inventory__data-item inventory__column-2"><span className="inventory__mob-header">Name: </span>{product.product_name}</p>
+                            <p className="inventory__common-item inventory__data-item inventory__column-3-4"><span className="inventory__mob-header">Sold: </span>{product.sold_quantity}</p>
+                            <p className="inventory__common-item inventory__data-item inventory__column-3-4"><span className="inventory__mob-header">Category: </span>{product.available_quantity}</p>
                         </div>
                 ))
                 : null

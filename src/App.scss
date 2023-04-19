@@ -78,7 +78,7 @@ html {
     justify-content: center;
     outline: 1px solid rgb(2, 2, 2);
     width: 100%;
-    flex-direction: column;
+    // flex-direction: column;
     margin-bottom: 30px;
 
     @include tablet {
@@ -96,7 +96,7 @@ html {
     justify-content: space-between;
     align-items: center;
     // padding: 0 20px;
-    margin: 0 16px;
+    margin: 0 2rem;
     margin-bottom: 24px;
 
     @include tablet {

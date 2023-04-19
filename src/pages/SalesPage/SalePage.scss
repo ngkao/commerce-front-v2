@@ -1,4 +1,5 @@
 @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
 
 .sales {
     // outline: 1px solid salmon;
@@ -14,8 +15,12 @@
 
     &__headers {
     // outline: 1px solid yellow;
-        display: flex;
+        display: none;
         justify-content: center;
+        
+        @include tablet {
+            display: flex;
+        }
 
     }
 
@@ -37,26 +42,43 @@
         align-items: center;
         padding: 5px 5px;
         overflow: hidden;
-        height: 55px;
+
+
+        @include tablet {
+            height: 55px;
+        }
  
         // border-radius: $border-radius-standard
 
     }
 
     &__item-1 {
-        width: 25%;
+        
+        @include tablet {
+            width: 25%;
+        }
     }
     &__item-2 {
-        width: 15%;
+
+        @include tablet {
+            width: 15%;
+        }
     }
     &__item-3 {
-        width: 30%;
+        @include tablet {
+            width: 30%;
+        }
+    
     }
     &__item-4 {
-        width: 15%;
+        @include tablet {
+            width: 15%;
+        }
     }
     &__item-5 {
-        width: 15%;
+        @include tablet {
+            width: 15%;
+        }
     }
 
 
@@ -72,7 +94,7 @@
     }
 
     &__item-ctr {
-        display: flex;
+        // display: flex;
         border-radius: $border-radius-standard;
         background-color: $grey-light;
         margin-bottom: 10px;
@@ -83,11 +105,20 @@
         opacity: 0;
         transform: translateX(20px);
 
+        @include tablet {
+            display: flex;
+        }
+
         &:hover {
             border: 2px solid $color-selected;
             color: $color-selected;
 
         }
+    }
+
+    &__mob-header {
+        color: $color-selected;
+        padding: 5px 5px;
     }
 }
 

@@ -1,10 +1,15 @@
 @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
 
 .inventory {
     // outline: 1px solid salmon;
-    width: 100%;
+
     margin: 0 2rem;
     // background-color: white;
+
+    @include tablet {
+        width: 100%;
+    }
 
     &__title {
         font-size: $font-large;
@@ -14,8 +19,13 @@
 
     &__headers {
     // outline: 1px solid yellow;
-        display: flex;
+        display: none;
+        // display: flex;
         justify-content: center;
+
+        @include tablet {
+            display: flex;
+        }
 
     }
 
@@ -27,6 +37,10 @@
         text-align: center;
         align-items: center;
         margin-left: 10px;
+
+        white-space: nowrap; /* Prevents the text from wrapping */
+        overflow: hidden; /* Hides any overflowing content */
+        text-overflow: ellipsis;
     }
 
     &__header-item {
@@ -34,27 +48,45 @@
     }
 
     &__column-0 {
-        width: 10%;;
+        
+        @include tablet {
+            width: 10%;
+        }
     }
 
     &__column-1 {
-        width: 18%;
+        
+        @include tablet {
+            width: 18%;
+        }
     }
 
     &__column-2 {
-        width: 39%;
+
+        @include tablet {
+            width: 39%;
+        }
     }
 
     &__column-3-4 {
-        width: 16%;
+        
+        @include tablet {
+            width: 16%;
+        }
     }
 
     &__image {
-        // width: 40px;
+        width: 50px;
         // height: 40px;
         display: flex;
         justify-content: center;
         align-items: center;
+
+        margin-top: 10px;
+
+        @include tablet {
+            margin-top: 0px;
+        }
     }
 
 
@@ -63,9 +95,12 @@
         align-items: center;
         padding: 5px 5px;
         overflow: hidden;
-        height: 55px;
         color: white;
         // border-radius: $border-radius-standard
+        
+        @include tablet {
+            height: 55px;
+        }
 
     }
 
@@ -81,7 +116,9 @@
     }
 
     &__item-ctr {
+
         display: flex;
+        flex-direction: column;
         border-radius: $border-radius-standard;
         background-color: $grey-light;
         margin-bottom: 10px;
@@ -92,10 +129,26 @@
         opacity: 0;
         transform: translateX(20px);
 
+        @include tablet {
+            flex-direction: row;
+        }
+
         &:hover {
             border: 2px solid $color-selected;
             color: $color-selected;
 
+        }
+    }
+
+
+    &__mob-header {
+        color: $color-selected;
+        // padding-left: 24px;
+        padding: 5px 5px;
+  
+
+        @include tablet {
+            display: none;
         }
     }
 }
