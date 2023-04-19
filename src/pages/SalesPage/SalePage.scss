@@ -2,31 +2,28 @@
 @use "../../styles/partials/mixins" as *;
 
 .sales {
-    // outline: 1px solid salmon;
     width: 100%;
     margin: 0 2rem;
-    // background-color: white;
 
     &__title {
-        font-size: $font-large;
         padding: 1rem 1rem;
         color: $color-selected;
+        
+        @include tablet {
+            font-size: $font-large;
+        }
     }
 
     &__headers {
-    // outline: 1px solid yellow;
         display: none;
         justify-content: center;
         
         @include tablet {
             display: flex;
         }
-
     }
 
     &__common-item {
-    // outline: 1px solid blue;
-        // width: 20%;
         display: flex;
         justify-content: center;
         text-align: center;
@@ -47,9 +44,6 @@
         @include tablet {
             height: 55px;
         }
- 
-        // border-radius: $border-radius-standard
-
     }
 
     &__item-1 {
@@ -83,10 +77,9 @@
 
 
     &__list {
-        // gap: 100px;
-        // outline: 1px solid red;
         height: 615px;
         overflow: auto;
+    
 
         &::-webkit-scrollbar {
             display: none;
@@ -94,7 +87,6 @@
     }
 
     &__item-ctr {
-        // display: flex;
         border-radius: $border-radius-standard;
         background-color: $grey-light;
         margin-bottom: 10px;

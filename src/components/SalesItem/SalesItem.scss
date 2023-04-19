@@ -1,15 +1,25 @@
 @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
 
 .sales__heading {
     display: flex;
+
+    @include tablet {
+        margin: 0;
+    }
 }
 
 .items__title {
-    font-size: $font-large;
+
     padding: 1rem 1rem;
     color: white;
     text-decoration: none;
     cursor: pointer;
+
+    @include tablet {
+        font-size: $font-large;
+    }
 }
 
 .show-item {
@@ -20,22 +30,59 @@
 .sales-item {
 
     &__item-1{
-        width: 20%;
+ 
+
+        @include tablet {
+            width: 20%;
+        }
+        
     }
     &__item-2{
-        width: 35%;
+  
+        @include tablet {
+            width: 35%;
+        }
     }
     &__item-3{
-        width: 10%;
+        @include tablet {
+            width: 10%;
+        }
     }
     &__item-4{
-        width: 10%;
+        @include tablet {
+            width: 10%;
+        }
     }
     &__item-5{
-        width: 10%;
+        @include tablet {
+            width: 10%;
+        }
     }
     &__item-6{
-        width: 10%;
+        @include tablet {
+            width: 10%;
+        }
     }
 
+}
+
+.sales-item__item {
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+
+
+    @include tablet {
+        padding: 20px 5px;
+        overflow:visible; 
+
+    }
+}
+
+.sales__mob-header {
+    color: $color-selected;
+
+    @include tablet {
+        display: none;
+    }
 }

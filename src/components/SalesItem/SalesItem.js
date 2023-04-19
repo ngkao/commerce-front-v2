@@ -40,22 +40,22 @@ const SalesItem = () => {
                 <p className="sales__title">Item Details</p>
             </div>
         <div className="sales__headers">
-            <p className="sales__common-item sales__header-item sales-item__item-1">Category</p>
-            <p className="sales__common-item sales__header-item sales-item__item-2">Product</p>
-            <p className="sales__common-item sales__header-item sales-item__item-3">Quantity</p>
-            <p className="sales__common-item sales__header-item sales-item__item-4">Cost</p>
-            <p className="sales__common-item sales__header-item sales-item__item-5">Sales</p>
-            <p className="sales__common-item sales__header-item sales-item__item-6">Profit</p>
+            <p className="sales__common-item sales-item__item sales-item__item-1">Category</p>
+            <p className="sales__common-item sales-item__item sales-item__item-2">Product</p>
+            <p className="sales__common-item sales-item__item sales-item__item-3">Quantity</p>
+            <p className="sales__common-item sales-item__item sales-item__item-4">Cost</p>
+            <p className="sales__common-item sales-item__item sales-item__item-5">Sales</p>
+            <p className="sales__common-item sales-item__item sales-item__item-6">Profit</p>
         </div>
         <div className="sales__list">
             {itemsByOrderId? itemsByOrderId.map((item) => (
                 <div className="sales__item-ctr">
-                    <p className="sales__common-item sales__header-item sales-item__item-1">{item.product_category}</p>
-                    <p className="sales__common-item sales__header-item sales-item__item-2">{item.product_name}</p>
-                    <p className="sales__common-item sales__header-item sales-item__item-3">{item.quantity}</p>
-                    <p className="sales__common-item sales__header-item sales-item__item-4">-${item.product_purchase_price}</p>
-                    <p className="sales__common-item sales__header-item sales-item__item-5">${item.product_sale_price}</p>
-                    <p className="sales__common-item sales__header-item sales-item__item-6">${item.product_sale_price - item.product_purchase_price}</p>
+                    <p className="sales__common-item sales-item__item sales-item__item-1"><span className="sales__mob-header">Category: </span>{item.product_category}</p>
+                    <p className="sales__common-item sales-item__item sales-item__item-2"><span className="sales__mob-header">Product: </span>{item.product_name}</p>
+                    <p className="sales__common-item sales-item__item sales-item__item-3"><span className="sales__mob-header">Quantity: </span>{item.quantity}</p>
+                    <p className="sales__common-item sales-item__item sales-item__item-4"><span className="sales__mob-header">Cost: </span>-${item.product_purchase_price}</p>
+                    <p className="sales__common-item sales-item__item sales-item__item-5"><span className="sales__mob-header">Sales: </span>${item.product_sale_price}</p>
+                    <p className="sales__common-item sales-item__item sales-item__item-6"><span className="sales__mob-header">Profit: </span>${item.product_sale_price - item.product_purchase_price}</p>
                 </div>
             )):null}
         </div>
