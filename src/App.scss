@@ -13,6 +13,10 @@
     color: $white;
 }
 
+html {
+    background-color: black;
+}
+
 .checkout {
     // margin: 2rem;
     // width: 30%;
@@ -92,8 +96,8 @@
     justify-content: space-between;
     align-items: center;
     // padding: 0 20px;
-    
     margin: 0 16px;
+    margin-bottom: 24px;
 
     @include tablet {
         margin: 0;
