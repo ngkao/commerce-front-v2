@@ -20,9 +20,11 @@
         background-color: $grey-light;
         padding: 10px 0;
         border-radius: $border-radius-standard;
+        margin: 24px 16px 0;
         
         @include tablet {
             height: 100vh;
+            margin: 0;
         }
     }
 
@@ -61,6 +63,7 @@
         margin-top: 10px;
         background-color: $grey-light;
         gap: 10px;
+        border-radius: $border-radius-standard;
 
         @include tablet {
             margin-top: 90px;

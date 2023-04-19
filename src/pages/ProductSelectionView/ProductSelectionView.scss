@@ -29,7 +29,7 @@
 
     &__search {
         height: 40px;
-        width: 100%;
+        width: 93%;
         padding: 0 1rem;
         background-color: $grey-light;
         border-radius: $border-radius-standard;
@@ -52,7 +52,7 @@
     &__add {
         text-decoration: none;
         color: $white;
-        width: 100%;
+        width: 93%;
         border: 2px solid $white;
         height: 40px;
         display: flex;
@@ -78,9 +78,6 @@
         display: flex;
         justify-content: flex-start;
         flex-wrap: wrap;
-        outline: 1px solid salmon;
-
-
     }
 }
 

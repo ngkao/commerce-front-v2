@@ -5,6 +5,10 @@
       padding: 20px 30px 0;
       background-color: $grey-light;
       border-radius: $border-radius-standard;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
 
     &__title {
         color: $white;
