@@ -8,6 +8,7 @@
     &__title {
         padding: 1rem 1rem;
         color: $color-selected;
+        font-size: 27px;
         
         @include tablet {
             font-size: $font-large;

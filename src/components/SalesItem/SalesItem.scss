@@ -16,6 +16,7 @@
     color: white;
     text-decoration: none;
     cursor: pointer;
+    font-size: 27px;
 
     @include tablet {
         font-size: $font-large;
