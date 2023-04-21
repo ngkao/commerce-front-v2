@@ -44,7 +44,7 @@ const NavBar = () => {
                             style={{ height: '150%', width: '200%' }}
                         />
                     </div>
-                    <p className="nav__logo">Retail POS</p>
+                    <p className="nav__logo">Snack POS</p>
                 </div>
                 <div className="nav__list">
                     <Link className={isProductPath ? "nav__item nav__item--active" : "nav__item"} to="/products">Products</Link>

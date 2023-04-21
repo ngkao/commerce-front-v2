@@ -1,11 +1,16 @@
 @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
 
 .insights {
     width: 100%;
-    margin: 0 2rem;
+    margin: 2rem 2rem 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    @include tablet {
+        margin: 0 2rem 0;  
+    }
 
     &__container {
         height: 100%;
@@ -24,7 +29,7 @@
 
     &__sales-dollar {
         width: 50%;
-        outline: 1px solid salmon;
+
         background-color: $color-selected;
         border-radius: $border-radius-standard;
         display: flex;

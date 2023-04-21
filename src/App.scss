@@ -1,5 +1,7 @@
 @use './styles/partials/fonts' as *;
 @use "./styles/partials/variables" as *;
+@use "./styles/partials/mixins" as *;
+
 
 * {
     box-sizing: border-box;
@@ -11,13 +13,20 @@
     color: $white;
 }
 
+html {
+    background-color: black;
+}
+
 .checkout {
     // margin: 2rem;
     // width: 30%;
-    width: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    
+    @include tablet {
+        width: 300px;
+    }
 
 
     &__ctr {
@@ -41,15 +50,27 @@
 
 .main {
     // margin: 2rem;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    height: 100vh;
-    align-items: space-between;
-    padding: 2rem 2rem;
-    background-color: black;
-    margin: auto;
-    width: 1280px;
+    // display: flex;
+    // justify-content: space-between;
+    // flex-direction: row;
+    // height: 100vh;
+    // align-items: space-between;
+    // padding: 2rem 2rem;
+    // background-color: black;
+    // margin: auto;
+    // width: 1280px;
+    
+    @include tablet {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        height: 100vh;
+        align-items: space-between;
+        padding: 2rem 2rem;
+        background-color: black;
+        margin: auto;
+        width: 1280px;
+    }
 }
 
 .center {
@@ -57,6 +78,13 @@
     justify-content: center;
     outline: 1px solid rgb(2, 2, 2);
     width: 100%;
+    // flex-direction: column;
+    margin-bottom: 30px;
+
+    @include tablet {
+        flex-direction: row;
+        margin-bottom: 0px;
+    }
 }
 
 .paysum {
@@ -66,6 +94,13 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
     // padding: 0 20px;
-    
+    margin: 0 2rem;
+    margin-bottom: 24px;
+
+    @include tablet {
+        margin: 0;
+        width: 500px;
+    }
 }

@@ -56,11 +56,11 @@ const SalePage = ({orders,setOrders,renderItemsByOrderId}) => {
                     .sort((a, b) => new Date(b.order_date) - new Date(a.order_date))
                     .map((order) => (
                     <div onClick={() => handleClick(order.order_id)} className="sales__item-ctr">
-                        <p className="sales__common-item sales__data-item sales__item-1">{dateConvert(order.order_date)}</p>
-                        <p className="sales__common-item sales__data-item sales__item-2">{order.order_id}</p>
-                        <p className="sales__common-item sales__data-item sales__item-3">{order.customer_name}</p>
-                        <p className="sales__common-item sales__data-item sales__item-4">{order.total_quantity}</p>
-                        <p className="sales__common-item sales__data-item sales__item-5">${order.total_sale_amount}</p>
+                        <p className="sales__common-item sales__data-item sales__item-1"><span className="sales__mob-header">Date: </span>{dateConvert(order.order_date)}</p>
+                        <p className="sales__common-item sales__data-item sales__item-2"><span className="sales__mob-header">Order ID: </span>{order.order_id}</p>
+                        <p className="sales__common-item sales__data-item sales__item-3"><span className="sales__mob-header">Contact: </span>{order.customer_name}</p>
+                        <p className="sales__common-item sales__data-item sales__item-4"><span className="sales__mob-header">Quantity: </span>{order.total_quantity}</p>
+                        <p className="sales__common-item sales__data-item sales__item-5"><span className="sales__mob-header">Sales: </span>${order.total_sale_amount}</p>
                     </div>
                 ))}
             </div>
