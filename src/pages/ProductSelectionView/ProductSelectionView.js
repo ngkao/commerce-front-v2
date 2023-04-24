@@ -3,16 +3,23 @@ import InventoryList from '../InventoryList/InventoryList';
 import { Link } from 'react-router-dom';
 import "./ProductSelectionView.scss"
 import 'react-multi-carousel/lib/styles.css';
-import Carousel from 'react-grid-carousel'
+import Carousel from 'react-grid-carousel';
+import { useEffect } from 'react';
 
 const ProductSelectionView = ({productList, key, product, onClick,totalCart,removeFromCart, cartSession, setCartSession,showQuantity, setShowQuantity,setPreviewCart,productsSold}) => {
 
+    useEffect(() => {
+        if (!productList) {
+            <p>STILL LOADING</p>
+        }
+    },[])
+
     return (
         <section className="product">
-            <div className="product__topbar">
+            {/* <div className="product__topbar">
                 <input className="product__search" placeholder="SEARCH"></input>
                 <Link className="product__add" to="/products/add">Add Product</Link>
-            </div>
+            </div> */}
             <div className="product__ctr">
                 <div className="product__list">
                     <Carousel 
@@ -23,24 +30,24 @@ const ProductSelectionView = ({productList, key, product, onClick,totalCart,remo
                         responsiveLayout={
                             [
                                 {
-                                    breakpoint: 3000,
-                                    cols: 4,
+                                    breakpoint: 767,
+                                    cols: 1,
                                     rows: 3,
                                     gap: 0,
                                     loop: true,
                                   //   autoplay: 1000
-                                  },
-                                {
-                                  breakpoint: 1279,
-                                  cols: 2,
-                                  rows: 3,
-                                  gap: 0,
-                                  loop: true,
-                                //   autoplay: 1000
                                 },
+                                // {
+                                //     breakpoint: 1280,
+                                //     cols: 2,
+                                //     rows: 3,
+                                //     gap: 0,
+                                //     loop: true,
+                                //   //   autoplay: 1000
+                                // },
                                 {
-                                    breakpoint: 767,
-                                    cols: 1,
+                                    breakpoint: 3000,
+                                    cols: 4,
                                     rows: 3,
                                     gap: 0,
                                     loop: true,
