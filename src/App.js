@@ -113,10 +113,25 @@ function App() {
               let str = sessionStorage.getItem("myCart");
               let myCart = JSON.parse(str);
               let findCount = myCart.filter((item) => item.id === product.id)
-              findCount[0].count += 1;
-              sessionStorage.setItem("myCart", JSON.stringify(myCart))
-              setCartSession(myCart)
-              calcTotalPay();
+
+              // Checking if there are available quantity in stock
+              console.log("Before Adding: Quantity Selected", findCount[0].count)
+              console.log("Before Adding: Available Quantity", findCount[0].quantity)
+              if (findCount[0].quantity > findCount[0].count) {
+                console.log("OK to add")
+
+
+                findCount[0].count += 1;
+                sessionStorage.setItem("myCart", JSON.stringify(myCart))
+                setCartSession(myCart)
+                calcTotalPay();
+
+              } else {
+                console.log("Out of Stock")
+              }
+
+
+   
             }
         } else {
             let cart = [];
@@ -271,6 +286,7 @@ function App() {
                     setPreviewCart={setPreviewCart}
                     renderAllOrders={renderAllOrders}
                     urlStripe={urlStripe}
+                    renderProductList={renderProductList}
                 />
             </div>
         </div>

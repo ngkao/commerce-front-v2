@@ -45,18 +45,20 @@ const InventoryList = ({product, onClick, totalCart, removeFromCart, className, 
 
     // const checkStockQuantity = (selectedId) => {
 
-    //     if (cartSession.length > 0 ) {
+    // //     if (cartSession.length > 0 ) {
     //         const selectProduct = productsSold.filter((product) => product.product_id == selectedId)
-    //         console.log(selectProduct)
-    //         const countCheck = cartSession.find((item) => item.id === selectedId)?.count || 1
-    //         console.log("Request count",countCheck, typeof(countCheck));
+    // //         console.log(selectProduct)
+    //         // const countCheck = cartSession.find((item) => item.id === selectedId)?.count + 1 || 0;
+    //         console.log("CardSession",cartSession)
+    //         console.log("Chosen ID",selectedId)
+    //         // console.log("Request count",countCheck, typeof(countCheck));
     //         console.log("available count",selectProduct[0].available_quantity, typeof(selectProduct[0].available_quantity));
-
+    //         // console.log("current quantity", countCheck)
         
-    //         if (selectProduct[0].available_quantity > countCheck) {
-    //             return;
-    //         }
-    //     }
+    // //         if (selectProduct[0].available_quantity > countCheck) {
+    // //             return;
+    // //         }
+    // //     }
     // }
 
     //Transition 
