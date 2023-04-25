@@ -13,6 +13,8 @@ import SalePage from "./pages/SalesPage/SalePage";
 import SalesItem from "./components/SalesItem/SalesItem";
 import Insights from "./pages/Insights/Insights";
 import InventoryStockPage from "./pages/InventoryStockPage/InventoryStockPage";
+import Lottie from "lottie-react";
+import LoadingIcon from "./assets/animations/loading.json";
 
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
@@ -142,7 +144,18 @@ function App() {
     const [showQR, setShowQR] = useState(false);
 
     if (!productList) {     
-      return (<p>loading...</p>);
+          return (
+            <div className="loading">
+                <Lottie
+                loop={true}
+                autoplay={true}  
+                animationData={LoadingIcon}
+                interactivity="click"
+                style={{ height: '150px', width: '200px' }}
+              />
+            </div>
+
+          )
     } 
 
     const handleClick = () => {
