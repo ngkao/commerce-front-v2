@@ -49,7 +49,7 @@ const SalesItem = () => {
         </div>
         <div className="sales__list">
             {itemsByOrderId? itemsByOrderId.map((item) => (
-                <div className="sales__item-ctr">
+                <div className="sales__item-ctr" key={item.order_item_id}>
                     <p className="sales__common-item sales-item__item sales-item__item-1"><span className="sales__mob-header">Category: </span>{item.product_category}</p>
                     <p className="sales__common-item sales-item__item sales-item__item-2"><span className="sales__mob-header">Product: </span>{item.product_name}</p>
                     <p className="sales__common-item sales-item__item sales-item__item-3"><span className="sales__mob-header">Quantity: </span>{item.quantity}</p>

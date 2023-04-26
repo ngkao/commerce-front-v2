@@ -52,8 +52,11 @@ const ProductSelectionView = ({productList, key, product, onClick,totalCart,remo
                         showDots={true}
                         loop
                         >
+                            {console.log(productList)}
                             {productList? 
-                            productList.map((product) => (
+                            productList
+                            .sort((a,b) => a.id - b.id)    
+                            .map((product) => (
                                 <Carousel.Item className="test" key={product.id}>
                                     <InventoryList 
                                         key={product.id}
