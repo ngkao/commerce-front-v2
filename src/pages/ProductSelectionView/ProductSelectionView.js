@@ -1,7 +1,6 @@
 import React from 'react';
 import InventoryList from '../InventoryList/InventoryList';
-import { Link } from 'react-router-dom';
-import "./ProductSelectionView.scss"
+import "./ProductSelectionView.scss";
 import 'react-multi-carousel/lib/styles.css';
 import Carousel from 'react-grid-carousel';
 import { useEffect } from 'react';
@@ -37,14 +36,6 @@ const ProductSelectionView = ({productList, key, product, onClick,totalCart,remo
                                     loop: true,
                                   //   autoplay: 1000
                                 },
-                                // {
-                                //     breakpoint: 1280,
-                                //     cols: 2,
-                                //     rows: 3,
-                                //     gap: 0,
-                                //     loop: true,
-                                //   //   autoplay: 1000
-                                // },
                                 {
                                     breakpoint: 3000,
                                     cols: 4,

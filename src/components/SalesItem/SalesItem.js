@@ -53,9 +53,9 @@ const SalesItem = () => {
                     <p className="sales__common-item sales-item__item sales-item__item-1"><span className="sales__mob-header">Category: </span>{item.product_category}</p>
                     <p className="sales__common-item sales-item__item sales-item__item-2"><span className="sales__mob-header">Product: </span>{item.product_name}</p>
                     <p className="sales__common-item sales-item__item sales-item__item-3"><span className="sales__mob-header">Quantity: </span>{item.quantity}</p>
-                    <p className="sales__common-item sales-item__item sales-item__item-4"><span className="sales__mob-header">Cost: </span>-${item.product_purchase_price}</p>
-                    <p className="sales__common-item sales-item__item sales-item__item-5"><span className="sales__mob-header">Sales: </span>${item.product_sale_price}</p>
-                    <p className="sales__common-item sales-item__item sales-item__item-6"><span className="sales__mob-header">Profit: </span>${item.product_sale_price - item.product_purchase_price}</p>
+                    <p className="sales__common-item sales-item__item sales-item__item-4"><span className="sales__mob-header">Cost: </span>-${item.product_purchase_price * item.quantity}</p>
+                    <p className="sales__common-item sales-item__item sales-item__item-5"><span className="sales__mob-header">Sales: </span>${item.product_sale_price * item.quantity}</p>
+                    <p className="sales__common-item sales-item__item sales-item__item-6"><span className="sales__mob-header">Profit: </span>${(item.product_sale_price - item.product_purchase_price) * item.quantity}</p>
                 </div>
             )):null}
         </div>

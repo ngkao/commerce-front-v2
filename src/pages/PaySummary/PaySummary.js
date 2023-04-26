@@ -1,7 +1,5 @@
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-import React, { useState, useEffect, useRef } from 'react';
-import QRCode from "qrcode";
+import React, { useState, useEffect} from 'react';
 import "./PaySummary.scss";
 import Lottie from "lottie-react";
 import SuccessMark from "../../assets/animations/success1.json";

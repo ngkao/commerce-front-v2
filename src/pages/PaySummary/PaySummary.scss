@@ -23,7 +23,6 @@
             opacity: 1;
             transform: translateX(0);
             border-radius: $border-radius-lower;
-            // transition: all 5s ease;
         }
     }
 
@@ -127,7 +126,6 @@
         justify-content: center;
         align-items: center;
         border-radius: 50%;
-        // width: 20%;
         padding-top: 8px;
         padding-right: 1px;
         transition: transform 0.5s ease-in-out;
@@ -139,7 +137,6 @@
 
         &.rotate {
             transform: rotate(360deg);
-            
           }
     }
 
@@ -163,11 +160,7 @@
 
     &__success-msg {
         background-color: $grey-light;
-        // margin-bottom: 15px;
         color: $white;
-
-        // outline: 1px solid yellow;
-   
         background-color: $white;
         color: black;
     }
@@ -184,9 +177,10 @@
        color: black;
        border-radius: $border-radius-lower;
 
-       position: absolute;
-       bottom: 30%;
-
+       @include tablet {
+        position: absolute;
+        bottom: 30%;
+       }
     }
 
     &__outofstock-msg {
@@ -196,8 +190,6 @@
         font-size: fit-content;
         overflow: hidden;
         text-overflow: ellipsis;
-        // white-space: nowrap;
-      
     }
 }
 

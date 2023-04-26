@@ -1,15 +1,11 @@
 import "./SalePage.scss"
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {dateConvert} from "../../utils/utils";
 import { useLocation } from "react-router-dom";
 
-const SalePage = ({orders,setOrders,renderItemsByOrderId}) => {
-    const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
+const SalePage = ({orders,renderItemsByOrderId}) => {
     const navigate = useNavigate();
-
-
 
     const handleClick = (order_id) => {
     console.log("Selected Order Id", order_id)
@@ -19,11 +15,10 @@ const SalePage = ({orders,setOrders,renderItemsByOrderId}) => {
 
     const location = useLocation();
 
-
     useEffect(() => {
         setTimeout(() => {
             const items = document.querySelectorAll('.sales__item-ctr');
-           if (location.pathname == '/sales') {
+           if (location.pathname === '/sales') {
                setTimeout(() => {
                    items.forEach((item, index) => 
                        setTimeout(() => {
@@ -31,7 +26,6 @@ const SalePage = ({orders,setOrders,renderItemsByOrderId}) => {
                        },index * 100)
                    );
                },0)
-    
            } else {
            items.forEach(item => item.classList.remove('show-item'));
            }
@@ -61,7 +55,6 @@ const SalePage = ({orders,setOrders,renderItemsByOrderId}) => {
                     </div>
                 ))}
             </div>
-
         </section>
     );
 };

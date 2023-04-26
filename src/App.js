@@ -15,7 +15,6 @@ import Insights from "./pages/Insights/Insights";
 import InventoryStockPage from "./pages/InventoryStockPage/InventoryStockPage";
 import Lottie from "lottie-react";
 import LoadingIcon from "./assets/animations/loading.json";
-
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 function App() {
@@ -133,8 +132,6 @@ function App() {
                 },3000)
               }
               calcTotalPay();
-
-   
             }
         } else {
             let cart = [];
@@ -155,7 +152,6 @@ function App() {
       setCartSession(myCart)
       calcTotalPay();
     }
-
 
     const [cartSession, setCartSession] = useState([]);
     const [src, setSrc] = useState("");
@@ -202,7 +198,7 @@ function App() {
     }
 
     const generateQRCode = (textLink) => {
-      console.log("before generating QR Code",textLink.url)
+      console.log("QR Code Link: ",textLink.url)
       const text = textLink.url;
       setStripeUrl(text);
       QRCode.toDataURL(text).then((data) => {
@@ -295,7 +291,6 @@ function App() {
                     urlStripe={urlStripe}
                     renderProductList={renderProductList}
                     outOfStockMsg={outOfStockMsg}
-
                 />
             </div>
         </div>

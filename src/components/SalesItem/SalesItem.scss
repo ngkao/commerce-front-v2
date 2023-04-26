@@ -31,10 +31,9 @@
 .sales-item {
 
     &__item-1{
- 
 
         @include tablet {
-            width: 20%;
+            width: 25%;
         }
         
     }
@@ -64,7 +63,6 @@
             width: 10%;
         }
     }
-
 }
 
 .sales-item__item {
@@ -72,11 +70,9 @@
     overflow: hidden; 
     text-overflow: ellipsis; 
 
-
     @include tablet {
         padding: 20px 5px;
         overflow:visible; 
-
     }
 }
 
