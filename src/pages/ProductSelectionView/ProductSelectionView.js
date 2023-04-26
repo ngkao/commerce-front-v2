@@ -6,7 +6,7 @@ import 'react-multi-carousel/lib/styles.css';
 import Carousel from 'react-grid-carousel';
 import { useEffect } from 'react';
 
-const ProductSelectionView = ({productList, key, product, onClick,totalCart,removeFromCart, cartSession, setCartSession,showQuantity, setShowQuantity,setPreviewCart,productsSold}) => {
+const ProductSelectionView = ({productList, key, product, onClick,totalCart,removeFromCart, cartSession, setCartSession,showQuantity, setShowQuantity,setPreviewCart,productsSold,setOutOfStockMsg,setShowQR}) => {
 
     useEffect(() => {
         if (!productList) {
@@ -77,6 +77,8 @@ const ProductSelectionView = ({productList, key, product, onClick,totalCart,remo
                                         setShowQuantity={setShowQuantity}
                                         setPreviewCart={setPreviewCart}
                                         productsSold={productsSold}
+                                        setOutOfStockMsg={setOutOfStockMsg}
+                                        setShowQR={setShowQR}
                                     />
                                 </Carousel.Item>
                             ))

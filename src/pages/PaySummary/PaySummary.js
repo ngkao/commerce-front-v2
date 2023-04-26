@@ -9,8 +9,11 @@ import RefreshMark from "../../assets/animations/refresh.json"
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 
-const PaySummary = ({urlStripe,onClick, src, totalPay, showQR, oltTotalPay,setShowQR, setCartSession,setShowQuantity, setPreviewCart,renderAllOrders,renderProductList}) => {
+const PaySummary = ({urlStripe,onClick, src, totalPay, showQR, oltTotalPay,setShowQR, setCartSession,setShowQuantity, setPreviewCart,renderAllOrders,renderProductList,outOfStockMsg,setTotalPay,setOldTotalPay}) => {
     
+    console.log(oltTotalPay, "Old Total Pay")
+    console.log(totalPay, "Total Pay")
+
     // Pull Request for New Orders Successfully being Paid
     const [latestOrderData, setLatestOrderData] = useState(null);
     useEffect(() => {
@@ -42,6 +45,8 @@ const PaySummary = ({urlStripe,onClick, src, totalPay, showQR, oltTotalPay,setSh
             setPreviewCart(true);
             renderAllOrders();
             renderProductList();
+            setTotalPay(0);
+            setOldTotalPay(0);
         }, 6000)
     }
 
@@ -119,6 +124,12 @@ const PaySummary = ({urlStripe,onClick, src, totalPay, showQR, oltTotalPay,setSh
                 </div>
                 <p className="checkout__success-msg">{latestOrderData.customer_name} Successfully Paid</p>
             </div> : null}
+        {outOfStockMsg.status? 
+            <div className="checkout__outofstock-ctr">
+                <p className="checkout__outofstock-msg">{outOfStockMsg.product}</p>
+                <p className="checkout__outofstock-msg">{outOfStockMsg.message}</p> 
+            </div>
+        : null}
         <div className="checkout__totalpay-ctr">
             <p className="checkout__totalpay-title">Total Pay:</p>
             <div className="checkout__totalpay-amount-ctr">
