@@ -45,8 +45,8 @@ const PaySummary = ({urlStripe,onClick, src, totalPay, showQR, oltTotalPay,setSh
             setPreviewCart(true);
             renderAllOrders();
             renderProductList();
-            setTotalPay(0);
-            setOldTotalPay(0);
+            // setTotalPay(0);
+            // setOldTotalPay(0);
         }, 6000)
     }
 

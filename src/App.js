@@ -30,7 +30,9 @@ function App() {
     const [outOfStockMsg, setOutOfStockMsg] = useState( {status:false,message:"",product:""});
 
     useEffect(() => {
-      return () => {setOldTotalPay(totalPay)};
+      return () => {
+        setOldTotalPay(totalPay)
+      };
     }, [totalPay]);
 
     const calcTotalPay = () => {
