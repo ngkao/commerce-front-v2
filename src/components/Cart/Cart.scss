@@ -2,13 +2,14 @@
 @use "../../styles/partials/mixins" as *;
 
 .cart {
-      padding: 20px 0 0;
+      padding: 20px 25px 0;
       background-color: $grey-light;
       border-radius: $border-radius-standard;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
+      width: 100%;
 
       @include tablet {
       padding: 20px 30px 0;
@@ -42,6 +43,7 @@
         background-color: $grey-light;
         overflow: auto;
         height: 250px;
+        width: 100%;
 
         &::-webkit-scrollbar {
             display: none;
@@ -55,6 +57,7 @@
         padding-bottom: 40px;
         background-color: $grey-light;
         padding-right: 5px;
+        width: 100%;
 
         //transition
         transition: all 0.2s ease;
@@ -66,6 +69,7 @@
     &__img-name-qt {
         display: flex;
         background-color: $grey-light;
+        width: 200px;
     }
 
     &__img {
@@ -82,7 +86,6 @@
     &__name {
         color: $white;
         background-color: $grey-light;
-
     }
 
     &__quantity {

@@ -15,6 +15,7 @@
         opacity: 0;
         transform: translateX(20px);
         border-radius: $border-radius-lower;
+        position: relative;
         
         &--active {
             width: 200px;
@@ -169,6 +170,34 @@
    
         background-color: $white;
         color: black;
+    }
+
+    &__outofstock-ctr {
+        width: 200px;
+        height: 70px;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+       color: black;
+       border-radius: $border-radius-lower;
+
+       position: absolute;
+       bottom: 30%;
+
+    }
+
+    &__outofstock-msg {
+        color: red;
+        width: 90%;
+        white-space: nowrap;
+        font-size: fit-content;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        // white-space: nowrap;
+      
     }
 }
 

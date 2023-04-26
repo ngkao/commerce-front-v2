@@ -13,6 +13,8 @@ import SalePage from "./pages/SalesPage/SalePage";
 import SalesItem from "./components/SalesItem/SalesItem";
 import Insights from "./pages/Insights/Insights";
 import InventoryStockPage from "./pages/InventoryStockPage/InventoryStockPage";
+import Lottie from "lottie-react";
+import LoadingIcon from "./assets/animations/loading.json";
 
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
@@ -25,6 +27,7 @@ function App() {
     const [orders, setOrders] = useState([]);
     const [productsSold, setProductsSold] = useState();
     const [urlStripe, setStripeUrl] = useState();
+    const [outOfStockMsg, setOutOfStockMsg] = useState( {status:false,message:"",product:""});
 
     useEffect(() => {
       return () => {setOldTotalPay(totalPay)};
@@ -92,6 +95,9 @@ function App() {
         if (startStr) {
             const selectedItem = cart.filter((item) => item.id === product.id)
             if (!selectedItem.length > 0) {
+
+
+              console.log("Before adding 0 count")
               let addCount = {...product, count: 0}
               cart.push(addCount)
               sessionStorage.setItem("myCart", JSON.stringify(cart))
@@ -99,11 +105,16 @@ function App() {
             calcTotalPay();
             }
         } else {
-              let cart = [];
-              cart.push(product)
-              sessionStorage.setItem("myCart", JSON.stringify(cart))
-              setCartSession(cart)
-              calcTotalPay();
+
+          console.log("Setting Up");
+          console.log(product.quantity)
+          if (product.quantity != 0) {
+            let cart = [];
+            cart.push(product)
+            sessionStorage.setItem("myCart", JSON.stringify(cart))
+            setCartSession(cart)
+            calcTotalPay();
+          }
         }
         if (startCart) {
             const addCount = cart.filter((item) => item.id === product.id)
@@ -111,18 +122,46 @@ function App() {
               let str = sessionStorage.getItem("myCart");
               let myCart = JSON.parse(str);
               let findCount = myCart.filter((item) => item.id === product.id)
-              findCount[0].count += 1;
-              sessionStorage.setItem("myCart", JSON.stringify(myCart))
-              setCartSession(myCart)
-              calcTotalPay();
+
+              // Checking if there are available quantity in stock
+              console.log("Before Adding: Quantity Selected", findCount[0].count)
+              console.log("Before Adding: Available Quantity", findCount[0].quantity)
+              if (findCount[0].quantity > findCount[0].count) {
+                console.log("OK to add")
+
+
+                findCount[0].count += 1;
+                sessionStorage.setItem("myCart", JSON.stringify(myCart))
+                setCartSession(myCart)
+                calcTotalPay();
+
+              } else {
+                console.log("Out of Stock")
+
+                setOutOfStockMsg({status:true,message: `Max available: ${findCount[0].quantity}`, product: findCount[0].product_name})
+
+                setTimeout(() => {
+                  setOutOfStockMsg({status:false,message: `Max available ${findCount[0].quantity}`, product: findCount[0].product_name})
+                },3000)
+              }
+
+
+   
             }
         } else {
+
+          console.log("Before adding 1st count")
+          console.log("Quantity",product.quantity)
+
+
             let cart = [];
             let addCount = {...product, count: 1}
             cart.push(addCount)
             sessionStorage.setItem("myCart", JSON.stringify(cart))
             setCartSession(cart)
             calcTotalPay();
+
+  
         }
       }
 
@@ -142,7 +181,18 @@ function App() {
     const [showQR, setShowQR] = useState(false);
 
     if (!productList) {     
-      return (<p>loading...</p>);
+          return (
+            <div className="loading">
+                <Lottie
+                loop={true}
+                autoplay={true}  
+                animationData={LoadingIcon}
+                interactivity="click"
+                style={{ height: '150px', width: '200px' }}
+              />
+            </div>
+
+          )
     } 
 
     const handleClick = () => {
@@ -216,6 +266,8 @@ function App() {
                             setShowQuantity={setShowQuantity}
                             setPreviewCart={setPreviewCart}
                             productsSold={productsSold}
+                            setOutOfStockMsg={setOutOfStockMsg}
+                            setShowQR={setShowQR}
                         />
                     }></Route>
                     <Route path="/products/add" element={
@@ -250,14 +302,19 @@ function App() {
                     onClick={handleClick}
                     src={src}
                     totalPay={totalPay}
+                    setTotalPay={setTotalPay}
                     showQR={showQR}
                     setShowQR={setShowQR}
                     oltTotalPay={oltTotalPay}
+                    setOldTotalPay={setOldTotalPay}
                     setCartSession={setCartSession}
                     setShowQuantity={setShowQuantity}
                     setPreviewCart={setPreviewCart}
                     renderAllOrders={renderAllOrders}
                     urlStripe={urlStripe}
+                    renderProductList={renderProductList}
+                    outOfStockMsg={outOfStockMsg}
+
                 />
             </div>
         </div>

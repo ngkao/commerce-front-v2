@@ -2,6 +2,7 @@ import BarChart from "../../components/BarChart/BarChart";
 import "./Insights.scss"
 import { useEffect, useState } from "react";
 
+
 const Insights = ({orders}) => {
 
     const salesData = new Array(31).fill(0);
@@ -18,9 +19,37 @@ const Insights = ({orders}) => {
                 data: salesData,
                 backgroundColor: ["#EDB055"],
                 borderRadius: Number.MAX_VALUE,
-            }]
-        }
+            }],
+            options: {
+                scales: {
+                  y: {
+                    title: {
+                      display: true,
+                      text: 'Sales in $'
+                    }
+                  },
+                  x: {
+                    title: {
+                      display: true,
+                      text: 'Day in Month'
+                    },
+                    ticks: {
+                        autoSkip: false,
+                        maxRotation: 0,
+                        minRotation: 0,
+                    }
+                  }
+                },
+                plugins: {
+                  legend: {
+                    display: true,
+                  },
+                }
+              }
+        },
+        
     )
+
     
     const [statsToday, setStatsToday] = useState({
         dollar: "0",
@@ -93,7 +122,7 @@ const Insights = ({orders}) => {
                 </div>
             </div>
             <div>
-                <BarChart chartData={salesChartData}/>
+                <BarChart chartData={salesChartData} chartDataOptions={salesChartData.options}/>
             </div>
         </section>
     );

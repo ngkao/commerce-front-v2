@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import "./InventoryList.scss"
 
-const InventoryList = ({product, onClick, totalCart, removeFromCart, className, cartSession, setCartSession, setShowQuantity, showQuantity, setPreviewCart,productsSold}) => {
+const InventoryList = ({product, onClick, totalCart, removeFromCart, className, cartSession, setCartSession, setShowQuantity, showQuantity, setPreviewCart,productsSold,setOutOfStockMsg,setShowQR}) => {
 
     // const location = useLocation();
     // const [selectedCart, setSelectedCart] = useState([]);
@@ -38,25 +38,38 @@ const InventoryList = ({product, onClick, totalCart, removeFromCart, className, 
 
     const handlePlusClick = (selectedId) => { 
         // checkStockQuantity(selectedId)
-        
-        handleAddToCart(product.id) 
-        setShowQuantity([...showQuantity, selectedId])
+        console.log(product)
+
+        if (product.quantity != 0) {
+            // setShowQR(false)
+            handleAddToCart(product.id) 
+            setShowQuantity([...showQuantity, selectedId])
+        } else {
+            setOutOfStockMsg({status: true, product: product.product_name, message: "is out of stock"})
+
+            setTimeout(() => {
+                setOutOfStockMsg({status: false, message: "test"})
+            }, 3000)
+        }
+
     }
 
     // const checkStockQuantity = (selectedId) => {
 
-    //     if (cartSession.length > 0 ) {
+    // //     if (cartSession.length > 0 ) {
     //         const selectProduct = productsSold.filter((product) => product.product_id == selectedId)
-    //         console.log(selectProduct)
-    //         const countCheck = cartSession.find((item) => item.id === selectedId)?.count || 1
-    //         console.log("Request count",countCheck, typeof(countCheck));
+    // //         console.log(selectProduct)
+    //         // const countCheck = cartSession.find((item) => item.id === selectedId)?.count + 1 || 0;
+    //         console.log("CardSession",cartSession)
+    //         console.log("Chosen ID",selectedId)
+    //         // console.log("Request count",countCheck, typeof(countCheck));
     //         console.log("available count",selectProduct[0].available_quantity, typeof(selectProduct[0].available_quantity));
-
+    //         // console.log("current quantity", countCheck)
         
-    //         if (selectProduct[0].available_quantity > countCheck) {
-    //             return;
-    //         }
-    //     }
+    // //         if (selectProduct[0].available_quantity > countCheck) {
+    // //             return;
+    // //         }
+    // //     }
     // }
 
     //Transition 
@@ -81,7 +94,7 @@ const InventoryList = ({product, onClick, totalCart, removeFromCart, className, 
                     (<div className="inventory-item__btn-ctr inventory-item__stock-error">
                         <p className="inventory-item__btn" onClick={() => handleRemoveFromCart(product.id)}>-</p>
                         <p className="inventory-item__count">
-                            {cartSession.find((item) => item.id === product.id)?.count || 0}
+                            {cartSession != null && cartSession.find((item) => item.id === product.id)?.count || 0}
                         </p>
                         <p className="inventory-item__btn"  onClick={() => handleAddToCart(product.id)}>+</p>
                     </div>) 

@@ -36,13 +36,15 @@ const NavBar = () => {
             <div className="nav__ctr">
                 <div className="nav__logo-ctr">
                     <div className="nav__lottie">
-                        <Lottie 
-                            loop={false}
-                            autoplay={true}  
-                            animationData={QRPhone}
-                            interactivity="click"
-                            style={{ height: '150%', width: '200%' }}
-                        />
+                        <Link to="/products">
+                            <Lottie 
+                                loop={false}
+                                autoplay={true}  
+                                animationData={QRPhone}
+                                interactivity="click"
+                                style={{ height: '150%', width: '200%' }}
+                            />
+                        </Link>
                     </div>
                     <p className="nav__logo">Snack POS</p>
                 </div>

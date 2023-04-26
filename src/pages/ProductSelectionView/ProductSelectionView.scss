@@ -2,15 +2,10 @@
 @use "../../styles/partials/mixins" as *;
 
 .product {
-    // width: 50%;
     display: flex;
     flex-direction: column;
-    // align-items: flex-start;
 
     &__topbar {
-        // display: flex;
-        // justify-content: space-between;
-        // margin: 0 2.5rem;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -21,7 +16,6 @@
             width: 100%;
             flex-direction: row;
             justify-content: space-between;
-            // margin: 0 3rem;
             padding: 0 2.5rem;
         }
 
@@ -83,13 +77,8 @@
 
 .inventory {
     &__item {
-        // outline: 2px solid greenyellow;
         padding: 1rem;
-
-        // width: 45%;
         width: 100%;
-        // aspect-ratio: 1 / 1;
-        // margin: 10px 10px 0 10px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -119,5 +108,6 @@
 @media screen and (max-width: 767px) {
     .sc-bZQynM  {
       width: 280px;
+      height: 600px;
     }
   }

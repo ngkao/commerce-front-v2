@@ -104,3 +104,11 @@ html {
         width: 500px;
     }
 }
+
+.loading {
+    outline: 1px solid greenyellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}

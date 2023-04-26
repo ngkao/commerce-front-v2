@@ -23,8 +23,9 @@
         margin: 24px 2rem 0;
         
         @include tablet {
-            height: 100vh;
+            height: 100%;
             margin: 0;
+            width: 220px;
         }
     }
 
