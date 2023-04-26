@@ -97,9 +97,6 @@ function App() {
         if (startStr) {
             const selectedItem = cart.filter((item) => item.id === product.id)
             if (!selectedItem.length > 0) {
-
-
-              console.log("Before adding 0 count")
               let addCount = {...product, count: 0}
               cart.push(addCount)
               sessionStorage.setItem("myCart", JSON.stringify(cart))
@@ -107,9 +104,6 @@ function App() {
             calcTotalPay();
             }
         } else {
-
-          console.log("Setting Up");
-          console.log(product.quantity)
           if (product.quantity != 0) {
             let cart = [];
             cart.push(product)
@@ -126,44 +120,29 @@ function App() {
               let findCount = myCart.filter((item) => item.id === product.id)
 
               // Checking if there are available quantity in stock
-              console.log("Before Adding: Quantity Selected", findCount[0].count)
-              console.log("Before Adding: Available Quantity", findCount[0].quantity)
               if (findCount[0].quantity > findCount[0].count) {
-                console.log("OK to add")
-
-
                 findCount[0].count += 1;
                 sessionStorage.setItem("myCart", JSON.stringify(myCart))
                 setCartSession(myCart)
                 calcTotalPay();
-
               } else {
-                console.log("Out of Stock")
-
                 setOutOfStockMsg({status:true,message: `Max available: ${findCount[0].quantity}`, product: findCount[0].product_name})
 
                 setTimeout(() => {
                   setOutOfStockMsg({status:false,message: `Max available ${findCount[0].quantity}`, product: findCount[0].product_name})
                 },3000)
               }
-
+              calcTotalPay();
 
    
             }
         } else {
-
-          console.log("Before adding 1st count")
-          console.log("Quantity",product.quantity)
-
-
             let cart = [];
             let addCount = {...product, count: 1}
             cart.push(addCount)
             sessionStorage.setItem("myCart", JSON.stringify(cart))
             setCartSession(cart)
             calcTotalPay();
-
-  
         }
       }
 
