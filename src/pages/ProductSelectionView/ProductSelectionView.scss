@@ -41,6 +41,9 @@
     &__ctr {
         display: flex;
         justify-content: center;
+        
+        height: 400px; 
+        overflow: auto; 
     }
 
     &__add {
@@ -69,10 +72,31 @@
 
     &__list {
         display: flex;
-        justify-content: flex-start;
-        flex-wrap: wrap;
+  
+        flex-direction: column;
+       
+
+        height: calc(3 * (100px + 2rem));
+        overflow: scroll;
+
+        @include tablet {
+            justify-content: center;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
     }
 }
+
+.test{
+    // width: 100px;
+    height: 100px;
+    margin: 2rem;
+
+    @include tablet {
+        flex-basis: calc(25% - 20px);
+        /* 20px is the total horizontal margin of the flex-item */
+        margin: 10px;
+    }
 
 .inventory {
     &__item {
@@ -95,17 +119,22 @@
     transform: translateY(0);
 }
 
-.test{
-    width: 100px;
+
+
+
 }
 
 ::placeholder {
     color: white; 
 }
 
-@media screen and (max-width: 767px) {
-    .sc-bZQynM  {
-      width: 280px;
-      height: 600px;
-    }
+// @media screen and (max-width: 767px) {
+//     .sc-bZQynM  {
+//       width: 280px;
+//       height: 600px;
+//     }
+//   }
+
+  .carousel {
+    outline: 1px salmon;
   }

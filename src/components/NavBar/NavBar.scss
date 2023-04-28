@@ -103,7 +103,12 @@
         flex-direction: column;
         justify-content: flex-end;
         align-items: center;
-        padding-top: 80%;
+        padding-top: 0;
+
+
+        @include tablet {
+            padding-top: 65%;
+        }
     }
 
     &__author-name {
