@@ -2,7 +2,7 @@ import React from 'react';
 import InventoryList from '../InventoryList/InventoryList';
 import "./ProductSelectionView.scss";
 import 'react-multi-carousel/lib/styles.css';
-import Carousel from 'react-grid-carousel';
+// import Carousel from 'react-grid-carousel';
 import { useEffect } from 'react';
 
 const ProductSelectionView = ({productList, key, product, onClick,totalCart,removeFromCart, cartSession, setCartSession,showQuantity, setShowQuantity,setPreviewCart,productsSold,setOutOfStockMsg,setShowQR}) => {
@@ -21,7 +21,7 @@ const ProductSelectionView = ({productList, key, product, onClick,totalCart,remo
             </div> */}
             <div className="product__ctr">
                 <div className="product__list">
-                    <Carousel 
+                    {/* <Carousel 
                         className="carousel" 
                         // cols={4} 
                         // rows={3} 
@@ -77,7 +77,7 @@ const ProductSelectionView = ({productList, key, product, onClick,totalCart,remo
                                 </Carousel.Item>
                             ))
                             : <p>Loading</p>}
-                    </Carousel>
+                    </Carousel> */}
                 </div>
             </div>
         </section>
