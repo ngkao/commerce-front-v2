@@ -5,6 +5,14 @@
     width: 100%;
     margin: 0 2rem;
 
+    display: flex;
+    flex-direction: column;
+    height: 770px;
+
+    @include tablet {
+        height: 100%;
+    }
+
     &__title {
         padding: 1rem 1rem;
         color: $color-selected;
@@ -78,7 +86,7 @@
 
 
     &__list {
-        height: 615px;
+        // height: 615px;
         overflow: auto;
     
 
