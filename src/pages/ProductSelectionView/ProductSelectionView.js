@@ -1,62 +1,29 @@
 import React from 'react';
 import InventoryList from '../InventoryList/InventoryList';
-import "./ProductSelectionView.scss";
+import { Link } from 'react-router-dom';
+import "./ProductSelectionView.scss"
 import 'react-multi-carousel/lib/styles.css';
-// import Carousel from 'react-grid-carousel';
-import { useEffect } from 'react';
+import Carousel from 'react-grid-carousel'
 
-const ProductSelectionView = ({productList, key, product, onClick,totalCart,removeFromCart, cartSession, setCartSession,showQuantity, setShowQuantity,setPreviewCart,productsSold,setOutOfStockMsg,setShowQR}) => {
-
-    useEffect(() => {
-        if (!productList) {
-            <p>STILL LOADING</p>
-        }
-    },[])
+const ProductSelectionView = ({productList, key, product, onClick,totalCart,removeFromCart, cartSession, setCartSession,showQuantity, setShowQuantity,setPreviewCart}) => {
 
     return (
         <section className="product">
-            {/* <div className="product__topbar">
+            <div className="product__topbar">
                 <input className="product__search" placeholder="SEARCH"></input>
                 <Link className="product__add" to="/products/add">Add Product</Link>
-            </div> */}
+            </div>
             <div className="product__ctr">
                 <div className="product__list">
-                    {/* <Carousel 
+                    <Carousel 
                         className="carousel" 
-                        // cols={4} 
-                        // rows={3} 
-                        // cols={1} 
-                        responsiveLayout={
-                            [
-                                {
-                                    breakpoint: 767,
-                                    cols: 1,
-                                    rows: 3,
-                                    gap: 0,
-                                    loop: true,
-                                  //   autoplay: 1000
-                                },
-                                {
-                                    breakpoint: 3000,
-                                    cols: 4,
-                                    rows: 3,
-                                    gap: 0,
-                                    loop: true,
-                                  //   autoplay: 1000
-                                }
-                            ]
-                        }
-                        mobileBreakpoint={1}
-                        // scrollSnap={true}
+                        cols={4} 
+                        rows={3} 
                         gap={0} 
                         showDots={true}
-                        loop
-                        >
-                            {console.log(productList)}
+                        loop>
                             {productList? 
-                            productList
-                            .sort((a,b) => a.id - b.id)    
-                            .map((product) => (
+                            productList.map((product) => (
                                 <Carousel.Item className="test" key={product.id}>
                                     <InventoryList 
                                         key={product.id}
@@ -70,14 +37,11 @@ const ProductSelectionView = ({productList, key, product, onClick,totalCart,remo
                                         showQuantity={showQuantity}
                                         setShowQuantity={setShowQuantity}
                                         setPreviewCart={setPreviewCart}
-                                        productsSold={productsSold}
-                                        setOutOfStockMsg={setOutOfStockMsg}
-                                        setShowQR={setShowQR}
                                     />
                                 </Carousel.Item>
                             ))
                             : <p>Loading</p>}
-                    </Carousel> */}
+                    </Carousel>
                 </div>
             </div>
         </section>
