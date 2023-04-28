@@ -10,7 +10,7 @@ const ProductSelectionView = ({productList, key, product, onClick,totalCart,remo
 
     useEffect(() => {
         if (!productList) {
-            <p>STILL LOADING</p>
+            <p>Loading...</p>
         }
     },[])
 
