@@ -8,7 +8,6 @@ const SalePage = ({orders,renderItemsByOrderId}) => {
     const navigate = useNavigate();
 
     const handleClick = (order_id) => {
-    console.log("Selected Order Id", order_id)
     renderItemsByOrderId(order_id)
     navigate(`/sales/${order_id}`)
     }
