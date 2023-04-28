@@ -6,10 +6,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    // width: 10%;
     width: 10%;
-
-
 
     @include tablet {
         width: 60%;
@@ -19,15 +16,11 @@
         width: 90%;
     }
 
-
     &__price-quantity {
         display: flex;
-        // display:inline-block;
         justify-content: space-between;
         align-items: center;
         width: 40%;
-
-        // outline: 1px solid salmon;
 
         @include tablet {
             width: 60%;
@@ -43,11 +36,8 @@
     &__img {
         aspect-ratio: 1 / 1;
         width: 40%;
-
         height: auto;
         border-radius: 10px;
-        // outline: 1px solid salmon;
-
 
         @include tablet {
             width: 60%;
@@ -61,17 +51,13 @@
 
     &__name {
         width: 100%;
-
         color: $white;
         font-size: 14px;
- 
-        // outline: 1px solid salmon;
         margin-top: 5px;
         display: flex;
         justify-content: center;
 
         @include tablet {
-            // width: 60%;
             height: 45px;
         }
 
@@ -81,7 +67,6 @@
     }
 
     &__btn {
-        // width: 75px;
         height: 35px;
         display: flex;
         align-items: center;
@@ -103,7 +88,6 @@
         justify-content: space-between;
         align-items: center;
         width: 100%;
-        // outline: 1px solid salmon;
         border-radius: 15px;
         background-color: $grey-light;
         
@@ -112,8 +96,6 @@
         opacity: 0;
         transform: translateX(0px);
 
-  
-  
     }
 
     &__count {
@@ -141,7 +123,6 @@
         justify-content: center;
         color: white;
         cursor: pointer;
-        // transition: 0.5s;
 
         &:hover {
             border: 2px solid $color-selected;

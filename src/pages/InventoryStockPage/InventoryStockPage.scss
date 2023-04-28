@@ -2,11 +2,8 @@
 @use "../../styles/partials/mixins" as *;
 
 .inventory {
-    // outline: 1px solid salmon;
-
     margin: 0 2rem;
     width: 100%;
-    // background-color: white;
 
     @include tablet {
         width: 100%;
@@ -19,9 +16,7 @@
     }
 
     &__headers {
-    // outline: 1px solid yellow;
         display: none;
-        // display: flex;
         justify-content: center;
 
         @include tablet {
@@ -31,8 +26,6 @@
     }
 
     &__common-item {
-    // outline: 1px solid blue;
- 
         display: flex;
         justify-content: center;
         text-align: center;
@@ -78,7 +71,6 @@
 
     &__image {
         width: 50px;
-        // height: 40px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -97,7 +89,6 @@
         padding: 5px 5px;
         overflow: hidden;
         color: white;
-        // border-radius: $border-radius-standard
         
         @include tablet {
             height: 55px;
@@ -106,8 +97,6 @@
     }
 
     &__list {
-        // gap: 100px;
-        // outline: 1px solid red;
         height: 615px;
         overflow: auto;
 
@@ -144,10 +133,8 @@
 
     &__mob-header {
         color: $color-selected;
-        // padding-left: 24px;
         padding: 5px 5px;
   
-
         @include tablet {
             display: none;
         }

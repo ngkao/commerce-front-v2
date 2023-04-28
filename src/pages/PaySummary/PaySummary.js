@@ -1,7 +1,5 @@
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-import React, { useState, useEffect, useRef } from 'react';
-import QRCode from "qrcode";
+import React, { useState, useEffect} from 'react';
 import "./PaySummary.scss";
 import Lottie from "lottie-react";
 import SuccessMark from "../../assets/animations/success1.json";
@@ -9,10 +7,7 @@ import RefreshMark from "../../assets/animations/refresh.json"
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 
-const PaySummary = ({urlStripe,onClick, src, totalPay, showQR, oltTotalPay,setShowQR, setCartSession,setShowQuantity, setPreviewCart,renderAllOrders,renderProductList,outOfStockMsg,setTotalPay,setOldTotalPay}) => {
-    
-    console.log(oltTotalPay, "Old Total Pay")
-    console.log(totalPay, "Total Pay")
+const PaySummary = ({urlStripe,onClick, src, totalPay, showQR, oltTotalPay,setShowQR, setCartSession,setShowQuantity, setPreviewCart,renderAllOrders,renderProductList,outOfStockMsg}) => {
 
     // Pull Request for New Orders Successfully being Paid
     const [latestOrderData, setLatestOrderData] = useState(null);
@@ -45,8 +40,7 @@ const PaySummary = ({urlStripe,onClick, src, totalPay, showQR, oltTotalPay,setSh
             setPreviewCart(true);
             renderAllOrders();
             renderProductList();
-            setTotalPay(0);
-            setOldTotalPay(0);
+            handleRefresh();
         }, 6000)
     }
 
@@ -138,14 +132,14 @@ const PaySummary = ({urlStripe,onClick, src, totalPay, showQR, oltTotalPay,setSh
             </div> 
         </div>
         <div className="checkout__btn-ctr">
-            <p onClick={handleRefresh} className="checkout__refresh">
+            <div onClick={handleRefresh} className="checkout__refresh">
                 <Lottie
                     loop={false}
                     autoplay={false}  
                     animationData={RefreshMark}
                     interaction="click"
                 />
-            </p>
+            </div>
             <button 
             onClick={onClick}
             className="checkout__btn"

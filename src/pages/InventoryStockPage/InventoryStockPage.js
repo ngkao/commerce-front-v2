@@ -1,12 +1,8 @@
 import "./InventoryStockPage.scss";
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useLocation } from "react-router-dom";
-const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 const InventoryStockPage = ({renderProductsSold, productsSold}) => {
-
-
 
     useEffect(() => {
         renderProductsSold()
@@ -32,17 +28,14 @@ const InventoryStockPage = ({renderProductsSold, productsSold}) => {
         <section className="inventory">
             <p className="inventory__title">Inventory Stock</p>
             <div className="inventory__headers">
-                {/* <p className="sales__common-item sales__header-item">Date</p> */}
                 <p className="inventory__common-item inventory__header-item inventory__column-0"></p>
                 <p className="inventory__common-item inventory__header-item inventory__column-1">Category</p>
                 <p className="inventory__common-item inventory__header-item inventory__column-2">Name</p>
                 <p className="inventory__common-item inventory__header-item inventory__column-3-4">Sold</p>
                 <p className="inventory__common-item inventory__header-item inventory__column-3-4">Available</p>
-                {/* <p className="sales__common-item sales__header-item">Sales</p> */}
             </div>
             <div className="inventory__list">
                 {productsSold ? 
-                
                     productsSold
                         // .sort((a, b) => a.product_id - b.product_id)
                         .map((product) => (

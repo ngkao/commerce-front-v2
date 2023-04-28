@@ -7,7 +7,6 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    // background-color: black;
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     color: $white;
@@ -18,8 +17,6 @@ html {
 }
 
 .checkout {
-    // margin: 2rem;
-    // width: 30%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,7 +24,6 @@ html {
     @include tablet {
         width: 300px;
     }
-
 
     &__ctr {
         background-color: $grey-light;
@@ -49,16 +45,6 @@ html {
 }
 
 .main {
-    // margin: 2rem;
-    // display: flex;
-    // justify-content: space-between;
-    // flex-direction: row;
-    // height: 100vh;
-    // align-items: space-between;
-    // padding: 2rem 2rem;
-    // background-color: black;
-    // margin: auto;
-    // width: 1280px;
     
     @include tablet {
         display: flex;
@@ -78,7 +64,6 @@ html {
     justify-content: center;
     outline: 1px solid rgb(2, 2, 2);
     width: 100%;
-    // flex-direction: column;
     margin-bottom: 30px;
 
     @include tablet {
@@ -88,14 +73,12 @@ html {
 }
 
 .paysum {
-    // outline: 1px solid orange;
     background-color: $grey-light;
     border-radius: $border-radius-standard;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    // padding: 0 20px;
     margin: 0 2rem;
     margin-bottom: 24px;
 
@@ -106,7 +89,6 @@ html {
 }
 
 .loading {
-    outline: 1px solid greenyellow;
     display: flex;
     justify-content: center;
     align-items: center;

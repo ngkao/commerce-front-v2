@@ -51,8 +51,6 @@ const Cart = ({cartSession,previewCart,orders}) => {
         },300)
     }, [cartSession]);
 
-    const [saleOrderNum, setSaleOrderNum] = useState();
-
     const nextOrderNumber = () => {
             const highestValue = Math.max(...orders.map(obj => parseInt(obj.order_id)))
         return highestValue+1;

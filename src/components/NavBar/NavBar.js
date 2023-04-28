@@ -13,7 +13,6 @@ const NavBar = () => {
     const isEmployeesPath = location.pathname.startsWith("/insights");
     const isInventory = location.pathname.startsWith("/inventory");
 
-
     useEffect(() => {
         setTimeout(() => {
             const items = document.querySelectorAll('.inventory__item');

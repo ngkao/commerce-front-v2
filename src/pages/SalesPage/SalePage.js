@@ -1,15 +1,11 @@
 import "./SalePage.scss"
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {dateConvert} from "../../utils/utils";
 import { useLocation } from "react-router-dom";
 
-const SalePage = ({orders,setOrders,renderItemsByOrderId}) => {
-    const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
+const SalePage = ({orders,renderItemsByOrderId}) => {
     const navigate = useNavigate();
-
-
 
     const handleClick = (order_id) => {
     console.log("Selected Order Id", order_id)
@@ -19,24 +15,19 @@ const SalePage = ({orders,setOrders,renderItemsByOrderId}) => {
 
     const location = useLocation();
 
-
     useEffect(() => {
         setTimeout(() => {
             const items = document.querySelectorAll('.sales__item-ctr');
-           console.log("PATH CHANGED")
-           if (location.pathname == '/sales') {
+           if (location.pathname === '/sales') {
                setTimeout(() => {
                    items.forEach((item, index) => 
                        setTimeout(() => {
                            item.classList.add('show-item')
                        },index * 100)
                    );
-                   console.log("Class was added")
                },0)
-    
            } else {
            items.forEach(item => item.classList.remove('show-item'));
-           console.log("Class was removed")
            }
        },300)
       }, [location.pathname]);
@@ -55,7 +46,7 @@ const SalePage = ({orders,setOrders,renderItemsByOrderId}) => {
                 {orders
                     .sort((a, b) => new Date(b.order_date) - new Date(a.order_date))
                     .map((order) => (
-                    <div onClick={() => handleClick(order.order_id)} className="sales__item-ctr">
+                    <div onClick={() => handleClick(order.order_id)} className="sales__item-ctr" key={order.order_id}>
                         <p className="sales__common-item sales__data-item sales__item-1"><span className="sales__mob-header">Date: </span>{dateConvert(order.order_date)}</p>
                         <p className="sales__common-item sales__data-item sales__item-2"><span className="sales__mob-header">Order ID: </span>{order.order_id}</p>
                         <p className="sales__common-item sales__data-item sales__item-3"><span className="sales__mob-header">Contact: </span>{order.customer_name}</p>
@@ -64,7 +55,6 @@ const SalePage = ({orders,setOrders,renderItemsByOrderId}) => {
                     </div>
                 ))}
             </div>
-
         </section>
     );
 };
