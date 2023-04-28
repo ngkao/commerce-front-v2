@@ -22,7 +22,6 @@ const ProductSelectionView = ({productList, key, product, onClick,totalCart,remo
             </div> */}
             <div className="product__ctr">
                 <div className="product__list">
-                            {console.log(productList)}
                             {productList? 
                             productList
                             .sort((a,b) => a.id - b.id)    
