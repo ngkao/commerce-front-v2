@@ -210,7 +210,7 @@ function App() {
 
     calcTotalPay();
 
-    // GET Items by Order ID
+    // GET Items by Order_ID
     const renderItemsByOrderId = (order_id) => {
       axios.get(`${REACT_APP_SERVER_URL}/orders/${order_id}`)
           .then((data) => {
