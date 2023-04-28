@@ -41,6 +41,14 @@
     &__ctr {
         display: flex;
         justify-content: center;
+        
+        // height: 550px; 
+        // overflow: auto; 
+        height: 550px; 
+
+        @include tablet {
+            height: 100%; 
+        }
     }
 
     &__add {
@@ -69,10 +77,40 @@
 
     &__list {
         display: flex;
-        justify-content: flex-start;
-        flex-wrap: wrap;
+        flex-direction: column;
+   
+        overflow-y: scroll; 
+        overflow-x: hidden;
+
+        &::-webkit-scrollbar {
+            display: none;
+          }
+
+        @include tablet {
+            // justify-content: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            height: none;
+        }
     }
 }
+
+.test{
+
+    // height: 100px;
+    // margin: 2rem;
+
+    @include tablet {
+        flex-basis: calc(33% - 20px);
+        /* 20px is the total horizontal margin of the flex-item */
+        margin: 10px;
+        // width: 100px;
+    }
+
+    @include desktop {
+          flex-basis: calc(25% - 20px);
+    }
 
 .inventory {
     &__item {
@@ -95,17 +133,23 @@
     transform: translateY(0);
 }
 
-.test{
-    width: 100px;
+
+
+
 }
 
 ::placeholder {
     color: white; 
 }
 
-@media screen and (max-width: 767px) {
-    .sc-bZQynM  {
-      width: 280px;
-      height: 600px;
-    }
+// @media screen and (max-width: 767px) {
+//     .sc-bZQynM  {
+//       width: 280px;
+//       height: 600px;
+//     }
+//   }
+
+  .carousel {
+    outline: 1px salmon;
   }
+

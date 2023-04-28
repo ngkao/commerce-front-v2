@@ -9,7 +9,7 @@
     width: 10%;
 
     @include tablet {
-        width: 60%;
+        width: 50%;
     }
 
     @include desktop {
@@ -23,6 +23,7 @@
         width: 40%;
 
         @include tablet {
+            // width: 50%;
             width: 60%;
         }
 
@@ -40,7 +41,8 @@
         border-radius: 10px;
 
         @include tablet {
-            width: 60%;
+            width: 50%;
+            // width: 90%;
         }
 
         @include desktop {
@@ -62,7 +64,9 @@
         }
 
         @include desktop {
-            width: 90%;
+            // width: 90%;
+            height: 45px;
+
         }
     }
 
