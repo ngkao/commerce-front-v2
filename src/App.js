@@ -175,7 +175,7 @@ function App() {
     const handleClick = () => {
         let stripeItemObj =
         cartSession.map((item) => ({id: item.id, quantity: item.count}))
-        fetch('http://localhost:8080/create-checkout-session', {
+        fetch(`${REACT_APP_SERVER_URL}/create-checkout-session`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
