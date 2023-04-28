@@ -13,20 +13,29 @@ const PaySummary = ({urlStripe,onClick, src, totalPay, showQR, oltTotalPay,setSh
     const [latestOrderData, setLatestOrderData] = useState(null);
     useEffect(() => {
         const intervalId = setInterval(() => {
-            axios.get(`${REACT_APP_SERVER_URL}/timestamp`)
-            .then((latestData) => {
-                const latestDateBackend = new Date(latestData.data.created_at);
-                if (latestOrderData === null) {
-                    setLatestOrderData(latestData.data);
-                } else if (latestData.data.created_at > latestOrderData.created_at) {
-                    setLatestOrderData(latestData.data);
-                    successPayment()
-                }
-            })
-            .catch((err) => console.log("Error: ", err))
+                // console.log("Interval is running")
+                // console.log(showQR, "showQR")
+            
+            // start Pull Request only when the QR code is generated and is shown to minimize the HTTP Requests
+            if (showQR===true) {
+                // console.log("Checking if there is a new order")
+                axios.get(`${REACT_APP_SERVER_URL}/timestamp`)
+                .then((latestData) => {
+                    const latestDateBackend = new Date(latestData.data.created_at);
+                    if (latestOrderData === null) {
+                        setLatestOrderData(latestData.data);
+                    } else if (latestData.data.created_at > latestOrderData.created_at) {
+                        setLatestOrderData(latestData.data);
+                        successPayment();
+                    }
+                    // console.log("LatestOrder", latestOrderData)
+                })
+                .catch((err) => console.log("Error: ", err))
+            }
+ 
         }, 5000)
         return () => clearInterval(intervalId);
-    }, [latestOrderData])
+    }, [showQR])
 
     // Successful Payment Notification
     const [successPtmAlert, setSuccessPtmAlert] = useState(false);
