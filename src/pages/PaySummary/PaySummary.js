@@ -26,9 +26,11 @@ const PaySummary = ({urlStripe,onClick, src, totalPay, showQR, oltTotalPay,setSh
                     const latestDateBackend = new Date(latestData.data.created_at);
                     if (latestOrderData === null) {
                         setLatestOrderData(latestData.data);
+                        console.log("SET when null")
                     } else if (latestData.data.created_at > latestOrderData.created_at) {
                         setLatestOrderData(latestData.data);
                         successPayment();
+                        console.log("SET when the is previous order")
                     }
                     console.log("LatestOrder", latestOrderData)
                 })
@@ -37,7 +39,7 @@ const PaySummary = ({urlStripe,onClick, src, totalPay, showQR, oltTotalPay,setSh
  
         }, 5000)
         return () => clearInterval(intervalId);
-    }, [showQR])
+    }, [showQR, latestOrderData])
 
     // Successful Payment Notification
     const [successPtmAlert, setSuccessPtmAlert] = useState(false);
