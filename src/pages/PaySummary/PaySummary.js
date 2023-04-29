@@ -19,8 +19,10 @@ const PaySummary = ({urlStripe,onClick, src, totalPay, showQR, oltTotalPay,setSh
             // start Pull Request only when the QR code is generated and is shown to minimize the HTTP Requests
             if (showQR===true) {
                 console.log("Checking if there is a new order")
+                console.log(`${REACT_APP_SERVER_URL}/timestamp`)
                 axios.get(`${REACT_APP_SERVER_URL}/timestamp`)
                 .then((latestData) => {
+                    console.log("Response from API", latestData.data)
                     const latestDateBackend = new Date(latestData.data.created_at);
                     if (latestOrderData === null) {
                         setLatestOrderData(latestData.data);
