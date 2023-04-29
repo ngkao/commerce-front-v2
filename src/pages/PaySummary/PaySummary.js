@@ -13,12 +13,12 @@ const PaySummary = ({urlStripe,onClick, src, totalPay, showQR, oltTotalPay,setSh
     const [latestOrderData, setLatestOrderData] = useState(null);
     useEffect(() => {
         const intervalId = setInterval(() => {
-                // console.log("Interval is running")
-                // console.log(showQR, "showQR")
+                console.log("Interval is running")
+                console.log(showQR, "showQR")
             
             // start Pull Request only when the QR code is generated and is shown to minimize the HTTP Requests
             if (showQR===true) {
-                // console.log("Checking if there is a new order")
+                console.log("Checking if there is a new order")
                 axios.get(`${REACT_APP_SERVER_URL}/timestamp`)
                 .then((latestData) => {
                     const latestDateBackend = new Date(latestData.data.created_at);
@@ -28,7 +28,7 @@ const PaySummary = ({urlStripe,onClick, src, totalPay, showQR, oltTotalPay,setSh
                         setLatestOrderData(latestData.data);
                         successPayment();
                     }
-                    // console.log("LatestOrder", latestOrderData)
+                    console.log("LatestOrder", latestOrderData)
                 })
                 .catch((err) => console.log("Error: ", err))
             }
