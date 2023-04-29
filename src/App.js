@@ -1,6 +1,6 @@
 import axios from "axios"
 import "./App.scss"
-import {BrowserRouter, Routes, Route, useLocation} from "react-router-dom";
+import {BrowserRouter, Routes, Route, HashRouter, useLocation} from "react-router-dom";
 import PaySummary from "./pages/PaySummary/PaySummary";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
@@ -226,7 +226,7 @@ function App() {
 
   return (
     <div className="background">
-    <BrowserRouter className="header">
+    <HashRouter className="header">
         <div className="main">
             <NavBar/>
             <div className="center">
@@ -294,7 +294,7 @@ function App() {
                 />
             </div>
         </div>
-     </BrowserRouter>
+     </HashRouter>
     </div>
   );
 }
