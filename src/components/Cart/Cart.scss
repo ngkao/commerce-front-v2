@@ -13,13 +13,19 @@
 
       @include tablet {
       padding: 20px 30px 0;
+      height: 60%;
+      justify-content: space-between;
       }
 
     &__title {
         color: $white;
         padding-bottom: 20px;
         background-color: $grey-light;
-        font-size: $font-large
+        font-size: $font-large;
+
+        @include tablet {
+            padding-bottom: 0;
+        }
     }
 
     &__lottie {
@@ -35,7 +41,7 @@
         animation: fade-in 1s ease-in-out forwards;
 
         @include tablet {
-            padding-top: 20vh;
+            // padding-top: 20vh;
         }
     }
 
