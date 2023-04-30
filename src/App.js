@@ -225,7 +225,7 @@ function App() {
     // HashRouter tag
 
   return (
-    <div className="background">
+    // <div className="background">
     <BrowserRouter className="header">
         <div className="main">
             <NavBar/>
@@ -295,7 +295,7 @@ function App() {
             </div>
         </div>
      </BrowserRouter>
-    </div>
+    // </div>
   );
 }
 
