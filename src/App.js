@@ -222,7 +222,7 @@ function App() {
 
 
   
-    // HashRouter
+    // HashRouter tag
 
   return (
     <div className="background">
