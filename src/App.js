@@ -222,11 +222,11 @@ function App() {
 
 
   
-   
+    // HashRouter
 
   return (
     <div className="background">
-    <HashRouter className="header">
+    <BrowserRouter className="header">
         <div className="main">
             <NavBar/>
             <div className="center">
@@ -294,7 +294,7 @@ function App() {
                 />
             </div>
         </div>
-     </HashRouter>
+     </BrowserRouter>
     </div>
   );
 }
