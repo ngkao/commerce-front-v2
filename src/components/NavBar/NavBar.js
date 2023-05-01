@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation  } from 'react-router-dom';
 import "./NavBar.scss";
 import Lottie from "lottie-react";
@@ -12,7 +12,8 @@ import LinkedinIcon from "../../assets/icons/LinkedIn-icon.png";
 const NavBar = () => {
 
     const location = useLocation();
-    const isProductPath = location.pathname.startsWith("/products") || location.pathname === "/";
+    // const isProductPath = location.pathname.startsWith("/products") || location.pathname === "/";
+    const isProductPath = location.pathname.startsWith("/products");
     const isSalesPath = location.pathname.startsWith("/sales");
     const isEmployeesPath = location.pathname.startsWith("/insights");
     const isInventory = location.pathname.startsWith("/inventory");
@@ -34,18 +35,30 @@ const NavBar = () => {
        },300)
       }, [location.pathname]);
 
+      const [loop, setLoop] = useState(false);
+
+      const handleMouseOver = () => {      
+        setLoop(true);
+      };
+    
+      const handleMouseOut = () => {
+        setLoop(false);
+      };
+
     return (
         <div className="nav">
             <div className="nav__ctr">
                 <div className="nav__logo-ctr">
                     <div className="nav__lottie">
-                        <Link to="/products">
+                        <Link to="/">
                             <Lottie 
-                                loop={false}
+                                loop={loop}
                                 autoplay={true}  
                                 animationData={QRPhone}
                                 interactivity="click"
                                 style={{ height: '150%', width: '200%' }}
+                                onMouseOver={handleMouseOver}
+                                onMouseOut={handleMouseOut}
                             />
                         </Link>
                     </div>

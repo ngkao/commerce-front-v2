@@ -37,6 +37,13 @@ const Insights = ({orders}) => {
                         autoSkip: false,
                         maxRotation: 0,
                         minRotation: 0,
+                        callback: (value, index, values) => {
+                            // Show labels every other one on mobile breakpoint
+                            if (window.innerWidth < 768) {
+                              return index % 2 !== 0 ? value : '';
+                            }
+                            return value;
+                          }
                     }
                   }
                 },

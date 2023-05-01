@@ -96,6 +96,10 @@
             background-color: $color-selected;
             border: 2px solid $color-selected;
 
+            &::active {
+                background-color: $grey-light;
+            }
+
             &:hover {
                 background-color: $color-selected;
                 color: white;
