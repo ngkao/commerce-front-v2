@@ -41,7 +41,7 @@
         animation: fade-in 1s ease-in-out forwards;
 
         @include tablet {
-            height: 45vh;
+            height: 50vh;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;

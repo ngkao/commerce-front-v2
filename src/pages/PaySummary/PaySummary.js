@@ -13,8 +13,8 @@ const PaySummary = ({urlStripe,onClick, src, totalPay, showQR, oltTotalPay,setSh
     const [latestOrderData, setLatestOrderData] = useState(null);
     useEffect(() => {
         const intervalId = setInterval(() => {
-                console.log("Interval is running")
-                console.log(showQR, "showQR")
+                // console.log("Interval is running")
+                // console.log(showQR, "showQR")
             
             // start Pull Request only when the QR code is generated and is shown to minimize the HTTP Requests
             if (showQR===true) {
@@ -22,17 +22,17 @@ const PaySummary = ({urlStripe,onClick, src, totalPay, showQR, oltTotalPay,setSh
                 console.log(`${REACT_APP_SERVER_URL}/timestamp`)
                 axios.get(`${REACT_APP_SERVER_URL}/timestamp`)
                 .then((latestData) => {
-                    console.log("Response from API", latestData.data)
+                    // console.log("Response from API", latestData.data)
                     const latestDateBackend = new Date(latestData.data.created_at);
                     if (latestOrderData === null) {
                         setLatestOrderData(latestData.data);
-                        console.log("SET when null")
+                        // console.log("SET when null")
                     } else if (latestData.data.created_at > latestOrderData.created_at) {
                         setLatestOrderData(latestData.data);
                         successPayment();
-                        console.log("SET when the is previous order")
+                        // console.log("SET when the is previous order")
                     }
-                    console.log("LatestOrder", latestOrderData)
+                    // console.log("LatestOrder", latestOrderData)
                 })
                 .catch((err) => console.log("Error: ", err))
             }
@@ -129,7 +129,8 @@ const PaySummary = ({urlStripe,onClick, src, totalPay, showQR, oltTotalPay,setSh
                         animationData={SuccessMark}
                     />
                 </div>
-                <p className="checkout__success-msg">{latestOrderData.customer_name} Successfully Paid</p>
+                <p className="checkout__success-msg">{latestOrderData.customer_name}</p>
+                <p className="checkout__success-msg">Successfully Paid</p>
             </div> : null}
         {outOfStockMsg.status? 
             <div className="checkout__outofstock-ctr">
