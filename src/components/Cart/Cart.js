@@ -20,36 +20,36 @@ const Cart = ({cartSession,previewCart,orders}) => {
     },400)
   }, [cartSession]);
 
-//       //Transition Item Amount
-//       useEffect(() => {
-//         //Top
-//         const items = document.querySelectorAll('.cart__price-top');
-//         items.forEach((item) => item.classList.remove('cart__price-top--final'));
-//         //Bottom
-//         const itemsBottom = document.querySelectorAll('.cart__price-bottom');
-//         itemsBottom.forEach((item) => item.classList.remove('cart__price-bottom--final'));
-//         setTimeout(() => {
-//         //Top1
-//             const items = document.querySelectorAll('.cart__price-top');
-//                 items.forEach((item) => 
-//                         item.classList.add('cart__price-top--final'));
-//             //Bottom
-//             const itemsBottom = document.querySelectorAll('.cart__price-bottom');
-//             itemsBottom.forEach((item) => 
-//                     item.classList.add('cart__price-bottom--final'));
-//         //In the end
-//         return () => {
-//             //Top
-//             const items = document.querySelectorAll('.cart__price-top');
-//             items.forEach((item) => 
-//                     item.classList.add('cart__price-top---hide'));
-//             //Bottom
-//             const itemsBottom = document.querySelectorAll('.cart__price-bottom');
-//             itemsBottom.forEach((item) => 
-//                     item.classList.add('cart__price-bottom---show'));
-//         }
-//         },300)
-//     }, [cartSession]);
+      //Transition Item Amount
+    //   useEffect(() => {
+    //     //Top
+    //     const items = document.querySelectorAll('.cart__price-top');
+    //     items.forEach((item) => item.classList.remove('cart__price-top--final'));
+    //     //Bottom
+    //     const itemsBottom = document.querySelectorAll('.cart__price-bottom');
+    //     itemsBottom.forEach((item) => item.classList.remove('cart__price-bottom--final'));
+    //     setTimeout(() => {
+    //     //Top1
+    //         const items = document.querySelectorAll('.cart__price-top');
+    //             items.forEach((item) => 
+    //                     item.classList.add('cart__price-top--final'));
+    //         //Bottom
+    //         const itemsBottom = document.querySelectorAll('.cart__price-bottom');
+    //         itemsBottom.forEach((item) => 
+    //                 item.classList.add('cart__price-bottom--final'));
+    //     //In the end
+    //     return () => {
+    //         //Top
+    //         const items = document.querySelectorAll('.cart__price-top');
+    //         items.forEach((item) => 
+    //                 item.classList.add('cart__price-top---hide'));
+    //         //Bottom
+    //         const itemsBottom = document.querySelectorAll('.cart__price-bottom');
+    //         itemsBottom.forEach((item) => 
+    //                 item.classList.add('cart__price-bottom---show'));
+    //     }
+    //     },300)
+    // }, [cartSession]);
 
 
     // Transition $ Item Amount
@@ -68,7 +68,6 @@ const Cart = ({cartSession,previewCart,orders}) => {
       
         function updatePriceClass(item, count) {
           const priceCtr = item.querySelector('.cart__price-ctr');
-          console.log("Change class on:", priceCtr)
       
           priceCtr.querySelector('.cart__price-top').classList.remove('cart__price-top--final');
           priceCtr.querySelector('.cart__price-bottom').classList.remove('cart__price-bottom--final');
