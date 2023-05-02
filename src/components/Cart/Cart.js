@@ -20,36 +20,71 @@ const Cart = ({cartSession,previewCart,orders}) => {
     },400)
   }, [cartSession]);
 
-      //Transition Item Amount
-      useEffect(() => {
-        //Top
-        const items = document.querySelectorAll('.cart__price-top');
-        items.forEach((item) => item.classList.remove('cart__price-top--final'));
-        //Bottom
-        const itemsBottom = document.querySelectorAll('.cart__price-bottom');
-        itemsBottom.forEach((item) => item.classList.remove('cart__price-bottom--final'));
-        setTimeout(() => {
-        //Top
-            const items = document.querySelectorAll('.cart__price-top');
-                items.forEach((item) => 
-                        item.classList.add('cart__price-top--final'));
-            //Bottom
-            const itemsBottom = document.querySelectorAll('.cart__price-bottom');
-            itemsBottom.forEach((item) => 
-                    item.classList.add('cart__price-bottom--final'));
-        //In the end
-        return () => {
-            //Top
-            const items = document.querySelectorAll('.cart__price-top');
-            items.forEach((item) => 
-                    item.classList.add('cart__price-top---hide'));
-            //Bottom
-            const itemsBottom = document.querySelectorAll('.cart__price-bottom');
-            itemsBottom.forEach((item) => 
-                    item.classList.add('cart__price-bottom---show'));
+//       //Transition Item Amount
+//       useEffect(() => {
+//         //Top
+//         const items = document.querySelectorAll('.cart__price-top');
+//         items.forEach((item) => item.classList.remove('cart__price-top--final'));
+//         //Bottom
+//         const itemsBottom = document.querySelectorAll('.cart__price-bottom');
+//         itemsBottom.forEach((item) => item.classList.remove('cart__price-bottom--final'));
+//         setTimeout(() => {
+//         //Top1
+//             const items = document.querySelectorAll('.cart__price-top');
+//                 items.forEach((item) => 
+//                         item.classList.add('cart__price-top--final'));
+//             //Bottom
+//             const itemsBottom = document.querySelectorAll('.cart__price-bottom');
+//             itemsBottom.forEach((item) => 
+//                     item.classList.add('cart__price-bottom--final'));
+//         //In the end
+//         return () => {
+//             //Top
+//             const items = document.querySelectorAll('.cart__price-top');
+//             items.forEach((item) => 
+//                     item.classList.add('cart__price-top---hide'));
+//             //Bottom
+//             const itemsBottom = document.querySelectorAll('.cart__price-bottom');
+//             itemsBottom.forEach((item) => 
+//                     item.classList.add('cart__price-bottom---show'));
+//         }
+//         },300)
+//     }, [cartSession]);
+
+
+    // Transition $ Item Amount
+    const [previousCounts, setPreviousCounts] = useState({});
+  
+    useEffect(() => {
+        const items = document.querySelectorAll('.cart__item');
+        items.forEach((item) => {
+            const itemId = item.dataset.itemId
+            const count = parseInt(item.querySelector('.cart__quantity').textContent.split(':')[1].trim());
+            if (previousCounts[itemId] !== count ) {
+            updatePriceClass(item, count);
+            previousCounts[itemId] = count;
+            }
+        });
+      
+        function updatePriceClass(item, count) {
+          const priceCtr = item.querySelector('.cart__price-ctr');
+          console.log("Change class on:", priceCtr)
+      
+          priceCtr.querySelector('.cart__price-top').classList.remove('cart__price-top--final');
+          priceCtr.querySelector('.cart__price-bottom').classList.remove('cart__price-bottom--final');
+      
+          setTimeout(() => {
+            priceCtr.querySelector('.cart__price-top').classList.add('cart__price-top--final');
+            priceCtr.querySelector('.cart__price-bottom').classList.add('cart__price-bottom--final');
+          }, 400);
+      
+          return () => {
+            priceCtr.querySelector('.cart__price-top').classList.add('cart__price-top---hide');
+            priceCtr.querySelector('.cart__price-bottom').classList.add('cart__price-bottom---show');
+          };
         }
-        },300)
-    }, [cartSession]);
+      }, [cartSession]);
+      
 
     const nextOrderNumber = () => {
             const highestValue = Math.max(...orders.map(obj => parseInt(obj.order_id)))
@@ -71,7 +106,11 @@ const Cart = ({cartSession,previewCart,orders}) => {
                 <div className="cart__list">
                     {cartSession ? 
                         (cartSession.map((cartItem) => (
-                        <div className="cart__item" key={cartItem.id}>
+                        <div 
+                            className="cart__item" 
+                            key={cartItem.id} 
+                            data-item-id={cartItem.id}
+                        >
                             <div className="cart__img-name-qt">
                                 <img className="cart__img" src={cartItem.image_url}/>
                                 <div className="cart__name-quantity">
@@ -80,8 +119,8 @@ const Cart = ({cartSession,previewCart,orders}) => {
                                 </div>
                             </div>
                             <div className="cart__price-ctr">
-                                <p className="cart__price-top">${cartItem.sale_price * cartItem.count}</p>
-                                <p className="cart__price-bottom">${cartItem.sale_price * (cartItem.count-1)}</p>
+                                <p className="cart__price-top cart__price-top--final">${cartItem.sale_price * cartItem.count}</p>
+                                <p className="cart__price-bottom cart__price-bottom--final">${cartItem.sale_price * (cartItem.count-1)}</p>
                             </div>
                             
                         </div>)
