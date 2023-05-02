@@ -22,7 +22,9 @@ const InventoryList = ({product, onClick, totalCart, removeFromCart, className, 
             if (cartSession.find((item) => item.id === selectedId)?.count === 1) {
                 setShowQuantity(showQuantity.filter((index) => index !== product.id))
             }
-            setPreviewCart(true);
+            if (cartSession.length === undefined || cartSession.length < 2) {
+                setPreviewCart(true);
+            }
             return;
         }
         removeFromCart(product)
@@ -30,7 +32,7 @@ const InventoryList = ({product, onClick, totalCart, removeFromCart, className, 
 
     const handlePlusClick = (selectedId) => { 
 
-        if (product.quantity != 0) {
+        if (product.quantity > 0) {
             setShowQR(false)
             handleAddToCart(product.id) 
             setShowQuantity([...showQuantity, selectedId])

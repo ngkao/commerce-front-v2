@@ -106,16 +106,15 @@
     }
 
     &__author-ctr {
-        // outline: 1px solid salmon;
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
         align-items: center;
-        padding-top: 0;
+        padding-top: 10px;
 
 
         @include tablet {
-            // padding-top: 65%;
+            padding-top: 0px;
         }
     }
 

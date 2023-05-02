@@ -13,8 +13,9 @@
 
       @include tablet {
       padding: 20px 30px 0;
-      height: 100%;
+      height: 50%;
       justify-content: flex-start;  
+      position: relative; // for the preview lottie file since it's absolute
     }
 
     &__title {
@@ -41,7 +42,9 @@
         animation: fade-in 1s ease-in-out forwards;
 
         @include tablet {
-            height: 50vh;
+            // height: 50vh;
+            position: absolute;
+            bottom: -25%;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -52,7 +55,8 @@
         background-color: $grey-light;
         overflow: auto;
         // height: 250px;
-        height: 33vh;
+        // height: 30vh;
+        height: 100%;
         width: 100%;
         margin-top: 20px;
         border-top: 1px solid rgb(255, 255, 255, 0.2);
@@ -69,7 +73,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding-bottom: 40px;
+        padding-bottom: 20px;
         background-color: $grey-light;
         padding-right: 5px;
         width: 100%;

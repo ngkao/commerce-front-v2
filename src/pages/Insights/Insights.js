@@ -127,7 +127,7 @@ const Insights = ({orders}) => {
                     </div>
                 </div>
             </div>
-            <div>
+            <div className="insights__chart">
                 <BarChart chartData={salesChartData} chartDataOptions={salesChartData.options}/>
             </div>
         </section>
