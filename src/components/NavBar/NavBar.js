@@ -79,6 +79,9 @@ const NavBar = () => {
                     </div>
                 </div>
             </div>
+
+            <div className="nav-cover-bottom"> cover </div>
+            <div className="nav-cover-top"> cover top </div>
         </div>
     );
 };

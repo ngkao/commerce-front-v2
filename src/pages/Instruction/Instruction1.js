@@ -13,14 +13,78 @@ const Instruction = () => {
 
     },[location]);
 
+    const navCoverBottom = document.querySelector('.nav-cover-bottom');
+    const navCoverTop = document.querySelector('.nav-cover-top');
+    const navItems = document.querySelectorAll('.nav__item');
+    const navItemProducts = Array.from(navItems).find(item => item.textContent.trim() === 'Products');
+    const navItemInventory= Array.from(navItems).find(item => item.textContent.trim() === 'Inventory');
+    const navItemSales = Array.from(navItems).find(item => item.textContent.trim() === 'Sales');
+    const navItemInsights = Array.from(navItems).find(item => item.textContent.trim() === 'Insights');
+    const navItemQR = document.querySelector('.checkout__btn');
+
     const handleNextCard = () => {
+        console.log("cardNumber: ",cardNumber)
+
+
 
         if(cardNumber < 5) {
-            const navContainers = document.querySelectorAll('.nav');
-            navContainers.forEach((navContainer) => {
-            navContainer.style.opacity = '0.5';
-            });
 
+            // Nav
+
+            // const navContainers = document.querySelectorAll('.nav');
+            // navContainers.forEach((navContainer) => {
+            // navContainer.style.opacity = '0.5';
+            // navContainer.style.zIndex = '999'
+            // });
+
+       
+            navCoverBottom.classList.add('nav-cover-bottom-on');
+            navCoverTop.classList.add('nav-cover-top-on');
+
+
+
+
+            if (cardNumber === 0) {
+                if (navItemProducts) {
+                    navItemProducts.style.zIndex = '999'
+                } 
+            } else {
+                navItemProducts.style.zIndex = '1'
+            }
+
+            // if (cardNumber === 1) {
+            //     if (navItemProducts) {
+            //         navItemProducts.style.zIndex = '999'
+            //     } 
+            // } else {
+            //     navItemProducts.style.zIndex = '1'
+            // }
+
+            if (cardNumber === 2) {
+                if (navItemInventory) {
+                    navItemInventory.style.zIndex = '999'
+                } 
+            } else {
+                navItemInventory.style.zIndex = '1'
+            }
+
+            if (cardNumber === 3) {
+                if (navItemSales) {
+                    navItemSales.style.zIndex = '999'
+                } 
+            } else {
+                navItemSales.style.zIndex = '1'
+            }
+
+            if (cardNumber === 4) {
+                if (navItemInsights) {
+                    navItemInsights.style.zIndex = '999'
+                } 
+            } else {
+                navItemInsights.style.zIndex = '1'
+            }
+
+            // PaySum
             const paysumContainers = document.querySelectorAll('.paysum');
             paysumContainers.forEach((paysumContainer) => {
                 paysumContainer.style.opacity = '0.5';
@@ -38,7 +102,11 @@ const Instruction = () => {
         }
 
         if (cardNumber > 4) {
+            navItemInsights.style.zIndex = '1';
+            navCoverBottom.classList.remove('nav-cover-bottom-on');
+            navCoverTop.classList.remove('nav-cover-top-on');
             navigate("/products")
+
         } else {
             let count = cardNumber;
             let newCount = count+1;
@@ -55,6 +123,10 @@ const Instruction = () => {
         paysumContainers.forEach((paysumContainer) => {
             paysumContainer.style.opacity = '1';
             });
+        navItemInsights.style.zIndex = '1';
+        navCoverBottom.classList.remove('nav-cover-bottom-on');
+        navCoverTop.classList.remove('nav-cover-top-on');
+        
         navigate("/products")
     }
 
@@ -107,7 +179,7 @@ const Instruction = () => {
                 </div>
             </div>
 
-
+   
         </section>
     );
 };
