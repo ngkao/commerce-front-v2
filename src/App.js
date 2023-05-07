@@ -15,6 +15,7 @@ import Insights from "./pages/Insights/Insights";
 import InventoryStockPage from "./pages/InventoryStockPage/InventoryStockPage";
 import Lottie from "lottie-react";
 import LoadingIcon from "./assets/animations/loading.json";
+import Instruction1 from "./pages/Instruction/Instruction1";
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 function App() {
@@ -231,6 +232,7 @@ function App() {
             <NavBar/>
             <div className="center">
                 <Routes>
+                  <Route path="/" element={<Instruction1/>}></Route>
                     <Route path="/products" element={
                         <ProductSelectionView
                             productList={productList}
