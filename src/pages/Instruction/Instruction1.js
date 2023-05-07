@@ -7,11 +7,19 @@ const Instruction = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const [cardNumber, setCardNumber] = useState(0);
-    useEffect(() => {
-        const element = document.querySelector('.instruction__ctr');
-        element.classList.add('instruction__ctr--fade-in');
 
-    },[location]);
+    useEffect(() => {
+        const instructionCtrs = document.querySelectorAll('.instruction__ctr');
+        if (location.pathname == "/") {
+             instructionCtrs.forEach((instructionCtr) => {
+                     instructionCtr.classList.add('instruction__ctr--fade-in');
+             });
+        } else {
+         instructionCtrs.forEach((instructionCtr) => {
+             instructionCtr.classList.remove('instruction__ctr--fade-in');
+         });
+        }
+    },[location.pathname]);
 
     const navCoverBottom = document.querySelector('.nav-cover-bottom');
     const navCoverTop = document.querySelector('.nav-cover-top');
@@ -25,7 +33,6 @@ const Instruction = () => {
     const payItemQR = document.querySelector('.checkout__btn');
 
     const handleNextCard = () => {
-        console.log("cardNumber: ",cardNumber)
 
 
 

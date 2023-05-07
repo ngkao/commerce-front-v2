@@ -36,10 +36,6 @@
         opacity: 0;
         transition: opacity 0.5s ease-in-out;
 
-        // &--fade-in {
-
-        // }
-
         &--fade-in {
             opacity: 1;
         }
@@ -173,7 +169,6 @@
 }
 
 .nav-cover-bottom {
-    // outline: 2px solid salmon;
     position: absolute;
     left: 0%;
     z-index: 998;
@@ -189,7 +184,6 @@
 }
 
 .nav-cover-top {
-    // outline: 2px solid salmon;
     position: absolute;
     left: 0%;
     z-index: 1000;
@@ -205,7 +199,6 @@
 }
 
 .pay-cover-bottom {
-        // outline: 2px solid salmon;
         position: absolute;
         left: 0%;
         z-index: 998;
@@ -221,7 +214,6 @@
 }
 
 .pay-cover-top {
-        // outline: 2px solid rgb(114, 250, 137);
         position: absolute;
         left: 0%;
         z-index: 1000;

@@ -28,6 +28,14 @@ function App() {
     const [productsSold, setProductsSold] = useState();
     const [urlStripe, setStripeUrl] = useState();
     const [outOfStockMsg, setOutOfStockMsg] = useState( {status:false,message:"",product:""});
+    const [cartSession, setCartSession] = useState([]);
+    const [src, setSrc] = useState("");
+    const [showQR, setShowQR] = useState(false);
+
+
+    if (cartSession == null) {
+      setCartSession([])
+    }
 
     useEffect(() => {
       return () => {
@@ -154,9 +162,7 @@ function App() {
       calcTotalPay();
     }
 
-    const [cartSession, setCartSession] = useState([]);
-    const [src, setSrc] = useState("");
-    const [showQR, setShowQR] = useState(false);
+
 
     if (!productList) {     
           return (
