@@ -82,6 +82,8 @@ html {
     margin: 0 2rem;
     margin-bottom: 24px;
 
+    position: relative;
+
     @include tablet {
         margin: 0;
         width: 500px;

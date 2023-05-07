@@ -20,7 +20,9 @@ const Instruction = () => {
     const navItemInventory= Array.from(navItems).find(item => item.textContent.trim() === 'Inventory');
     const navItemSales = Array.from(navItems).find(item => item.textContent.trim() === 'Sales');
     const navItemInsights = Array.from(navItems).find(item => item.textContent.trim() === 'Insights');
-    const navItemQR = document.querySelector('.checkout__btn');
+    const paysumCoverBottom = document.querySelector('.pay-cover-bottom');
+    const paysumCoverTop = document.querySelector('.pay-cover-top');
+    const payItemQR = document.querySelector('.checkout__btn');
 
     const handleNextCard = () => {
         console.log("cardNumber: ",cardNumber)
@@ -40,6 +42,10 @@ const Instruction = () => {
        
             navCoverBottom.classList.add('nav-cover-bottom-on');
             navCoverTop.classList.add('nav-cover-top-on');
+            paysumCoverBottom.classList.add('pay-cover-bottom-on');
+            paysumCoverTop.classList.add('pay-cover-top-on');
+
+
 
 
 
@@ -52,13 +58,13 @@ const Instruction = () => {
                 navItemProducts.style.zIndex = '1'
             }
 
-            // if (cardNumber === 1) {
-            //     if (navItemProducts) {
-            //         navItemProducts.style.zIndex = '999'
-            //     } 
-            // } else {
-            //     navItemProducts.style.zIndex = '1'
-            // }
+            if (cardNumber === 1) {
+                if (payItemQR) {
+                    payItemQR.style.zIndex = '999'
+                } 
+            } else {
+                payItemQR.style.zIndex = '1'
+            }
 
             if (cardNumber === 2) {
                 if (navItemInventory) {
@@ -85,10 +91,10 @@ const Instruction = () => {
             }
 
             // PaySum
-            const paysumContainers = document.querySelectorAll('.paysum');
-            paysumContainers.forEach((paysumContainer) => {
-                paysumContainer.style.opacity = '0.5';
-                });
+            // const paysumContainers = document.querySelectorAll('.paysum');
+            // paysumContainers.forEach((paysumContainer) => {
+            //     paysumContainer.style.opacity = '0.5';
+            //     });
 
         } else {
             const navs = document.querySelectorAll('.nav');
@@ -105,6 +111,8 @@ const Instruction = () => {
             navItemInsights.style.zIndex = '1';
             navCoverBottom.classList.remove('nav-cover-bottom-on');
             navCoverTop.classList.remove('nav-cover-top-on');
+            paysumCoverBottom.classList.remove('pay-cover-bottom-on');
+            paysumCoverTop.classList.remove('pay-cover-top-on');
             navigate("/products")
 
         } else {
@@ -115,18 +123,19 @@ const Instruction = () => {
     }
 
     const handleSkip = () => {
-        const navs = document.querySelectorAll('.nav');
-        navs.forEach(nav => {
-        nav.style.opacity = '1';
-        });
-        const paysumContainers = document.querySelectorAll('.paysum');
-        paysumContainers.forEach((paysumContainer) => {
-            paysumContainer.style.opacity = '1';
-            });
+        // const navs = document.querySelectorAll('.nav');
+        // navs.forEach(nav => {
+        // nav.style.opacity = '1';
+        // });
+        // const paysumContainers = document.querySelectorAll('.paysum');
+        // paysumContainers.forEach((paysumContainer) => {
+        //     paysumContainer.style.opacity = '1';
+        //     });
         navItemInsights.style.zIndex = '1';
         navCoverBottom.classList.remove('nav-cover-bottom-on');
         navCoverTop.classList.remove('nav-cover-top-on');
-        
+        paysumCoverBottom.classList.remove('pay-cover-bottom-on');
+        paysumCoverTop.classList.remove('pay-cover-top-on');
         navigate("/products")
     }
 
@@ -138,20 +147,21 @@ const Instruction = () => {
                     {cardNumber == 0 ? <InstructionCard
                         section="Welcome on Board"
                         text="Snack POS is a commerce POS solution that caters to small brick and mortar retail owners or pop-up shops the following benefits:"
-                        text1="1) Checkout Payment with Stripe and QR Codes"
+                        text1="1) Checkout with QR Codes and Stripe Payments"
                         text2="2) Simple Inventory management"
                         text3="3) Business Performance Insights"
                         className="instruction__subtext--hide"
                     /> : null}
                     {cardNumber == 1 ? <InstructionCard
                         section="Products"
-                        text="A merchant selects items that a customer would like to purchase."
+                        text="A merchant selects products that a customer would like to buy."
                         dot1="instruction__dot--selected"
                         className="instruction__subtext--hide"
                     /> : null}
                     {cardNumber == 2 ? <InstructionCard
-                        section="Generate QR Code"
-                        text="Once a customer is ready to pay, a merchant generates a QR code for a digital payment via Stripe. A customer can use a phone to scan or click on the QR code."
+                        section="Payment"
+                        text2="A merchant generates a QR code for a customer payment via Stripe."
+                        text3="A customer can use a phone to scan (or click on the QR code)."
                         dot2="instruction__dot--selected"
                     /> : null}
                     {cardNumber == 3 ? <InstructionCard

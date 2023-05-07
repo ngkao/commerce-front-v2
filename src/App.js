@@ -294,6 +294,8 @@ function App() {
                     renderProductList={renderProductList}
                     outOfStockMsg={outOfStockMsg}
                 />
+                <div className="pay-cover-bottom">cover bottom</div>
+                <div className="pay-cover-top">cover top</div>
             </div>
         </div>
      </BrowserRouter>

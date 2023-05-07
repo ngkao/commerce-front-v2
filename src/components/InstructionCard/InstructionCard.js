@@ -10,7 +10,7 @@ const InstructionCard = ({section,text,text1,text2,text3,dot1,dot2,dot3,dot4,dot
                     <p className="instruction__subtext">{text1}</p>
                     <p className="instruction__subtext">{text2}</p>
                     <p className="instruction__subtext">{text3}</p>
-                    <p className={`instruction__subtext ${className}`}>Note: use testing card <span className="instruction__subtext--highlighted">4242 4242 4242</span> for Stripe Payment</p>
+                    <p className={`instruction__subtext ${className}`}>Note: Use testing card <span className="instruction__subtext--highlighted">4242 4242 4242</span> for Stripe Payment</p>
                 </div>
             </div>
             <div className="instruction__dot-ctr">
