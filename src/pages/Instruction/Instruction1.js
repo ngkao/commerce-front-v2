@@ -37,9 +37,6 @@ const Instruction = () => {
                 });
         }
 
-
-
-
         if (cardNumber > 4) {
             navigate("/products")
         } else {
@@ -47,8 +44,6 @@ const Instruction = () => {
             let newCount = count+1;
             setCardNumber(newCount);
         }
-
-
     }
 
     const handleSkip = () => {
@@ -56,44 +51,54 @@ const Instruction = () => {
         navs.forEach(nav => {
         nav.style.opacity = '1';
         });
+        const paysumContainers = document.querySelectorAll('.paysum');
+        paysumContainers.forEach((paysumContainer) => {
+            paysumContainer.style.opacity = '1';
+            });
         navigate("/products")
     }
 
     return (
         <section className="instruction">
-            <p className="instruction__title">Instruction</p>
-   
+            {/* <p className="instruction__title">Instruction</p> */}
             <div className={`instruction__ctr`}>
                 <div className="instruction__subctr">
                     {cardNumber == 0 ? <InstructionCard
                         section="Welcome on Board"
-                        text=""
+                        text="Snack POS is a commerce POS solution that caters to small brick and mortar retail owners or pop-up shops the following benefits:"
+                        text1="1) Checkout Payment with Stripe and QR Codes"
+                        text2="2) Simple Inventory management"
+                        text3="3) Business Performance Insights"
+                        className="instruction__subtext--hide"
                     /> : null}
                     {cardNumber == 1 ? <InstructionCard
                         section="Products"
                         text="A merchant selects items that a customer would like to purchase."
                         dot1="instruction__dot--selected"
+                        className="instruction__subtext--hide"
                     /> : null}
                     {cardNumber == 2 ? <InstructionCard
                         section="Generate QR Code"
                         text="Once a customer is ready to pay, a merchant generates a QR code for a digital payment via Stripe. A customer can use a phone to scan or click on the QR code."
-                        text1=""
                         dot2="instruction__dot--selected"
                     /> : null}
                     {cardNumber == 3 ? <InstructionCard
                         section="Inventory"
                         text="A merchant can view the units sold and the units available in stock."
                         dot3="instruction__dot--selected"
+                        className="instruction__subtext--hide"
                     /> : null}
                     {cardNumber == 4 ? <InstructionCard
                         section="Sales"
                         text="A merchant can view detailed sales transaction records."
                         dot4="instruction__dot--selected"
+                        className="instruction__subtext--hide"
                     /> : null}
                     {cardNumber == 5 ? <InstructionCard
                         section="Insights"
                         text="A merchant can view business metrics for today and this month."
                         dot5="instruction__dot--selected"
+                        className="instruction__subtext--hide"
                     /> : null}
                     <div className="instruction__btn-ctr">
                         <p className="instruction__skip" onClick={handleSkip}>SKIP</p>
