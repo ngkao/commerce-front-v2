@@ -15,6 +15,7 @@ import Insights from "./pages/Insights/Insights";
 import InventoryStockPage from "./pages/InventoryStockPage/InventoryStockPage";
 import Lottie from "lottie-react";
 import LoadingIcon from "./assets/animations/loading.json";
+import Instruction1 from "./pages/Instruction/Instruction1";
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 function App() {
@@ -27,6 +28,14 @@ function App() {
     const [productsSold, setProductsSold] = useState();
     const [urlStripe, setStripeUrl] = useState();
     const [outOfStockMsg, setOutOfStockMsg] = useState( {status:false,message:"",product:""});
+    const [cartSession, setCartSession] = useState([]);
+    const [src, setSrc] = useState("");
+    const [showQR, setShowQR] = useState(false);
+
+
+    if (cartSession == null) {
+      setCartSession([])
+    }
 
     useEffect(() => {
       return () => {
@@ -153,9 +162,7 @@ function App() {
       calcTotalPay();
     }
 
-    const [cartSession, setCartSession] = useState([]);
-    const [src, setSrc] = useState("");
-    const [showQR, setShowQR] = useState(false);
+
 
     if (!productList) {     
           return (
@@ -231,6 +238,7 @@ function App() {
             <NavBar/>
             <div className="center">
                 <Routes>
+                  <Route path="/" element={<Instruction1/>}></Route>
                     <Route path="/products" element={
                         <ProductSelectionView
                             productList={productList}
@@ -292,6 +300,8 @@ function App() {
                     renderProductList={renderProductList}
                     outOfStockMsg={outOfStockMsg}
                 />
+                <div className="pay-cover-bottom">cover bottom</div>
+                <div className="pay-cover-top">cover top</div>
             </div>
         </div>
      </BrowserRouter>

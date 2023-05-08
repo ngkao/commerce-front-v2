@@ -32,6 +32,7 @@ const NavBar = () => {
            } else {
            items.forEach(item => item.classList.remove('show'));
            }
+
        },300)
       }, [location.pathname]);
 
@@ -57,8 +58,8 @@ const NavBar = () => {
                                 animationData={QRPhone}
                                 interactivity="click"
                                 style={{ height: '150%', width: '200%' }}
-                                onMouseOver={handleMouseOver}
-                                onMouseOut={handleMouseOut}
+                                // onMouseOver={handleMouseOver}
+                                // onMouseOut={handleMouseOut}
                             />
                         </Link>
                     </div>
@@ -79,6 +80,9 @@ const NavBar = () => {
                     </div>
                 </div>
             </div>
+
+            <div className="nav-cover-bottom"> cover </div>
+            <div className="nav-cover-top"> cover top </div>
         </div>
     );
 };
