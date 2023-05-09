@@ -9,19 +9,14 @@ const Insights = ({orders}) => {
     const currentMonth = today.getMonth() + 1; // getMonth() returns 0-indexed month
     const salesData = Array.from({ length: 31 }, (_, i) => i + 1).fill(0);
 
-    console.log("orders", orders)
-
     orders.forEach(order => {
     const orderMonth = parseInt(order.order_date.slice(5, 7)); 
 
-    console.log("OrderMonth", orderMonth)
         if (orderMonth === currentMonth) {
             const day = parseInt(order.order_date.slice(8, 10)) - 1; 
             salesData[day + 1] += parseInt(order.total_sale_amount); 
         }
     });
-
-    console.log("data", salesData)
 
     const [salesChartData, setSalesChartData] = useState(
         {
@@ -62,7 +57,7 @@ const Insights = ({orders}) => {
                 plugins: {
                   legend: {
                     display: true,
-                  },
+                  }                
                 }
               }
         },
