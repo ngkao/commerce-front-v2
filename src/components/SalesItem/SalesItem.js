@@ -35,7 +35,7 @@ const SalesItem = () => {
     return (
         <section className="sales">
             <div className="sales__heading">
-                <Link to="/sales" className="items__title">Sales Summary</Link>
+                <Link to="/sales" className="items__title">Sales History</Link>
                 <p className="items__title">&gt;</p>
                 <p className="sales__title">Item Details</p>
             </div>

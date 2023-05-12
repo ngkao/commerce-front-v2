@@ -6,12 +6,13 @@
     margin: 0 2rem;
     display: flex;
     flex-direction: column;
-
     height: 770px;
+    margin-top: 2rem;
     // outline: 1px solid salmon;
 
     @include tablet {
         height: 100%;
+        margin-top: 0rem;
     }
 
     &__title {
@@ -136,7 +137,7 @@
     &__skip {
         width: 35%;
         text-align: center;
-        height: 40px;
+        height: 60px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -145,6 +146,10 @@
 
         &:hover {
             border: 2px solid white;
+        }
+
+        @include tablet {
+            height: 40px;
         }
     }
 
@@ -157,12 +162,17 @@
         justify-content: center;
         align-items: center;
         border-radius: 15px;
-        height: 40px;
+        height: 60px;
         cursor: pointer;
+
 
         &:hover {
             border: 2px solid white;
             outline: 1px solid white;
+        }
+
+        @include tablet {
+            height: 40px;
         }
     }
 
