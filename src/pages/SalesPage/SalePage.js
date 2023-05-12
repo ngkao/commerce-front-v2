@@ -33,7 +33,7 @@ const SalePage = ({orders,renderItemsByOrderId}) => {
 
     return (
         <section className="sales">
-            <p className="sales__title">Sales Summary</p>
+            <p className="sales__title">Sales History</p>
             <div className="sales__headers">
                 <p className="sales__common-item sales__header-item sales__item-1">Date</p>
                 <p className="sales__common-item sales__header-item sales__item-2">Order ID</p>

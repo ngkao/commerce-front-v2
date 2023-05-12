@@ -68,7 +68,7 @@ const NavBar = () => {
                 <div className="nav__list">
                     <Link className={isProductPath ? "nav__item nav__item--active" : "nav__item"} to="/products">Products</Link>
                     <Link className={isInventory ? "nav__item nav__item--active" : "nav__item"} to="/inventory">Inventory</Link>
-                    <Link className={isSalesPath ? "nav__item nav__item--active" : "nav__item"} to="/sales">Sales</Link>
+                    <Link className={isSalesPath ? "nav__item nav__item--active" : "nav__item"} to="/sales">Sales History</Link>
                     <Link className={isEmployeesPath ? "nav__item nav__item--active" : "nav__item"} to="/insights">Insights</Link>
                 </div>  
                 <div className="nav__author-ctr">

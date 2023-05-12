@@ -11,6 +11,7 @@ const Insights = ({orders}) => {
 
     orders.forEach(order => {
     const orderMonth = parseInt(order.order_date.slice(5, 7)); 
+
         if (orderMonth === currentMonth) {
             const day = parseInt(order.order_date.slice(8, 10)) - 1; 
             salesData[day + 1] += parseInt(order.total_sale_amount); 
@@ -56,7 +57,7 @@ const Insights = ({orders}) => {
                 plugins: {
                   legend: {
                     display: true,
-                  },
+                  }                
                 }
               }
         },
