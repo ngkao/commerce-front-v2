@@ -34,6 +34,17 @@ const Instruction = () => {
 
     const handleNextCard = () => {
 
+        const navCoverBottom = document.querySelector('.nav-cover-bottom');
+        const navCoverTop = document.querySelector('.nav-cover-top');
+        const navItems = document.querySelectorAll('.nav__item');
+        const navItemProducts = Array.from(navItems).find(item => item.textContent.trim() === 'Products');
+        const navItemInventory= Array.from(navItems).find(item => item.textContent.trim() === 'Inventory');
+        const navItemSales = Array.from(navItems).find(item => item.textContent.trim() === 'Sales History');
+        const navItemInsights = Array.from(navItems).find(item => item.textContent.trim() === 'Insights');
+        const paysumCoverBottom = document.querySelector('.pay-cover-bottom');
+        const paysumCoverTop = document.querySelector('.pay-cover-top');
+        const payItemQR = document.querySelector('.checkout__btn');
+
         if(cardNumber < 5) {
 
             // const navCoverBottom = document.querySelector('.nav-cover-bottom');
