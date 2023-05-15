@@ -12,10 +12,7 @@ const InstructionCard = ({section,text,text1,text2,text3,dot1,dot2,dot3,dot4,dot
                     <p className="instruction__subtext">{text3}</p>
                     <p className={`instruction__subtext instruction__subtext--outlined ${className}`}>Testing Card for Stripe Payment:</p>
                     <p className={`instruction__subtext instruction__subtext--outlined ${className}`}>Email: <span className="instruction__subtext--highlighted">test@gmail.com</span></p>
-                    {/* <p className={`instruction__subtext ${className}`}>Card Num: <span className="instruction__subtext--highlighted">4242 4242 4242</span></p> */}
                     <p className={`instruction__subtext instruction__subtext--outlined ${className}`}>Card Info: <span className="instruction__subtext--highlighted">4242 4242 4242 4242</span>; MM/YY: <span className="instruction__subtext--highlighted">04/24</span>; CVC: <span className="instruction__subtext--highlighted">424</span></p>
-                    {/* <p className={`instruction__subtext ${className}`}>Card MM/YY: <span className="instruction__subtext--highlighted">04/24</span></p> */}
-                    {/* <p className={`instruction__subtext ${className}`}>Card CVC: <span className="instruction__subtext--highlighted">424</span></p> */}
                     <p className={`instruction__subtext instruction__subtext--outlined ${className}`}>Name: <span className="instruction__subtext--highlighted">[Name]</span></p>
                     <p className={`instruction__subtext instruction__subtext--outlined ${className}`}>Postal Code: <span className="instruction__subtext--highlighted">AAA AAA</span></p>
 
