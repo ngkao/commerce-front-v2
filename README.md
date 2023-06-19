@@ -24,18 +24,18 @@ A commerce POS solution that caters to small retail shops with the following ben
 
 
 
-- Clone this repo
+1. Clone this repo
 
-- Start the front-end of the project with npm
+2. Start the front-end of the project with npm
 
 ```bash
 $ npm install
 $ npm start
 ```
-- The front-end runs on http://localhost:3000/
-    
 
-    Note: You will need to complete the instructions for the back-end of the project to fully run the application. [Click here](https://github.com/ngkao/commerce-back-v2) for the back-end of the project.
+The front-end runs on http://localhost:3000/
+    
+Note: You will need to complete the instructions for the back-end of the project to fully run the application. [Click here](https://github.com/ngkao/commerce-back-v2) for the back-end of the project.
 ## Environment Variables
 
 To run this project, you will need to add the following environment variables to your .env file
