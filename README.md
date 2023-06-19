@@ -29,7 +29,8 @@ A commerce POS solution that caters to small retail shops with the following ben
 - Start the front-end of the project with npm
 
 ```bash
-npm start
+$ npm install
+$ npm start
 ```
 - The front-end runs on http://localhost:3000/
     
