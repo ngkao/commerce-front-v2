@@ -20,7 +20,7 @@ A commerce POS solution that caters to small retail shops with the following ben
 [Click here](https://www.loom.com/share/854b5f6ed46e4496980753c5521eb667) to view the demo of the application.
 
 
-## Installation
+## Front-End Installation
 
 
 
