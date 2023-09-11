@@ -265,7 +265,7 @@ function App() {
                         />
                     }></Route>
                     <Route path="/sales/:orderId" element={<SalesItem/>}></Route>
-                    <Route path="/insights" element={<Insights orders={orders}/>}></Route>
+                    <Route path="/dashboard" element={<Insights orders={orders}/>}></Route>
                     <Route path="/inventory" element={
                         <InventoryStockPage
                             renderProductsSold={renderProductsSold}
