@@ -40,7 +40,7 @@ const Instruction = () => {
         const navItemProducts = Array.from(navItems).find(item => item.textContent.trim() === 'Products');
         const navItemInventory= Array.from(navItems).find(item => item.textContent.trim() === 'Inventory');
         const navItemSales = Array.from(navItems).find(item => item.textContent.trim() === 'Sales History');
-        const navItemInsights = Array.from(navItems).find(item => item.textContent.trim() === 'Insights');
+        const navItemInsights = Array.from(navItems).find(item => item.textContent.trim() === 'Dashboard');
         const paysumCoverBottom = document.querySelector('.pay-cover-bottom');
         const paysumCoverTop = document.querySelector('.pay-cover-top');
         const payItemQR = document.querySelector('.checkout__btn');
@@ -146,7 +146,7 @@ const Instruction = () => {
                         text="Snack POS is a commerce POS solution that caters to small retail owners or pop-up shops with the following benefits:"
                         text1="1) Checkout with QR Codes and Stripe Payments"
                         text2="2) Simple Inventory management"
-                        text3="3) Business Performance Insights"
+                        text3="3) Dashboard"
                         className="instruction__subtext--hide"
                     /> : null}
                     {cardNumber === 1 ? <InstructionCard
@@ -174,7 +174,7 @@ const Instruction = () => {
                         className="instruction__subtext--hide"
                     /> : null}
                     {cardNumber === 5 ? <InstructionCard
-                        section="Insights"
+                        section="Dashboard"
                         text="A merchant can view business metrics for today and this month."
                         dot5="instruction__dot--selected"
                         className="instruction__subtext--hide"

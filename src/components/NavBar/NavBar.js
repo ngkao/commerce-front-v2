@@ -21,7 +21,7 @@ const NavBar = () => {
     useEffect(() => {
         setTimeout(() => {
             const items = document.querySelectorAll('.inventory__item');
-           if (location.pathname == '/products') {
+           if (location.pathname === '/products') {
                setTimeout(() => {
                    items.forEach((item, index) => 
                        setTimeout(() => {
@@ -69,7 +69,7 @@ const NavBar = () => {
                     <Link className={isProductPath ? "nav__item nav__item--active" : "nav__item"} to="/products">Products</Link>
                     <Link className={isInventory ? "nav__item nav__item--active" : "nav__item"} to="/inventory">Inventory</Link>
                     <Link className={isSalesPath ? "nav__item nav__item--active" : "nav__item"} to="/sales">Sales History</Link>
-                    <Link className={isEmployeesPath ? "nav__item nav__item--active" : "nav__item"} to="/insights">Insights</Link>
+                    <Link className={isEmployeesPath ? "nav__item nav__item--active" : "nav__item"} to="/dashboard">Dashboard</Link>
                 </div>  
                 <div className="nav__author-ctr">
                     <p className="nav__author-name">by NG Kao</p>

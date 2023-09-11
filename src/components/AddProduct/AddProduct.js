@@ -76,7 +76,7 @@ const AddProduct = ({productList,renderProductList}) => {
                     Purchase Price
                     <input className="add__input" type="number" value={purchasePrice} onChange={(e) => setPurchasePrice(e.target.value)}></input>
                 </label>
-                <button className="add__btn">Add Product</button>
+                <button type="submit" className="add__btn">Add Product</button>
             </form>
         </div>
     );
