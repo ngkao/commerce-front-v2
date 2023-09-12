@@ -1,85 +1,79 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
-
 .sales__heading {
-    display: flex;
+  display: flex;
 
-    @include tablet {
-        margin: 0;
-    }
+  @include tablet {
+    margin: 0;
+  }
 }
 
 .items__title {
+  padding: 1rem 1rem;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 27px;
 
-    padding: 1rem 1rem;
-    color: white;
-    text-decoration: none;
-    cursor: pointer;
-    font-size: 27px;
-
-    @include tablet {
-        font-size: $font-large;
-    }
+  @include tablet {
+    font-size: $font-large;
+  }
 }
 
 .show-item {
-    opacity: 1;
-    transform: translateX(0);
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .sales-item {
-
-    &__item-1{
-
-        @include tablet {
-            width: 25%;
-        }
-        
+  &__item-1 {
+    @include tablet {
+      width: 25%;
     }
-    &__item-2{
-  
-        @include tablet {
-            width: 35%;
-        }
+  }
+  &__item-2 {
+    @include tablet {
+      width: 35%;
     }
-    &__item-3{
-        @include tablet {
-            width: 10%;
-        }
+  }
+  &__item-3 {
+    @include tablet {
+      width: 10%;
     }
-    &__item-4{
-        @include tablet {
-            width: 10%;
-        }
+  }
+  &__item-4 {
+    @include tablet {
+      width: 10%;
     }
-    &__item-5{
-        @include tablet {
-            width: 10%;
-        }
+  }
+  &__item-5 {
+    @include tablet {
+      width: 10%;
     }
-    &__item-6{
-        @include tablet {
-            width: 10%;
-        }
+  }
+  &__item-6 {
+    @include tablet {
+      width: 10%;
     }
+  }
 }
 
 .sales-item__item {
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-overflow: ellipsis; 
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
-    @include tablet {
-        padding: 20px 5px;
-        overflow:visible; 
-    }
+  @include tablet {
+    padding: 20px 5px;
+    overflow: visible;
+  }
 }
 
 .sales__mob-header {
-    color: $color-selected;
+  color: $color-selected;
 
-    @include tablet {
-        display: none;
-    }
+  @include tablet {
+    display: none;
+  }
 }

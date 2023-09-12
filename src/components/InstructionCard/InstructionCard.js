@@ -1,4 +1,4 @@
-import "../../pages/Instruction/Instruction.scss";
+import "../../pages/HomePage/components/Instruction/Instruction.scss";
 
 const InstructionCard = ({section,text,text1,text2,text3,dot1,dot2,dot3,dot4,dot5, className}) => {
     return (
