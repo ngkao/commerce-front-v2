@@ -1,0 +1,130 @@
+@use "../../../../styles/partials/variables" as *;
+@use "../../../../styles/partials/mixins" as *;
+
+.inventory-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10%;
+
+  @include tablet {
+    width: 50%;
+  }
+
+  @include desktop {
+    width: 90%;
+  }
+
+  &__price-quantity {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 40%;
+
+    @include tablet {
+      width: 60%;
+    }
+
+    @include desktop {
+      width: 90%;
+    }
+  }
+
+  &__img {
+    aspect-ratio: 1 / 1;
+    width: 40%;
+    height: auto;
+    border-radius: 10px;
+
+    @include tablet {
+      width: 50%;
+    }
+
+    @include desktop {
+      width: 70%;
+    }
+  }
+
+  &__name {
+    width: 100%;
+    color: $white;
+    font-size: 14px;
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+
+    @include tablet {
+      height: 45px;
+    }
+
+    @include desktop {
+      height: 45px;
+    }
+  }
+
+  &__btn {
+    height: 35px;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    background-color: $grey-light;
+    cursor: pointer;
+    color: $white;
+    border-radius: 15px;
+
+    &:hover {
+      color: $color-selected;
+    }
+  }
+
+  &__btn-ctr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-radius: 15px;
+    background-color: $grey-light;
+
+    //transition
+    transition: all 0.7s ease;
+    opacity: 0;
+    transform: translateX(0px);
+  }
+
+  &__count {
+    color: $white;
+    background-color: $grey-light;
+  }
+
+  &__price {
+    color: $white;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__plus-btn {
+    width: 60px;
+    height: 35px;
+    background-color: $grey-light;
+    outline: none;
+    border: none;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+
+    &:hover {
+      border: 2px solid $color-selected;
+      color: $color-selected;
+    }
+  }
+}
+
+.show-button {
+  opacity: 1;
+  transform: translateX(0);
+}

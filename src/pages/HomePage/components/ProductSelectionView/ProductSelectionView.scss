@@ -1,0 +1,133 @@
+@use "../../../../styles/partials/variables" as *;
+@use "../../../../styles/partials/mixins" as *;
+
+.product {
+  display: flex;
+  flex-direction: column;
+
+  &__topbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+
+    @include tablet {
+      width: 100%;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+    }
+  }
+
+  &__search {
+    height: 40px;
+    width: 80%;
+    padding: 0 1rem;
+    background-color: $grey-light;
+    border-radius: $border-radius-standard;
+    border: none;
+    outline: none;
+    color: $white;
+    margin-top: 20px;
+
+    @include tablet {
+      width: 250px;
+      margin-top: 0px;
+    }
+  }
+
+  &__ctr {
+    display: flex;
+    justify-content: center;
+    height: 550px;
+
+    @include tablet {
+      height: 100%;
+    }
+  }
+
+  &__add {
+    text-decoration: none;
+    color: $white;
+    width: 80%;
+    border: 2px solid $white;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: $border-radius-standard;
+    transition: 0.5s;
+    margin-top: 10px;
+
+    &:hover {
+      border: 2px solid $color-selected;
+      color: $color-selected;
+    }
+
+    @include tablet {
+      width: 150px;
+      margin-top: 0px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    @include tablet {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      height: none;
+    }
+  }
+}
+
+.test {
+
+  @include tablet {
+    flex-basis: calc(33% - 20px);
+    margin: 10px;
+  }
+
+  @include desktop {
+    flex-basis: calc(25% - 20px);
+  }
+
+  .inventory {
+    &__item {
+      padding: 1rem;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      //transition
+      transition: all 1s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+  }
+
+  .show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+::placeholder {
+  color: white;
+}
+
+.carousel {
+  outline: 1px salmon;
+}

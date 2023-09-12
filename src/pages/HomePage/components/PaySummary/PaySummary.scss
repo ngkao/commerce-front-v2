@@ -1,0 +1,206 @@
+@use "../../../../styles/partials/variables" as *;
+@use "../../../../styles/partials/mixins" as *;
+
+.checkout {
+  background-color: $grey-light;
+  padding: 0 20px;
+  border-radius: $border-radius-standard;
+  margin: 0 16px;
+  width: 100%;
+
+  &__qr-link {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  &__qr {
+    width: 150px;
+    height: 150px;
+    transition: all 0.4s ease;
+    opacity: 0;
+    transform: translateX(20px);
+    border-radius: $border-radius-lower;
+    position: relative;
+
+    &--active {
+      width: 150px;
+      height: 150px;
+      opacity: 1;
+      transform: translateX(0);
+      border-radius: $border-radius-lower;
+    }
+  }
+
+  &__totalpay-ctr {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    background-color: $grey-light;
+    padding: 10px 0 15px;
+    padding-right: 10px;
+  }
+
+  &__totalpay-title {
+    background-color: $grey-light;
+    font-size: $font-large;
+  }
+
+  &__totalpay-amount-ctr {
+    position: relative;
+  }
+
+  &__totalpay-amount {
+    &--top {
+      background-color: $grey-light;
+      font-size: $font-large;
+      color: $white;
+      position: absolute;
+      right: 0px;
+      //transition
+      transition: all 0s ease;
+      opacity: 0;
+      transform: translateY(-40px);
+      background-color: rgba(0, 128, 0, 0);
+
+      &--final {
+        transition: all 0.2s ease;
+        opacity: 1;
+        transform: translateY(0px);
+      }
+
+      &--hide {
+        transition: all 0s ease;
+        opacity: 0;
+      }
+    }
+
+    &--bottom {
+      background-color: $grey-light;
+      font-size: $font-large;
+      position: absolute;
+      right: 0px;
+      background-color: rgba(0, 128, 0, 0);
+      opacity: 1;
+
+      &--final {
+        transition: all 0.2s ease;
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      &--show {
+        transition: all 0s ease;
+        opacity: 1;
+      }
+    }
+  }
+
+  &__btn-ctr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+    width: 100%;
+    gap: 10px;
+  }
+
+  &__btn {
+    border-radius: $border-radius-standard;
+    background-color: $color-selected;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    width: 80%;
+    height: 50px;
+    font-weight: bold;
+    font-size: 16px;
+    transition: 0.2s;
+    position: relative;
+    z-index: 1;
+
+    &:hover {
+      border: 3px solid white;
+    }
+  }
+
+  &__refresh {
+    background-color: $grey-dark;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    padding-top: 8px;
+    padding-right: 1px;
+    transition: transform 0.5s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      border: 3px solid white;
+    }
+
+    &.rotate {
+      transform: rotate(360deg);
+    }
+  }
+
+  &__success-ctr {
+    width: 150px;
+    height: 150px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    padding-bottom: 20px;
+    border-radius: $border-radius-lower;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &__lottie {
+    width: 95px;
+    height: 95px;
+  }
+
+  &__success-msg {
+    background-color: $grey-light;
+    color: $white;
+    background-color: $white;
+    color: black;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  &__outofstock-ctr {
+    width: 150px;
+    height: 60px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: black;
+    border-radius: $border-radius-lower;
+
+    @include tablet {
+      position: absolute;
+      bottom: 28%;
+    }
+  }
+
+  &__outofstock-msg {
+    color: #e76161;
+    width: 90%;
+    white-space: nowrap;
+    font-size: fit-content;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+  }
+}

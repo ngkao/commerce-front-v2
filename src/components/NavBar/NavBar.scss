@@ -1,144 +1,124 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
-
 .nav {
-    background-color: rgb(0, 0, 0);
-    // width: 100%;
-    display: flex;
-    flex-direction: column;
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  position: relative;
 
-   
-    position: relative;
+  &__ctr {
+    background-color: $grey-light;
+    padding: 10px 0;
+    border-radius: $border-radius-standard;
+    margin: 24px 2rem 0;
 
     @include tablet {
-        // width: 400px;
+      height: 100%;
+      margin: 0;
+      width: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-bottom: 50px;
+    }
+  }
+
+  &__logo-ctr {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    padding-top: 100px;
+  }
+
+  &__logo {
+    color: $white;
+    background-color: $grey-light;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    font-size: $font-large;
+  }
+
+  &__lottie {
+    width: 70px;
+    background-position: left 100px;
+    position: absolute;
+    right: 50%;
+    top: 0px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    background-color: $grey-light;
+    gap: 10px;
+    border-radius: $border-radius-standard;
+  }
+
+  &__item {
+    background-color: $grey-light;
+    text-decoration: none;
+    color: $white;
+    font-size: $font-standard;
+    margin: 0 15px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    border-radius: $border-radius-standard;
+
+    //instruction
+    position: relative;
+    z-index: 1;
+
+    &:hover {
+      border: 2px solid $color-selected;
+      color: $color-selected;
     }
 
-    &__ctr {
-      
+    &--active {
+      background-color: $color-selected;
+      border: 2px solid $color-selected;
+
+      &::active {
         background-color: $grey-light;
-        padding: 10px 0;
-        border-radius: $border-radius-standard;
-        margin: 24px 2rem 0;
-        
-        @include tablet {
-            height: 100%;
-            margin: 0;
-            width: 220px;
+      }
 
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-
-            // padding-bottom: 90px;
-            padding-bottom: 50px; 
-        }
+      &:hover {
+        background-color: $color-selected;
+        color: white;
+      }
     }
+  }
 
-    &__logo-ctr {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        position: relative;
-        padding-top: 100px;
+  &__author-ctr {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding-top: 10px;
+
+    @include tablet {
+      padding-top: 0px;
     }
+  }
 
-    &__logo {
-        color: $white;
-        background-color: $grey-light;
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
-        font-size: $font-large;
-    }
+  &__author-name {
+    color: $color-selected;
+  }
 
-    &__lottie {
-        width: 70px;
-        background-position: left 100px;
-        position: absolute;
-        right: 50%;
-        top: 0px;
-    }
+  &__list-icon {
+    gap: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-    &__list {
-        display: flex;
-        flex-direction: column;
-        margin-top: 10px;
-        background-color: $grey-light;
-        gap: 10px;
-        border-radius: $border-radius-standard;
-
-        @include tablet {
-            // margin-top: 90px;
-       
-       
-        }
-    }
-
-    &__item {
-        // outline: 1px rgb(255, 0, 0);
-        background-color: $grey-light;
-        text-decoration: none;
-        color: $white;
-        font-size: $font-standard;
-        margin: 0 15px;
-        height: 50px;
-        display: flex;
-        align-items: center;
-        padding-left: 1rem;
-        border-radius: $border-radius-standard;
-
-        //instruction
-        position: relative;
-        z-index: 1;
-        
-        &:hover {
-            border: 2px solid $color-selected;
-            color: $color-selected;
-        }
-
-        &--active {
-            background-color: $color-selected;
-            border: 2px solid $color-selected;
-
-            &::active {
-                background-color: $grey-light;
-            }
-
-            &:hover {
-                background-color: $color-selected;
-                color: white;
-            }
-        }
-    }
-
-    &__author-ctr {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        align-items: center;
-        padding-top: 10px;
-
-
-        @include tablet {
-            padding-top: 0px;
-        }
-    }
-
-    &__author-name {
-        color: $color-selected;
-    }
-
-    &__list-icon {
-        gap: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    &__icon {
-        width: 20px;
-        cursor: pointer;
-    }
+  &__icon {
+    width: 20px;
+    cursor: pointer;
+  }
 }

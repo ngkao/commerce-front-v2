@@ -2,171 +2,170 @@
 @use "../../styles/partials/mixins" as *;
 
 .cart {
-      padding: 20px 25px 0;
-      background-color: $grey-light;
-      border-radius: $border-radius-standard;
+  padding: 20px 25px 0;
+  background-color: $grey-light;
+  border-radius: $border-radius-standard;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+
+  @include tablet {
+    padding: 20px 30px 0;
+    height: 50%;
+    justify-content: flex-start;
+    position: relative; // for the preview lottie file since it's absolute
+  }
+
+  &__title {
+    color: $white;
+    padding-bottom: 20px;
+    background-color: $grey-light;
+    font-size: $font-large;
+
+    @include tablet {
+      padding-bottom: 0;
+    }
+  }
+
+  &__lottie {
+    width: 230px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease;
+
+    opacity: 0;
+    animation: fade-in 1s ease-in-out forwards;
+
+    @include tablet {
+      position: absolute;
+      bottom: -25%;
       display: flex;
-      justify-content: center;
-      align-items: center;
       flex-direction: column;
-      width: 100%;
+      justify-content: flex-end;
+    }
+  }
 
-      @include tablet {
-      padding: 20px 30px 0;
-      height: 50%;
-      justify-content: flex-start;  
-      position: relative; // for the preview lottie file since it's absolute
+  &__list {
+    background-color: $grey-light;
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+    margin-top: 20px;
+    border-top: 1px solid rgb(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgb(255, 255, 255, 0.2);
+    margin-bottom: 10px;
+    padding-top: 5px;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    background-color: $grey-light;
+    padding-right: 5px;
+    width: 100%;
+
+    //transition
+    transition: all 0.2s ease;
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  &__img-name-qt {
+    display: flex;
+    background-color: $grey-light;
+    width: 200px;
+  }
+
+  &__img {
+    width: 50px;
+    height: 50px;
+    border-radius: $border-radius-lower;
+  }
+
+  &__name-quantity {
+    margin-left: 10px;
+    background-color: $grey-light;
+  }
+
+  &__name {
+    color: $white;
+    background-color: $grey-light;
+  }
+
+  &__quantity {
+    color: $white;
+    background-color: $grey-light;
+  }
+
+  &__price-ctr {
+    position: relative;
+    outline: 1px solid blue;
+  }
+
+  &__price-top {
+    background-color: $grey-light;
+    position: absolute;
+    right: 0px;
+    top: -15px;
+    //transition
+    transition: all 0s ease;
+    opacity: 0;
+    transform: translateY(-40px);
+
+    &--final {
+      transition: all 0.2s ease;
+      opacity: 1;
+      transform: translateY(0px);
     }
 
-    &__title {
-        color: $white;
-        padding-bottom: 20px;
-        background-color: $grey-light;
-        font-size: $font-large;
+    &--hide {
+      transition: all 0s ease;
+      opacity: 0;
+    }
+  }
 
-        @include tablet {
-            padding-bottom: 0;
-        }
+  &__price-bottom {
+    background-color: $grey-light;
+    position: absolute;
+    right: 0px;
+    top: -15px;
+    background-color: rgba(0, 128, 0, 0);
+    opacity: 1;
+
+    &--final {
+      transition: all 0.2s ease;
+      opacity: 0;
+      transform: translateY(40px);
     }
 
-    &__lottie {
-        width: 230px;
-
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        transition: all 0.5s ease;
-
-        opacity: 0;
-        animation: fade-in 1s ease-in-out forwards;
-
-        @include tablet {
-            // height: 50vh;
-            position: absolute;
-            bottom: -25%;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-        }
+    &--show {
+      transition: all 0s ease;
+      opacity: 1;
     }
-
-    &__list {
-        background-color: $grey-light;
-        overflow: auto;
-        // height: 250px;
-        // height: 30vh;
-        height: 100%;
-        width: 100%;
-        margin-top: 20px;
-        border-top: 1px solid rgb(255, 255, 255, 0.2);
-        border-bottom: 1px solid rgb(255, 255, 255, 0.2);
-        margin-bottom: 10px;
-        padding-top: 5px;
-
-        &::-webkit-scrollbar {
-            display: none;
-          }
-    }
-
-    &__item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-bottom: 20px;
-        background-color: $grey-light;
-        padding-right: 5px;
-        width: 100%;
-
-        //transition
-        transition: all 0.2s ease;
-        opacity: 0;
-        transform: translateX(20px);
-
-    }
-
-    &__img-name-qt {
-        display: flex;
-        background-color: $grey-light;
-        width: 200px;
-    }
-
-    &__img {
-        width: 50px;
-        height: 50px;
-        border-radius: $border-radius-lower;
-    }
-
-    &__name-quantity {
-        margin-left: 10px;
-        background-color: $grey-light;
-    }
-
-    &__name {
-        color: $white;
-        background-color: $grey-light;
-    }
-
-    &__quantity {
-        color: $white;
-        background-color: $grey-light;
-    }
-
-    &__price-ctr {
-        position: relative;
-        outline: 1px solid blue;
-    }
-
-    &__price-top {
-        background-color: $grey-light;
-        position: absolute;
-        right: 0px;
-        top: -15px;
-        //transition
-        transition: all 0s ease;
-        opacity: 0;
-        transform: translateY(-40px);
-
-        &--final {
-            transition: all 0.2s ease;
-            opacity: 1;
-            transform: translateY(0px);
-        }
-
-        &--hide {
-            transition: all 0s ease;
-            opacity: 0;
-        }
-    }
-
-    &__price-bottom {
-        background-color: $grey-light;
-        position: absolute;
-        right: 0px;
-        top: -15px;
-        background-color: rgba(0, 128, 0, 0);
-        opacity: 1;
-
-        &--final {
-            transition: all 0.2s ease;
-            opacity: 0;
-            transform: translateY(40px);
-        }
-
-        &--show {
-            transition: all 0s ease;
-            opacity: 1;
-        }
-    }
+  }
 }
 
 .show-cart {
-    opacity: 1;
-    transform: translateX(0);
+  opacity: 1;
+  transform: translateX(0);
 }
 
-
 @keyframes fade-in {
-    from { opacity: 0; }
-    to { opacity: 1; }
+  from {
+    opacity: 0;
   }
+  to {
+    opacity: 1;
+  }
+}
